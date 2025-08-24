@@ -1,0 +1,7 @@
+{
+        "javascript": [
+            "/App_Plugins/newsletterStudioExtensions/controller/customHtmlEmailControl/edit.controller.js",
+            "/App_Plugins/newsletterStudioExtensions/controller/customContentPickerControl/edit.controller.js"
+
+        ]
+}

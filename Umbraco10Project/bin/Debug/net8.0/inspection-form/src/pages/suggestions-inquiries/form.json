@@ -1,0 +1,620 @@
+{
+  "sections": [
+    {
+      "id": "personal_info_section",
+      "controlType": "SECTION",
+      "multiple": false,
+      "linkedParentFieldId": null,
+      "groupOfAnswers": null,
+      "enPlaceholder": null,
+      "arPlaceholder": null,
+      "required": null,
+      "disabled": null,
+      "enLabel": "Personal Information",
+      "arLabel": "المعلومات الشخصية",
+      "fields": [
+        {
+          "id": "full_name",
+          "controlType": "TEXT_BOX",
+          "multiple": null,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": false,
+          "disabled": true,
+          "enLabel": "Name",
+          "arLabel": "الاسم",
+          "fields": null,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": []
+          }
+        },
+        {
+          "id": "national_id_c",
+          "controlType": "NUMERICAL",
+          "multiple": null,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": false,
+          "disabled": true,
+          "enLabel": "National ID",
+          "arLabel": "رقم الهوية",
+          "fields": null,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": []
+          }
+        },
+        {
+          "id": "email1",
+          "controlType": "TEXT_BOX",
+          "multiple": null,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "enLabel": "Email",
+          "arLabel": "البريد الإلكتروني",
+          "fields": null,
+          "validation": {
+            "templates": ["email"]
+          },
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": []
+          }
+        },
+        {
+          "id": "phone_mobile",
+          "controlType": "NUMERICAL",
+          "multiple": null,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "enLabel": "Mobile Number",
+          "arLabel": "رقم الجوال",
+          "fields": null,
+          "validation": {
+            "templates": ["phoneNumber"]
+          },
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": []
+          }
+        },
+        {
+          "id": "rejon_c",
+          "controlType": "DROPDOWN",
+          "multiple": false,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": {
+            "id": "region",
+            "enName": "Region",
+            "arName": "المنطقة",
+            "maxValue": 0,
+            "minValue": 0,
+            "parentId": null,
+            "answerGroupValuesApi": "/SuggestionsInquiries/GetRegions",
+            "answerGroupValues": []
+          },
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": false,
+          "disabled": false,
+          "enLabel": "Region",
+          "arLabel": "المنطقة",
+          "fields": null,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": []
+          }
+        },
+        {
+          "id": "requestclassification_c",
+          "controlType": "DROPDOWN",
+          "multiple": false,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": {
+            "id": "requestـclassification",
+            "enName": "Request Type",
+            "arName": "نوع الطلب",
+            "maxValue": 0,
+            "minValue": 0,
+            "parentId": null,
+            "answerGroupValuesApi": null,
+            "answerGroupValues": [
+              {
+                "id": "enquiry_c",
+                "enValue": "Enquiry",
+                "arValue": "استفسار"
+              },
+              {
+                "id": "suggestion_c",
+                "enValue": "Suggestion",
+                "arValue": "اقتراح"
+              },
+              {
+                "id": "complaint_c",
+                "enValue": "Complaint",
+                "arValue": "شكوى"
+              }
+            ]
+          },
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "enLabel": "Request Type",
+          "arLabel": "نوع الطلب",
+          "fields": null,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": []
+          }
+        },
+        {
+          "id": "service_type_c",
+          "enLabel": "Service",
+          "arLabel": "البرنامج",
+          "controlType": "DROPDOWN",
+          "multiple": false,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": {
+            "id": "service_type",
+            "enName": "Service",
+            "arName": "البرنامج",
+            "maxValue": 0,
+            "minValue": 0,
+            "parentId": null,
+            "answerGroupValuesApi": "/SuggestionsInquiries/GetServices",
+            "answerGroupValues": []
+          },
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "fields": null,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": []
+          }
+        }
+      ],
+      "conditionalView": {
+        "action": "hidden",
+        "operator": "and",
+        "conditions": []
+      }
+    },
+    {
+      "id": "extra_details_section",
+      "controlType": "SECTION",
+      "multiple": null,
+      "linkedParentFieldId": null,
+      "groupOfAnswers": null,
+      "enPlaceholder": null,
+      "arPlaceholder": null,
+      "required": null,
+      "disabled": null,
+      "enLabel": null,
+      "arLabel": null,
+      "fields": [
+        {
+          "controlType": "TEXT_BOX",
+          "multiple": null,
+          "linkedParentFieldId": "service_type_c",
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "validation": {
+            "templates": ["minMaxLength"],
+            "minLength": 3,
+            "maxLength": 50
+          },
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": [
+              {
+                "linkedFieldId": "requestclassification_c",
+                "conditionType": "Value",
+                "validatorValues": ["complaint_c"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              },
+              {
+                "linkedFieldId": "service_type_c",
+                "conditionType": "Value",
+                "validatorValues": [
+                  "Egar",
+                  "Fal",
+                  "Srei",
+                  "Mullak",
+                  "Farz",
+                  "Rer",
+                  "mulkia",
+                  "Wafi",
+                  "Tasfiah"
+                ],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              }
+            ]
+          },
+          "id": "reference_number_c",
+          "enLabel": "رقم الشكوى من البرنامج",
+          "arLabel": "رقم الشكوى من البرنامج",
+          "notes": {
+            "Egar": "extra_details_section.complaint_number.ejar",
+            "Fal": "extra_details_section.complaint_number.fal",
+            "Srei": "extra_details_section.complaint_number.srei",
+            "Mullak": "extra_details_section.complaint_number.mullak",
+            "Farz": "extra_details_section.complaint_number.subdivision",
+            "Rer": "extra_details_section.complaint_number.rer",
+            "mulkia": "extra_details_section.complaint_number.mulkia",
+            "Wafi": "extra_details_section.complaint_number.wafi",
+            "Tasfiah": "extra_details_section.complaint_number.realEstateContributions"
+          },
+          "fields": null
+        },
+        {
+          "controlType": "SPAN",
+          "multiple": null,
+          "linkedParentFieldId": "service_type_c",
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": false,
+          "disabled": false,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": [
+              {
+                "linkedFieldId": "requestclassification_c",
+                "conditionType": "Value",
+                "validatorValues": ["enquiry_c"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              },
+              {
+                "linkedFieldId": "service_type_c",
+                "conditionType": "Value",
+                "validatorValues": [
+                  "Egar",
+                  "Fal",
+                  "Srei",
+                  "Mullak",
+                  "Farz",
+                  "Rer",
+                  "Reac"
+                ],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              }
+            ]
+          },
+          "id": "enquiry_info",
+          "enLabel": null,
+          "arLabel": null,
+          "messages": {
+            "Egar": "extra_details_section.enquiry_info.ejar",
+            "Fal": "extra_details_section.enquiry_info.fal",
+            "Srei": "extra_details_section.enquiry_info.srei",
+            "Mullak": "extra_details_section.enquiry_info.mullak",
+            "Farz": "extra_details_section.enquiry_info.subdivision",
+            "Rer": "extra_details_section.enquiry_info.rer",
+            "Reac": "extra_details_section.enquiry_info.reac"
+          },
+          "fields": null
+        },
+        {
+          "controlType": "SPAN",
+          "multiple": null,
+          "linkedParentFieldId": "service_type_c",
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": false,
+          "disabled": false,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": [
+              {
+                "linkedFieldId": "requestclassification_c",
+                "conditionType": "Value",
+                "validatorValues": ["suggestion_c"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              },
+              {
+                "linkedFieldId": "service_type_c",
+                "conditionType": "Value",
+                "validatorValues": [
+                  "Egar",
+                  "Fal",
+                  "Srei",
+                  "Mullak",
+                  "Farz",
+                  "Rer",
+                  "Reac"
+                ],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              }
+            ]
+          },
+          "id": "suggestion_info",
+          "enLabel": null,
+          "arLabel": null,
+          "messages": {
+            "Egar": "extra_details_section.suggestion_info.ejar",
+            "Fal": "extra_details_section.suggestion_info.fal",
+            "Srei": "extra_details_section.suggestion_info.srei",
+            "Mullak": "extra_details_section.suggestion_info.mullak",
+            "Farz": "extra_details_section.suggestion_info.subdivision",
+            "Rer": "extra_details_section.suggestion_info.rer",
+            "Reac": "extra_details_section.suggestion_info.reac"
+          },
+          "fields": null
+        }
+      ],
+      "conditionalView": {
+        "action": "hidden",
+        "operator": "and",
+        "conditions": []
+      }
+    },
+    {
+      "id": "extra_details_request_number_section",
+      "controlType": "SECTION",
+      "multiple": null,
+      "linkedParentFieldId": null,
+      "groupOfAnswers": null,
+      "enPlaceholder": null,
+      "arPlaceholder": null,
+      "required": null,
+      "disabled": null,
+      "enLabel": null,
+      "arLabel": null,
+      "fields": [
+        {
+          "controlType": "TEXT_BOX",
+          "gridSize": "col-lg-6",
+          "multiple": null,
+          "linkedParentFieldId": "service_type_c",
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "validation": {
+            "templates": ["minMaxLength", "rerRequestNumber"],
+            "minLength": 3,
+            "maxLength": 50
+          },
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "and",
+            "conditions": [
+              {
+                "linkedFieldId": "requestclassification_c",
+                "conditionType": "Value",
+                "validatorValues": ["complaint_c"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              },
+              {
+                "linkedFieldId": "service_type_c",
+                "conditionType": "Value",
+                "validatorValues": ["Rer"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              }
+            ]
+          },
+          "id": "request_number_c",
+          "enLabel": "Request number",
+          "arLabel": "رقم الطلب",
+          "notes": {
+            "Rer": "extra_details_request_number_section.request_number.rer"
+          },
+          "fields": null
+        }
+      ],
+      "conditionalView": {
+        "action": "hidden",
+        "operator": "and",
+        "conditions": []
+      }
+    },
+    {
+      "id": "details_section",
+      "controlType": "SECTION",
+      "multiple": null,
+      "linkedParentFieldId": null,
+      "groupOfAnswers": null,
+      "enPlaceholder": null,
+      "arPlaceholder": null,
+      "required": null,
+      "disabled": null,
+      "enLabel": "Request Details",
+      "arLabel": "تفاصيل المشاركة",
+      "fields": [
+        {
+          "controlType": "TEXT_BOX",
+          "multiple": null,
+          "linkedParentFieldId": "service_type_c",
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "validation": {
+            "templates": ["minMaxLength"],
+            "minLength": 3,
+            "maxLength": 50
+          },
+          "id": "name",
+          "enLabel": "Request Title",
+          "arLabel": "عنوان الشكوى / الاستفسار / المقترح",
+          "fields": null,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "or",
+            "conditions": [
+              {
+                "linkedFieldId": "requestclassification_c",
+                "conditionType": "Value",
+                "validatorValues": ["complaint_c"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              },
+              {
+                "linkedFieldId": "service_type_c",
+                "conditionType": "Value",
+                "validatorValues": ["mulkia", "Wafi", "Tasfiah", "Indicators"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              }
+            ]
+          }
+        },
+        {
+          "controlType": "TEXTAREA",
+          "gridSize": "col-lg-7",
+          "multiple": null,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": true,
+          "disabled": false,
+          "id": "description",
+          "enLabel": "Request description",
+          "arLabel": "وصف الطلب",
+          "fields": null,
+          "validation": {
+            "templates": ["minMaxLength"],
+            "minLength": 3,
+            "maxLength": 100
+          },
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "or",
+            "conditions": [
+              {
+                "linkedFieldId": "requestclassification_c",
+                "conditionType": "Value",
+                "validatorValues": ["complaint_c"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              },
+              {
+                "linkedFieldId": "service_type_c",
+                "conditionType": "Value",
+                "validatorValues": ["mulkia", "Wafi", "Tasfiah", "Indicators"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              }
+            ]
+          }
+        }
+      ],
+      "conditionalView": {
+        "action": "hidden",
+        "operator": "and",
+        "conditions": [
+          {
+            "linkedFieldId": "requestclassification_c",
+            "conditionType": "Value",
+            "validatorValues": ["enquiry_c", "suggestion_c"],
+            "enErrorMsg": null,
+            "arErrorMsg": null
+          },
+          {
+            "linkedFieldId": "service_type_c",
+            "conditionType": "Value",
+            "validatorValues": ["mulkia", "Wafi", "Tasfiah", "Indicators"],
+            "enErrorMsg": null,
+            "arErrorMsg": null
+          }
+        ]
+      }
+    },
+    {
+      "controlType": "SECTION",
+      "multiple": true,
+      "linkedParentFieldId": null,
+      "groupOfAnswers": null,
+      "enPlaceholder": null,
+      "arPlaceholder": null,
+      "required": null,
+      "disabled": null,
+      "id": "attachments_section",
+      "enLabel": "Attachments",
+      "arLabel": "المرفقات",
+      "fields": [
+        {
+          "id": "attachments",
+          "controlType": "ATTACHMENT_AREA",
+          "multiple": true,
+          "max": 4,
+          "linkedParentFieldId": null,
+          "groupOfAnswers": null,
+          "enPlaceholder": null,
+          "arPlaceholder": null,
+          "required": false,
+          "disabled": false,
+          "enLabel": "Others",
+          "arLabel": "اخرى",
+          "fields": null,
+          "conditionalView": {
+            "action": "hidden",
+            "operator": "or",
+            "conditions": [
+              {
+                "linkedFieldId": "requestclassification_c",
+                "conditionType": "Value",
+                "validatorValues": ["complaint_c"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              },
+              {
+                "linkedFieldId": "service_type_c",
+                "conditionType": "Value",
+                "validatorValues": ["mulkia", "Wafi", "Tasfiah", "Indicators"],
+                "enErrorMsg": null,
+                "arErrorMsg": null
+              }
+            ]
+          }
+        }
+      ],
+      "conditionalView": {
+        "action": "hidden",
+        "operator": "and",
+        "conditions": []
+      }
+    }
+  ]
+}

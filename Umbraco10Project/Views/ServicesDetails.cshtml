@@ -1,0 +1,163 @@
+﻿@using Umbraco10Project.Models
+@using uSync.Core
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Service>
+@{
+    Layout = "Master.cshtml";
+    int currentPage = !string.IsNullOrWhiteSpace(Context.Request.Query["currentPage"])
+        ? int.Parse(Context.Request.Query["currentPage"])
+        : 1;
+    string projectTypeId = Context.Request.Query["projectTypeId"].ToString() ?? "";
+    string cityId = Context.Request.Query["cityId"].ToString() ?? "";
+    string licenseRequestTypeId = Context.Request.Query["licenseRequestTypeId"].ToString() ?? "";
+    string facilityName = Context.Request.Query["facilityName"].ToString() ?? "";
+    string licenseNumber = Context.Request.Query["licenseNumber"].ToString() ?? "";
+    string qualificationTypeId = Context.Request.Query["qualificationTypeId"].ToString() ?? "";
+    int currentDeveloperPage = !string.IsNullOrWhiteSpace(Context.Request.Query["currentDeveloperPage"])
+        ? int.Parse(Context.Request.Query["currentDeveloperPage"])
+        : 1;
+    var tabActive = Context.Request.Query["tabActive"];
+
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        title = Model?.Value("pageTitle")?.ToString() ?? "",
+        disableRoot = false,
+        action = new List<AncestorsActionModel>()
+        {
+            new()
+            {
+                Text = Model?.ButtonText ?? "",
+                Url = Model?.Value<string>("uRL")
+            }
+        }
+    };
+}
+<div class="services-details-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+    <div class="container mt-4">
+
+
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-7 col-lg-8">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        @{
+                            var counter = 1;
+                            foreach (var item in Model.ServiceFeature)
+                            {
+                                var activeTab = false;
+                                if (string.IsNullOrWhiteSpace(tabActive))
+                                {
+                                    activeTab = counter == 1;
+                                }
+                                else if (tabActive == item.Value("customPage").ToString())
+                                {
+                                    activeTab = true;
+                                }
+
+                                <button class="nav-link @(activeTab ? "active" : "")" id="nav-home-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#@item.Key"
+                                        type="button"
+                                        aria-label="Feature Tab"
+                                        role="tab"
+                                        aria-controls="@item.Key"
+                                        aria-selected="@(activeTab ? "true" : "false")">@item.FeatureTabTitle</button>
+                                counter++;
+                            }
+                        }
+                    </div>
+                </nav>
+                <div class="tab-content mt-4" id="nav-tabContent">
+                    @{
+                        counter = 1;
+                        foreach (var item in Model.ServiceFeature)
+                        {
+                            var activeTab = false;
+                            if (string.IsNullOrWhiteSpace(tabActive))
+                            {
+                                activeTab = counter == 1;
+                            }
+                            else if (tabActive == item.Value("customPage").ToString())
+                            {
+                                activeTab = true;
+                            }
+
+
+                            var label = @item.Key + "-tab";
+                            <div class="tab-pane fade @(activeTab ? "show active" : "")" id="@item.Key" role="tabpanel"
+                                 aria-labelledby="@label" tabindex="0">
+                                @if (item.CustomPage.IsNullOrWhiteSpace())
+                                {
+                                    <div class="service-items-information-up">
+                                        <div class="service-information-breif">
+                                            @item?.FeatureBrief
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    var customPage = item?.CustomPage ?? "";
+                                    switch (customPage)
+                                    {
+                                        case "Wafi Projects":
+                                            @await Component.InvokeAsync("WafiProjects", new
+                                            {
+                                                queryParms = new WafiProjectQueryParms()
+                                                {
+                                                    ModelUrl = Model.Url(),
+                                                    CityId = cityId,
+                                                    LicenseRequestTypeId = licenseRequestTypeId,
+                                                    CurrentPage = currentPage
+                                                },
+                                                modelTitle = "",
+                                                linkedToPageUrl = item?.Value<IPublishedContent>("linkedToPage")?.Url()
+                                            })
+                                            break;
+                                        case "Wafi Developers":
+                                            @await Component.InvokeAsync("WafiDevelopers", new
+                                            {
+                                                queryParms = new WafiDeveloperQueryParms()
+                                                {
+                                                    ModelUrl = Model.Url(),
+                                                    CurrentDeveloperPage = currentDeveloperPage,
+                                                    FacilityName = facilityName,
+                                                    QualificationTypeId = qualificationTypeId
+                                                },
+                                                modelTitle = ""
+                                            })
+                                            break;
+                                        case "Rer Registrar":
+                                            @await Component.InvokeAsync("RerRegistrar", new
+                                            {
+                                                queryParms = new RerRegistrarQueryParms()
+                                                {
+                                                    ModelUrl = Model.Url(),
+                                                    CurrentPage = currentPage,
+                                                    LicenseNumber = licenseNumber
+                                                },
+                                                modelTitle = ""
+                                            })
+                                            break;
+                                    }
+                                }
+                            </div>
+                            counter++;
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-5 col-lg-4">
+
+                <div>
+                    @await Html.PartialAsync("Contact", Model)
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

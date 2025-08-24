@@ -1,0 +1,12 @@
+<div ng-style="{'padding-top' : control.padding.top, 
+                'padding-bottom' : control.padding.bottom,
+                'padding-left' : control.padding.left,
+                'padding-right' : control.padding.right,
+                'text-align' : control.textAlign,
+                'justify-content' : control.textAlign,
+                }"
+>
+    <img src="https://placehold.co/600x400" alt="News Default"  ng-style="!control.showImage && {'display': 'none'}">
+    <p  ng-style="control.overrideTitle && {'display': 'none'}">Title</p>
+    <ns-html  ng-style="!control.overrideTitle && {'display': 'none'}" html="control.title"></ns-html>
+</div>

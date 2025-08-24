@@ -1,0 +1,108 @@
+﻿@using Umbraco10Project.Models
+@using uSync.Core
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ProbtechHubPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+    var ancestorsList = Model.Ancestors().Reverse().ToList();
+    // Get the second item in the list and further (to exclude the first parent).
+    if (ancestorsList.Count > 1)
+    {
+        ancestorsList.RemoveAt(1); // Remove the first parent
+    }
+
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = ancestorsList,
+        content = Model,
+        title = Model.Value("pageTitle")?.ToString() ?? "",
+        disableRoot = false
+    };
+}
+
+<div class="probtech-hub-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+    <div class="container mt-4">
+
+        @foreach (var item in Model.Content)
+        {
+            var dataelement = (ProptechHubContent)item.Content;
+
+            <div class="row mt-4">
+                @if (!dataelement.Title.IsNullOrWhiteSpace())
+                {
+                    <p class="fw-bold title h2">@dataelement.Title</p>
+                }
+                <div class="content">
+                    @Html.Raw(dataelement.Content)
+                </div>
+                @if (dataelement.Button?.Url() != null)
+                {
+                    <div class="row text-center justify-content-center">
+                        <div class="col-3 text-center justify-content-center">
+                            <button class="btn btn-primary w-100 onclick" data-action="redirect" data-value="@dataelement.Button?.Url()">التقديم<img src="~/images/icons/sent-duotone-rounded.svg" alt="Start service" class="icon-local-flip small-icon"/></button>
+                        </div>
+                    </div>
+                }
+
+                @if (!dataelement.ButtonToUrl.IsNullOrWhiteSpace())
+                {
+                    <div class="row text-center justify-content-center">
+                        <div class="col-3 text-center justify-content-center">
+                            <button class="btn btn-primary w-100 onclick" data-action="redirect" data-value="@dataelement.ButtonToUrl" >التقديم<img src="~/images/icons/sent-duotone-rounded.svg" alt="Start service" class="icon-local-flip small-icon"/></button>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+            @if (dataelement?.ListOfSubcontent?.Count != 0)
+            {
+                <div class="row">
+                    @foreach (var subContent in dataelement?.ListOfSubcontent.ToList())
+                    {
+                        var subDataElement = (ProptechHubContent)subContent.Content;
+                        <div class="col-lg-6 col-12 mb-4">
+                            <div class="card ">
+                                <div class="card-body">
+                                    @if (!subDataElement.Title.IsNullOrWhiteSpace())
+                                    {
+                                        <p class="title">@subDataElement.Title</p>
+                                    }
+                                    <div class="section-brief">
+                                        @Html.Raw(subDataElement.Content)
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-primary onclick"  data-action="redirect"
+                                            data-value="@subDataElement.LinkToPage?.Url()">
+                                        @Umbraco.GetDictionaryValue("View More")
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+
+        @if (Model.FormRef != null)
+        {
+            @await Component.InvokeAsync("Form", new FormModel()
+            {
+                ModelId = Model?.Id.ToString() ?? "",
+                FormID = (Guid)(Model?.Value("formRef") ?? ""),
+                Title = Model?.Value("formTitle")?.ToString() ?? "",
+                Description = Model?.Value("formDescription")?.ToString() ?? "",
+                ProtectedByNafath = (bool)(Model?.Value("protectedByNafath") ?? false),
+            })
+        }
+    </div>
+
+</div>

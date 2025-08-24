@@ -1,0 +1,211 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.ReportModel>
+
+@using (Html.BeginUmbracoForm("Report", "Emails", FormMethod.Post, new { @class = "" }))
+{
+    <div class="form-section-1">
+        <div class="form-section-title">
+
+            @Umbraco.GetDictionaryValue("Personal Information")
+        </div>
+        <div class="job-fields">
+
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("FULL NAME") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.FullName, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("ID Number") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.IdNumber, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-section-1">
+        <div class="form-section-title">
+            @Umbraco.GetDictionaryValue("Contact Information")
+
+        </div>
+        <div class="job-fields">
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("TELEPHONE") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.Phone, new { @class = "job-field-input" , @required = "required" , @type = "tel"})
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("EMAIL ADDRESS") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.Email, new { @class = "job-field-input" , @required = "required" , @type = "email"})
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("COUNTRY") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.DropDownListFor(m => Model.Country, new SelectList(new List<Object>{
+                new { value = " " , text = " "  },
+                new { value = "KSA" , text = "KSA"  },
+                new { value = "Jordan" , text = "Jordan" },
+                new { value = "UAE" , text = "UAE"  },
+                }, "value" , "text" ), new { @class = "job-field-input job-field-select select2", @required = "required" })
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("Region") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.Region, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("CITY/STATE") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.City, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="form-section-1">
+        <div class="form-section-title">
+            @Umbraco.GetDictionaryValue("Complaint")
+        </div>
+        <div class="job-fields">
+
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("Reported Name") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.ReportedName, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+
+                    <label>@Umbraco.GetDictionaryValue("Reported Number") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.ReportedNumber, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("Type of report") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.DropDownListFor(m => Model.TypeOfReport, new SelectList(new List<Object>{
+                new { value = " " , text = " "  },
+                new { value = "MediationAndMarketing" , text = "الوساطة والتسويق"  },
+                new { value = "PropertyManagement" , text = "إدارة الاملاك" },
+                new { value = "FacilitiesManagement" , text = "إدارة المرافق"  },
+                new { value = "RealEstateConsultingAndAnalysis" , text = "الاستشارات والتحليلات العقارية"  },
+                new { value = "RealEstateAuctions" , text = "المزادات العقارية"  },
+                new { value = "RealEstateAdsInPublicPlaces" , text = "الإعلانات العقارية في أماكن عامة"  },
+                new { value = "RealEstateAdsOnSocialMedia" , text = "الإعلانات العقارية في وسائل التواصل الاجتماعي"  },
+                new { value = "RealEstateAdsOnRealEstatePlatforms" , text = "الإعلانات العقارية في منصات عقارية"  },
+                }, "value" , "text" ), new { @class = "job-field-input job-field-select select2", @required = "required" })
+
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>
+                        @Umbraco.GetDictionaryValue("Type of reported") <span class="requierd-star">*</span>
+                    </label>
+                </div>
+                <div class="job-field-value">
+                    @Html.DropDownListFor(m => Model.TypeOfReported, new SelectList(new List<Object>{
+                new { value = " " , text = " "  },
+                new { value = "Individual" , text = "فرد"  },
+                new { value = "Facility" , text = "منشأة" },
+                new { value = "Platform" , text = "منصة"  },
+                }, "value" , "text" ), new { @class = "job-field-input job-field-select select2", @required = "required" })
+
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>
+                        @Umbraco.GetDictionaryValue("Report classification") <span class="requierd-star">*</span>
+                    </label>
+                </div>
+                <div class="job-field-value">
+                    @Html.DropDownListFor(m => Model.ReportClassification, new SelectList(new List<Object>{
+                new { value = "11" , text = " خيار 1"  },
+                }, "value" , "text" ), new { @class = "job-field-input job-field-select select2", @required = "required" })
+
+                </div>
+            </div>
+
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("Report Subject") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.ReportSubject, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+
+                </div>
+            </div>
+            <div class="job-field request-field align-items-start display-flexbox">
+                <div class="job-field-title request-title-field">
+                    <label>
+                        @Umbraco.GetDictionaryValue("Report Description") <span class="requierd-star">*</span>
+                    </label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.ReportDescription, new { @class = "job-field-input textarea-field" , @required = "required" , @type = "text"})
+
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>@Umbraco.GetDictionaryValue("The platform's link") <span class="requierd-star">*</span></label>
+                </div>
+                <div class="job-field-value">
+                    @Html.TextBoxFor(m => Model.PlatformLink, new { @class = "job-field-input" , @required = "required" , @type = "text"})
+
+                </div>
+            </div>
+            <div class="job-field display-flexbox">
+                <div class="job-field-title">
+                    <label>
+                        @Umbraco.GetDictionaryValue("An attachment") <span class="requierd-star">*</span>
+                    </label>
+                </div>
+                <div class="job-field-value display-flexbox">
+                    @Html.TextBoxFor(m => Model.Attachment, new { @class = "job-field-input input-file  w-100 display-none", id = "fileInput", @required = "required", @type = "file", @accept = "image/*,.pdf" })
+                    <div id="eventElement" class="job-field-input element-file w-100"></div>
+                    <div class="upload-button" id="uploadButton"></div>
+                </div>
+
+            </div>
+            <div class="job-field display-flexbox apply-job-submit">
+                <a class="site-btn">
+                    <div class="hover-btn-shape1"></div>
+                    <div class="hover-btn-shape2"></div>
+                    <input class="site-btn-input" type="submit" value="@Umbraco.GetDictionaryValue("Submit")" />
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+}

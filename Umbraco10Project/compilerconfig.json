@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/main/sass/styles.css",
+    "inputFile": "wwwroot/css/main/sass/styles.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/sass/pages/homeV2.css",
+    "inputFile": "wwwroot/css/sass/pages/homeV2.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/sass/styles.css",
+    "inputFile": "wwwroot/css/sass/styles.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/sass/style-ar.css",
+    "inputFile": "wwwroot/css/sass/style-ar.scss"
+  }
+]

@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<OpenDataRequest>
+@using Umbraco10Project.Models
+@{
+    Layout = "Master.cshtml";
+    var ancestorsList = Model.Ancestors().Reverse().ToList();
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = ancestorsList,
+        content = Model,
+        disableRoot = true,
+        title = Model.Value("pageTitle")?.ToString() ?? ""
+    };
+}
+
+<div class="open-data-request">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+    <div class="container mt-4">
+
+
+        <div class="raw">
+            <div class="content">
+                @Model.Value("pageDescription")
+            </div>
+        </div>
+
+        @await Component.InvokeAsync("Form", new FormModel()
+        {
+            ModelId = Model?.Id.ToString() ?? "",
+            FormID = (Guid)(Model?.Value("formRef") ?? ""),
+            Title = Model?.Value("formTitle")?.ToString() ?? "",
+            Description = Model?.Value("formDescription")?.ToString() ?? "",
+            ProtectedByNafath = (bool)(Model?.Value("protectedByNafath") ?? false),
+        })
+
+    </div>
+
+
+</div>

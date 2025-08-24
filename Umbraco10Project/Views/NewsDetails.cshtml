@@ -1,0 +1,107 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<NewsDetails>
+@using Umbraco10Project.Models;
+@using Umbraco10Project.Helpers
+
+@{
+    Layout = "Master.cshtml";
+    string currentPath = Context.Request.Path;
+    var isEnglish = currentPath.Contains("/en/");
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        disableRoot = true,
+        title = Model.NewsTitle ?? ""
+    };
+}
+
+
+<div class="news-details-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+    <div class="container mt-4">
+
+        @if (Model.NewsImages?.Any() ?? false)
+        {
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-indicators">
+                    @{
+                        for (int i = 0; i < Model.NewsImages?.Count(); i++)
+                        {
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="active" aria-current="true" aria-label="Slide @i"></button>
+                        }
+                    }
+                </div>
+                <div class="carousel-inner">
+
+                    @{
+                        @if (Model.NewsImages != null && Model.NewsImages.Any())
+                        {
+                            var counter = 1;
+
+                            foreach (var image in Model.NewsImages)
+                            {
+                                <div class="carousel-item @(counter == 1 ? "active" : "")">
+                                    <div  class="d-block w-100 justify-content-center d-flex" >
+                                        <img src="@image.Url()" alt="News Details" class="img-fluid" style="max-height: 600px">
+                                    </div>
+                                </div>
+                                counter++;
+                            }
+                        }
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        }
+     
+        <div class="row">
+
+            <div class="col-12 mt-4">
+                <div class="title">
+                    <h5>@Model.NewsTitle</h5>
+                </div>
+                <div class="badge text-bg-primary mt-2">
+                    @Calendar.TheSmallDate(Model.NewsDate, isEnglish)
+                </div>
+            </div>
+            <div class="content mt-2">
+                @Html.Raw("<div class='content'>" + Model.NewsText + "</div>")
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <h4 class="text-primary">@Umbraco.GetDictionaryValue("Read also")</h4>
+            @{
+                IEnumerable<IPublishedContent> relatedNews = Model.Value<IEnumerable<IPublishedContent>>("relatedNews");
+                IEnumerable<IPublishedContent> readMoreNews;
+                if (relatedNews != null && relatedNews.Any())
+                {
+                    readMoreNews = relatedNews;
+                }
+                else
+                {
+                    readMoreNews = Umbraco.Content(1273).Children().OrderByDescending(item => item.Value("newsDate")).Where(item => item.Key != Model.Key).Take(3);
+                }
+
+                foreach (var newsItem in readMoreNews)
+                {
+                    <div class="col-lg-4 col-12 p-2" data-action="redirect-new-tab">
+
+                        @await Html.PartialAsync("NewsCard", newsItem)
+                    </div>
+                }
+            }
+        </div>
+
+
+    </div>
+
+
+</div>

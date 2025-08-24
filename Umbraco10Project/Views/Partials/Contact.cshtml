@@ -1,0 +1,227 @@
+@using Umbraco.Cms.Core.Models.Blocks
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<div class="card contact-card-container">
+    <div class="card-body">
+        @{
+            IPublishedContent serviceIcon = Model.Value<IPublishedContent>("serviceIcon");
+            if (serviceIcon != null)
+            {
+                @* <img src="@serviceIcon.Url()" alt="Icon Url" class="img-fluid"/> *@
+            }
+            else
+            {
+                @* <img src="~/images/logos/REGA_LOGO.svg" alt="Icon Url" class="img-fluid"/> *@
+            }
+        }
+
+        @{
+            if (Model.HasValue("support") && Model.Value("support") != null)
+            {
+                foreach (var rootSuport in Model.Value<BlockListModel>("support") ?? Enumerable.Empty<BlockListItem>())
+                {
+                    <div class="with-divider">
+                        @{
+                            var supportRoot = (ServiceSupportRoot)rootSuport.Content;
+                            <h6 class="text-primary">@Umbraco.GetDictionaryValue(supportRoot.Title, supportRoot.Title)</h6>
+
+                            foreach (var item in supportRoot.Items)
+                            {
+                                var suport = (ContactUsInfo)item.Content;
+                                <div class="row mt-3">
+                                    <div class="col-auto pe-0">
+                                        @{
+                                            if (suport.Icon?.Url() != null)
+                                            {
+                                                <img src="@suport.Icon.Url()" alt="support icon" class="small-icon"
+                                                     width="30" height="30"/>
+                                            }
+                                            else
+                                            {
+                                                switch (suport.Type)
+                                                {
+                                                    case "Email":
+                                                        <img src="~/images/icons/mail-01-stroke-rounded.svg"
+                                                             alt="Email Icon" class="small-icon" width="30"
+                                                             height="30"/>
+                                                        break;
+                                                    case "Phone":
+                                                        <img src="~/images/icons/call-stroke-rounded.svg"
+                                                             alt="Call Icon" class="small-icon" width="30" height="30"/>
+                                                        break;
+                                                    case "Website":
+                                                        <img src="~/images/icons/link-01-stroke-sharp.svg"
+                                                             alt="Link Icon" class="small-icon" width="30" height="30"/>
+                                                        break;
+                                                    case "Location":
+                                                        <img src="~/images/icons/location_icon.svg" alt="Location Icon"
+                                                             class="small-icon" width="30" height="30"/>
+                                                        break;
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                    @{
+                                        if (!suport.Title.IsNullOrWhiteSpace() || suport.Type != "Rega Soical Media")
+                                        {
+                                            <div class="col ps-2">
+                                                <div class="row">
+                                                    @if (suport?.Type != "Rega Soical Media")
+                                                    {
+                                                        <div
+                                                            class="col-12 @(suport.TitleFirst ? "order-2" : "order-1")">
+                                                            @{
+                                                                if (!suport.Text.IsNullOrWhiteSpace())
+                                                                {
+                                                                    switch (suport.Type)
+                                                                    {
+                                                                        case "Email":
+                                                                            <a href="mailto: @suport?.Text"
+                                                                               class="d-flex justify-content-between align-items-center">@Umbraco.GetDictionaryValueOrDefault(suport?.Text, suport?.Text)
+                                                                                <img
+                                                                                    src="~/images/icons/link-square-02-stroke-rounded.svg"
+                                                                                    alt="Open Link"
+                                                                                    class="small-icon justify-content-end icon"/></a>
+                                                                            break;
+                                                                        case "Phone":
+                                                                            <a href="tel: @suport?.Text"
+                                                                               class="d-flex justify-content-between align-items-center">@Umbraco.GetDictionaryValueOrDefault(suport?.Text, suport?.Text)
+                                                                                <img
+                                                                                    src="~/images/icons/link-square-02-stroke-rounded.svg"
+                                                                                    alt="Open Link"
+                                                                                    class="small-icon justify-content-end icon"/></a>
+                                                                            break;
+                                                                        case "Website":
+                                                                            <a href="@suport?.Link"
+                                                                               class="d-flex justify-content-between align-items-center">@Umbraco.GetDictionaryValueOrDefault(suport?.Text, suport?.Text)
+                                                                                <img
+                                                                                    src="~/images/icons/link-square-02-stroke-rounded.svg"
+                                                                                    alt="Open Link"
+                                                                                    class="small-icon justify-content-end icon"/>
+                                                                                </a>
+
+
+                                                                            break;
+                                                                        default:
+                                                                            <span
+                                                                                class="@(suport.TitleFirst ? "" : "fw-bold")">@Umbraco.GetDictionaryValueOrDefault(suport?.Text, suport?.Text)</span>
+                                                                            break;
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    switch (suport.Type)
+                                                                    {
+                                                                        case "Email":
+                                                                            <a href="mailto: info@rega.gov.sa"
+                                                                               class="d-flex justify-content-between align-items-center">info@rega.gov.sa
+                                                                                <img
+                                                                                    src="~/images/icons/link-square-02-stroke-rounded.svg"
+                                                                                    alt="Open Link"
+                                                                                    class="small-icon justify-content-end icon"/></a>
+                                                                            break;
+                                                                        case "Phone":
+                                                                            <a href="tel: 199011"
+                                                                               class="d-flex justify-content-between align-items-center">199011
+                                                                                <img
+                                                                                    src="~/images/icons/link-square-02-stroke-rounded.svg"
+                                                                                    alt="Open Link"
+                                                                                    class="small-icon justify-content-end icon"/></a>
+                                                                            break;
+                                                                        case "Website":
+                                                                            <a href="https://rega.gov.sa" class="d-flex justify-content-between align-items-center">https://rega.gov.sa
+                                                                            <img
+                                                                                src="~/images/icons/link-square-02-stroke-rounded.svg"
+                                                                                alt="Open Link"
+                                                                                class="small-icon justify-content-end icon"/>
+                                                                            </a>
+                                                                            break;
+                                                                        case "Location":
+                                                                            <span
+                                                                            class="">@Umbraco.GetDictionaryValueOrDefault(suport?.Text, suport?.Text)</span>
+                                                                            break;
+                                                                        default:
+                                                                            <span
+                                                                                class="fw-bold">@Umbraco.GetDictionaryValueOrDefault(suport?.Text, suport?.Text)</span>
+                                                                            foreach (var itemText in suport.Items)
+                                                                            {
+                                                                                <span
+                                                                                    class="fw-bold comma-separated">@Umbraco.GetDictionaryValueOrDefault(itemText, itemText)</span>
+                                                                            }
+
+                                                                            break;
+                                                                    }
+                                                                }
+                                                            }
+                                                        </div>
+                                                    }
+                                                    <div class="col-12 @(suport.TitleFirst ? "order-1" : "order-2")">
+                                                        @{
+                                                            if (!suport.Title.IsNullOrWhiteSpace())
+                                                            {
+                                                                <span
+                                                                    class=" ms-1 me-1 @(suport.TitleFirst ? "fw-bold" : "")">@Umbraco.GetDictionaryValue(@suport?.Title, @suport?.Title)</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                switch (suport.Type)
+                                                                {
+                                                                    case "Email":
+                                                                        <span
+                                                                            class=" ms-1 me-1 @(suport.TitleFirst ? "fw-bold" : "")">@Umbraco.GetDictionaryValue("Email")</span>
+                                                                        break;
+                                                                    case "Phone":
+                                                                        <span
+                                                                            class=" ms-1 me-1 @(suport.TitleFirst ? "fw-bold" : "")">@Umbraco.GetDictionaryValue("Beneficiaries Help Center")</span>
+                                                                        break;
+                                                                    case "Website":
+                                                                        <span
+                                                                            class=" ms-1 me-1 @(suport.TitleFirst ? "fw-bold" : "")">@Umbraco.GetDictionaryValue("Website")</span>
+                                                                        break;
+                                                                    case "Location":
+                                                                        <span
+                                                                            class=" ms-1 me-1">@Umbraco.GetDictionaryValue("Location")</span>
+                                                                        break;
+                                                                    default:
+                                                                        <span
+                                                                            class=" ms-1 me-1 @(suport.TitleFirst ? "fw-bold" : "")">@Umbraco.GetDictionaryValueOrDefault(@suport?.Title, @suport?.Title)</span>
+
+                                                                        break;
+                                                                }
+                                                            }
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    <div class="col-12">
+                                        @{
+                                            if (suport?.Type == "Rega Soical Media")
+                                            {
+                                                <div class=" ">
+                                                    @foreach (var social in ((MainSettings)Umbraco.Content("1189")).SocialMediaLinks)
+                                                    {
+                                                        var socialItem = (SocialMediaLink)social.Content;
+                                                        <a href="@socialItem.Link" target="_blank"
+                                                           aria-label="@socialItem.Title"
+                                                           class="me-2 link-underline link-underline-opacity-0 text-white">
+                                                            <img alt="@socialItem.Title" src="@socialItem.Icon?.Url()"
+                                                                 class="small-icon" width="30" height="30"/>
+                                                        </a>
+                                                    }
+                                                </div>
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

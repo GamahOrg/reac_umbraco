@@ -1,0 +1,55 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "folderHander",
+      "success": true,
+      "itemType": "Folder",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Form-Folders/proptech-hub.config",
+      "name": "Proptech Hub",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": null,
+      "key": "8dd43440-8c19-4cb1-9864-d292012e1a1d"
+    },
+    {
+      "handlerAlias": "folderHander",
+      "success": true,
+      "itemType": "Folder",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Form-Folders/jobs.config",
+      "name": "Jobs",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": null,
+      "key": "1c8433b1-c95c-429d-9216-5ea5d599798c"
+    },
+    {
+      "handlerAlias": "formsHandler",
+      "success": true,
+      "itemType": "Form",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Forms/booking-appointment.config",
+      "name": "Booking Appointment",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": null,
+      "key": "59d386cd-d93c-4a55-ab41-9019a3e03238"
+    }
+  ],
+  "date": "2024-12-04T11:33:44.472959+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 3,
+  "total": 21
+}

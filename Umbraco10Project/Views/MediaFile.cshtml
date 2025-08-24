@@ -1,0 +1,208 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<MediaFile>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Forms.Web
+
+@using Umbraco.Cms.Core.Models;
+@using uSync.Core
+
+@{
+	Layout = "Master.cshtml";
+}
+<div class="media-file-page rega-page">
+    @Html.RenderUmbracoFormDependencies(Url)
+    
+    <div class="site-wrapper inside-wrapper">
+        <div class="bread-crumbs">
+            <a class="bread-crumbs-item font-bold" href="/">  @Model?.Parent?.Parent?.Name  > </a>
+            <span class="bread-crumbs-item font-bold">  @Model?.Parent?.Name > </span>
+            <a class="bread-crumbs-item font-bold" href="#">  @Model?.Name  </a>
+        </div>
+
+        <div class="section-container display-flexbox padding-top-15">
+            <div class="section-top-side margin-0 flex-start">
+                <div class="section-title font-bold text-start">
+                    <h1>@Model?.Name</h1>
+                </div>
+                <div class="section-brief margin-top-25 font-bold">
+                    @Model.Value("shortBrief")
+                </div>
+            </div>
+            <div class="section-bottom-side with-gap display-flexbox">
+                <div class="section-right-side flex-grow">
+                    <div class="publications-filters  search-filters display-flexbox">
+                        <input id="searchInput" type="search" class="site-input" placeholder="@Umbraco.GetDictionaryValue("Search Service")">
+                        <select class="site-input site-select">
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                        </select>
+                    </div>
+                    <div class="media-file-documents-section">
+                @*        <div class="media-file-types">
+                            <div class="media-file-type">Pdf Documents</div>
+                            <div class="media-file-type">Word Documents</div>
+                            <div class="media-file-type">Images</div>
+                            <div class="media-file-type">Video</div>
+                        </div>*@
+                        <div class="media-documents display-flexbox">
+                            <div class="media-files">
+                                <div class="media-file-type">@Umbraco.GetDictionaryValue("Images")</div>
+                                @{
+                                    var imageitems = Model.Value<IEnumerable<IPublishedElement>>("images");
+
+                                    if (imageitems != null)
+                                    {
+                                        IPublishedContent itemImage;
+                                        foreach (var item in imageitems)
+                                        {
+                                            itemImage = item.Value<IPublishedContent>("image");
+                                            string itemImageUrl = itemImage != null ? itemImage.Url() : "";
+                                            <div class="media-file media-file-search">
+                                                <div class="file-title-comtent display-flexbox">
+                                                    <div class="file-image">
+                                                        <img src="~/images/sub logo.png" alt="Sub Logo image"/>
+                                                    </div>
+                                                    <div class="file-title">@item.Value("title")</div>
+                                                </div>
+                                                <a class="fancybox-item" data-fancybox="gallery" href="@itemImageUrl">
+                                                    <img src="@itemImageUrl" class="media-file-image-type" alt="Media file type"/>
+                                                </a>
+                                            </div>
+                                        }
+                                    }
+
+                                }
+                            </div>
+                            <div class="media-files">
+                                <div class="media-file-type">@Umbraco.GetDictionaryValue("Videos")</div>
+                                @{
+                                    var videoItems = Model.Value<IEnumerable<IPublishedElement>>("videos");
+
+                                    if (videoItems != null)
+                                    {
+                                        IPublishedContent itemVideo;
+                                        foreach (var item in videoItems)
+                                        {
+                                            itemVideo = item.Value<IPublishedContent>("video");
+                                            string itemImageUrl = itemVideo != null ? itemVideo.Url() : "";
+                                            var link = item.Value<Link>("url");
+                                            string linkUrl = link != null ? link.Url : "";
+                                            <div class="doc-file media-file media-file-search">
+                                                <div class="file-title-comtent display-flexbox">
+                                                    <div class="file-image">
+                                                        <img src="~/images/sub logo.png" alt="Sub logo icon"/>
+                                                    </div>
+                                                    <div class="file-title">@item.Value("title")</div>
+                                                </div>
+                                                <div class="">
+                                                    <iframe src="@linkUrl" class="media-file-image-type"></iframe>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                             
+                            </div>
+                            <div class="media-files">
+                                <div class="media-file-type">@Umbraco.GetDictionaryValue("Pdf Documents")</div>
+                                @{
+                                    var pdfitems = Model.Value<IEnumerable<IPublishedElement>>("pdfs");
+
+                                    if (pdfitems != null)
+                                    {
+                                        IPublishedContent itemPdf;
+                                        foreach (var item in pdfitems)
+                                        {
+                                            itemPdf = item.Value<IPublishedContent>("image");
+                                            string itemImageUrl = itemPdf != null ? itemPdf.Url() : "";
+                                            var link = item.Value<Link>("url");
+                                            string linkUrl = link != null ? link.Url : "";
+                                            /////////
+                                            <div class="pdf-file media-file media-file-search">
+                                            <div class="file-title-comtent display-flexbox">
+                                                <div class="file-image">
+                                                    <img  src="~/images/sub logo.png" alt="Sub logo icon"/>
+                                                </div>
+                                                    <div class="file-title">@item.Value("title")</div>
+                                            </div>
+                                            @if(linkUrl.IsNullOrWhiteSpace()){
+                                                    <a>
+                                                        <img src="@itemImageUrl" class="media-file-image" alt="Media File image"/>
+                                                    </a>
+                                              }
+                                            else
+                                            {
+                                                <a href="@linkUrl">
+                                                    <img src="@itemImageUrl" class="media-file-image" alt="Media File image"/>
+                                                </a>
+                                            }
+                                                <div class="file-breif">@item.Value("breif")</div>
+                                        </div>
+                                        }
+                                    }
+                                    }
+                                    
+                            </div>
+                            <div class="media-files">
+                                <div class="media-file-type">@Umbraco.GetDictionaryValue("Word Documents")</div>
+                                @{
+                                    var docItems = Model.Value<IEnumerable<IPublishedElement>>("words");
+
+                                    if (docItems != null)
+                                    {
+                                        IPublishedContent itemDoc;
+                                        foreach (var item in docItems)
+                                        {
+                                            itemDoc = item.Value<IPublishedContent>("image");
+                                            string itemImageUrl = itemDoc != null ? itemDoc.Url() : "";
+                                            var link = item.Value<Link>("url");
+                                            string linkUrl = link != null ? link.Url : "";
+                                            <div class="doc-file media-file media-file-search">
+                                                <div class="file-title-comtent display-flexbox">
+                                                    <div class="file-image">
+                                                        <img src="~/images/sub logo.png" alt="Sub logo icon"/>
+                                                    </div>
+                                                    <div class="file-title">@item.Value("title")</div>
+                                                </div>
+                                                @if (linkUrl.IsNullOrWhiteSpace())
+                                                {
+                                                    <a>
+                                                        <img src="@itemImageUrl" class="media-file-image" alt="Media File image"/>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="@linkUrl">
+                                                        <img src="@itemImageUrl" class="media-file-image" alt="Media File image"/>
+                                                    </a>
+                                                }
+
+                                                <div class="file-breif">@item.Value("breif")</div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                           
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

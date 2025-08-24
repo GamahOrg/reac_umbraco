@@ -1,0 +1,19 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.FormModel>
+
+<div class="card">
+
+    <div class="card-header  p-4">
+        <div class="row justify-content-center text-center">
+            <div class="col-12 mt-4">
+                <h3 class="title">@Model.Title</h3>
+            </div>
+            <div class="col-12 mt-2">
+                <p class="content">@Model.Description</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        @await Component.InvokeAsync("RenderForm", new { formId = Model.FormID, theme = "default", includeScripts = true })
+
+    </div>
+</div>

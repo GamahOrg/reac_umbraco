@@ -1,0 +1,67 @@
+@using Umbraco.Cms.Web.Common
+@using Umbraco.Forms.Web
+@model Umbraco.Forms.Web.Models.FieldViewModel
+
+@inject UmbracoHelper umbracoHelper
+
+@{
+    string val = Model.Values?.LastOrDefault()?.ToString() ?? string.Empty;
+    var isHijri = Model.GetSettingValue<bool>("IsHijri", false);
+    string currentLocale = umbracoHelper.GetDictionaryValueOrDefault("CurrentCulture", "ar-SA");
+
+    if (Model.ValueAsObject != null && !Equals(Model.ValueAsObject, string.Empty))
+    {
+        try
+        {
+            DateTime d;
+            d = (DateTime)Model.ValueAsObject;
+            val = d.ToShortDateString();
+        }
+        catch
+        {
+            //ignore
+        }
+    }
+}
+
+<input type="text"
+       name="@Model.Name"
+       id="@(Model.Id)"
+       style="min-width:100%"
+       class="datepickerfield text form-control flex-fill @Html.GetFormFieldClass(Model.FieldTypeName)"
+       autocomplete="off"
+       value="@val"
+       @{
+           if (Model.Mandatory)
+           {
+               <text> data-val="true" data-val-required="@Model.RequiredErrorMessage" </text>
+           }
+       }
+       @{
+           if ((Model.PlaceholderText.IsNullOrWhiteSpace()) == false)
+           {
+               <text>placeholder="@Model.PlaceholderText"</text>
+           }
+       }
+       @{
+           if (!(Model.ToolTip.IsNullOrWhiteSpace()))
+           {
+               <text> aria-describedby="@(Model.Id)_description" </text>
+           }
+       }/>
+
+<script csp-manager-add-nonce="true">
+    
+    var isHijri = '@isHijri' === 'True';
+    var currentLocale = '@currentLocale';
+    $(document).ready(function () {
+        $(".datepickerfield").hijriDatePicker({
+            format:'YYYY/M/D',
+            hijriFormat:'iYYYY/iMM/iDD',
+            locale:currentLocale,
+            showSwitcher: false,
+            hijri:isHijri
+            });
+    });
+
+</script>

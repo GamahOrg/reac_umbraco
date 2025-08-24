@@ -1,0 +1,61 @@
+@using Umbraco10Project.Helpers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.FalBrokerModel>
+
+@{
+}
+<div class="wafi-projects-page">
+    <h5>@Model.Title</h5>
+
+
+    @{
+        if (Model.response.Body == null || Model.response.Body.Result == null || Model.response.Body.Result.Count == 0)
+        {
+            if (Model.ShowAlert)
+            {
+                <div class="alert alert-warning mt-4 text-center" role="alert">
+                    <h4 class="alert-heading">@Umbraco.GetDictionaryValueOrDefault("Not Exist","غير موجود")</h4>
+                    <p>
+                        @Umbraco.GetDictionaryValueOrDefault("inquiry not exist","الاستعلام الذي تبحث عنه غير موجود")
+
+                    </p>
+                </div>
+            }
+            else
+            {
+                <h5 class="title h-2rem overflow-hidden mt-4">@Umbraco.GetDictionaryValue("No Content")</h5>
+            }
+        }
+        else
+        {
+            <div class="row mt-4">
+                @{
+                    foreach (var item in Model.response.Body.Result)
+                    {
+                        <div class="col-lg-12 col-12 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div class="title text-primary">@item.LicenseName</div>
+                                    <div class="badge text-white  @(item.StatusCode == "Active" ? "text-bg-success" : "text-bg-warning")">
+                                        @item.Status
+                                    </div>
+                                    <p class="small mt-2">
+                                        <span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Name", "الاسم"): </span>@item.BrokerName
+                                    </p>
+                                    <p class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("License number", "رقم الرخصة"): </span>@item.LicenseNumber</p>
+                                    <p class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Issue Date", "تاريخ اصدار الرخصة"): </span>@item.IssueDate</p>
+                                    <p class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Expire Date", "تاريخ انتهاء الرخصة"): </span>@item.EndDate</p>
+                                
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+       
+        }
+    }
+
+</div>

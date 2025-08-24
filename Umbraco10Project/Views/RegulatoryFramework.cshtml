@@ -1,0 +1,160 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<RegulatoryFramework>
+@using Umbraco.Cms.Core.Models
+@{
+    Layout = "Master.cshtml";
+    var lang = Umbraco.CultureDictionary.Culture.ToString();
+}
+<div class="is-tablet-wide"></div>
+<div class="regulatory-framework-page services-list-page rega-page">
+    @*@await Html.PartialAsync("inner page header")*@
+    @await Html.PartialAsync("Header")
+    @await Html.PartialAsync("inner page banner")
+    @await Html.PartialAsync("settings-side")
+    @await Html.PartialAsync("menu2")
+
+
+    <div class="site-wrapper inside-wrapper">
+        <div class="bread-crumbs">
+            <a class="bread-crumbs-item font-bold" href="/">  @Model?.Parent?.Parent?.Name  > </a>
+            <span class="bread-crumbs-item font-bold">  @Model?.Parent?.Name > </span>
+            <a class="bread-crumbs-item font-bold" href="#">  @Model?.Name </a>
+        </div>
+
+        <div class="section-container display-flexbox padding-top-15">
+            <div class="section-top-side margin-0 flex-start">
+                <div class="section-title font-bold text-start">
+                    <h1>@Model?.PageTitle</h1>
+                </div>
+                <div class="section-brief margin-top-25 font-bold">
+                    @Model?.ShortBrief
+                </div>
+            </div>
+            <div class="section-bottom-side with-gap display-flexbox">
+                <div class="section-left-side with-padding">
+                    @{
+                        if (Model.Id == 2282)
+                        {
+                            <div class="filters-types display-flexbox">
+                                <div class="filters-type display-flexbox">
+                                    <div class="filters-type-text">@Umbraco.GetDictionaryValue("filter")</div>
+                                    <div class="filters-type-items  costom-scroll display-flexbox">
+                                        <div class="filters-type-item display-flexbox">
+                                            <input type="checkbox" id="System" name="checkboxFilter" class="checkbox-input checkbox-filter-regulatory" value="انظمة" checked />
+                                            <label class="filters-type-item-label" for="System"> @Umbraco.GetDictionaryValue("Rules") </label>
+                                        </div>
+                                        <div class="filters-type-item display-flexbox">
+                                            <input type="checkbox" id="Regulations" name="checkboxFilter" class="checkbox-input checkbox-filter-regulatory" value="لوائح" checked />
+                                            <label class="filters-type-item-label" for="Regulations"> @Umbraco.GetDictionaryValue("Regulations") </label>
+                                        </div>
+                                        <div class="filters-type-item display-flexbox">
+                                            <input type="checkbox" id="documents" name="checkboxFilter" class="checkbox-input checkbox-filter-regulatory" value="ادلة" checked />
+                                            <label class="filters-type-item-label" for="documents"> @Umbraco.GetDictionaryValue("manuals") </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                        else
+                        {
+
+
+                            <div class="section-brief">
+                                @Model.Value("pageDescription")
+                            </div>
+                            <div class="section-left-image">
+                                @{
+                                    IPublishedContent descriptionImage = Model.DescriptionImage;
+                                    string descriptionImageUrl = descriptionImage != null ? descriptionImage.Url() : "";
+                                }
+                                <img src="@descriptionImageUrl" alt="Description Image">
+                            </div>
+                        }
+                    }
+                </div>
+
+
+
+                <div class="section-right-side">
+                    <div class="regulatory-framework-content display-flexbox">
+                        <div class="regulatory-framework-boxes display-flexbox">
+                            @{
+                                var itemUrl = Model.Url();
+                                var itemRequest = Context.Request;
+                                var itemDomain = itemRequest.Host;
+                                var filterNumber = 0;
+                                var regBoxes = Model.RegulatoryItems;
+                                foreach (var item in regBoxes.Where(x => x.HasValue("file")))
+                                {
+                                    ++filterNumber;
+                                    var link = item.Value<Link>("file");
+                                    var itemLinkURL = "https://" + itemDomain + link.Url;
+
+                                    <div class="regulatory-framework-box-container" data-value="@item.Value("regulatoryType")">
+                                        <a class="regulatory-framework-box show-annual-regulatory-overlay display-flexbox data-box" href="@link.Url" target="_blank">
+                                            <div class="regulatory-framework-box-image display-flexbox">
+                                                @{
+                                                    IPublishedContent? itemIcon = item.ItemIcon;
+                                                    string iconUrl = itemIcon != null ? itemIcon.Url() : "";
+                                                }
+                                                <img src="@iconUrl" alt="Icon Image"/>
+                                            </div>
+                                            <div class="regulatory-framework-text section-brief">
+                                                @item.ItemText
+                                            </div>
+
+                                        </a>
+
+                                        <div class="annual-report-overlay display-none">
+                                            <div class="annual-report-popup display-flexbox">
+                                                <div class="popup-title-section">
+                                                    <div class="popup-title">
+                                                        @item.ItemText
+                                                    </div>
+                                                    <a data-link="@itemLinkURL" target="_blank" title="copy link" onclick="copyDomainLink()" class="share-popup-item share-link copy-button display-flexbox">
+                                                        <img src="~/images/share (1).png"  alt="Share icon"/>
+                                                        <div class="copy-message">
+                                                            @Umbraco.GetDictionaryValue("The link has been copied")
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <embed src="@link.Url" type="application/pdf" frameborder="0" class="popup-content">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                }
+                            }
+                            @{
+
+                                if (lang == "ar-JO")
+                                {
+                                    <div class="no-content display-none">
+                                        لا يوجد معلومات
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="no-content display-none">
+                                        There is no information
+                                    </div>
+                                }
+                            }
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    @await Html.PartialAsync("Footer")
+
+</div>

@@ -1,0 +1,16 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@model NewsletterStudio.Core.Editor.Controls.Macro.EmailMacroViewModel
+
+
+@if (ViewData["contentId"] != null)
+{
+    var contentId = ViewData["contentId"].ToString();
+    var content = Umbraco.Content(contentId);
+    if (content != null)
+    {
+        <div class="newsletter-content">
+            <h2>@content.Name</h2>
+            <p>@content.Value("bodyText")</p> <!-- Replace "bodyText" with your content field alias -->
+        </div>
+    }
+}

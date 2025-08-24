@@ -1,0 +1,167 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco10Project.Helpers
+@using Umbraco10Project.Models
+@using uSync.Core
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Services>
+
+@{
+    Layout = "Master.cshtml";
+    var search = Context.Request.Query["search"];
+    var sort = Context.Request.Query["sort"];
+    var docUrl = Model.Url();
+
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        disableRoot = false,
+        title = Model?.Value("pageTitle")?.ToString() ?? ""
+    };
+    if (string.IsNullOrWhiteSpace(search))
+    {
+        search = "";
+    }
+
+    List<IPublishedContent> sortingServices;
+    if (sort.ToString() == "ascending")
+    {
+        sortingServices = Model.Children().Where(x => x.Value("PageTitle").ToString().Contains(search)).ToList();
+    }
+    else
+    {
+        sortingServices = Model.Children().Where(x => x.Value("PageTitle").ToString().Contains(search)).ToList();
+    }
+}
+
+
+<div class="services-list-page">
+
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+    <div class="container mt-4">
+
+        <div class="row">
+            <div class="col">
+                <div class="input-group">
+                    <div class="input-group-text ">
+                        <img src="~/images/icons/search.svg" class="small-icon" width="20" height="20" alt="search icon"/>
+                    </div>
+                    <input type="text" class="form-control " id="searchInput" value="@search" placeholder="@Umbraco.GetDictionaryValue("Search")">
+                    @{
+                        if (!string.IsNullOrWhiteSpace(search))
+                        {
+                            <button type="button" class="input-group-text clear-search" data-bs-toggle="tooltip" data-bs-placement="bottom"  data-bs-title="@(!Umbraco.GetDictionaryValue("Clear").IsNullOrWhiteSpace() ? Umbraco.GetDictionaryValue("Clear") : "Clear")">
+                                <img src="~/images/icons/cancel.svg" class="small-icon" width="20" height="20" alt="Cancel icon"/>
+                            </button>
+                        }
+                    }
+
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 mt-md-0 col-12 mt-2 mt-lg-0">
+                <select class="form-select select-for-sort " aria-label="Default select example">
+                    <option class="services-list-option" value="">
+                        @Umbraco.GetDictionaryValue("Sort by")
+                    </option>
+                    <option class="services-list-option" value="ascendingAlphabetical">
+                        @Umbraco.GetDictionaryValue("Sort by"): @Umbraco.GetDictionaryValue("A-Z")
+                    </option>
+                    <option class="services-list-option" value="descendingAlphabetical">
+                        @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Z-A")
+                    </option>
+
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var serviceItem in sortingServices)
+            {
+                var service = (Service)serviceItem;
+                var iconUrl = service.ServiceIcon != null ? service.ServiceIcon.Url() : "";
+                <div class="col-lg-4 col-12 col-md-6 mt-4 sort-item" data-alphabetical-order="@service.PageTitle" data-order="@serviceItem.CreateDate.ToString("yyy/MM/dd", new System.Globalization.CultureInfo("en-US")).Replace("/", "")">
+                    <div class="card ">
+                        <img src="@iconUrl" alt="Service Image" class="img-fluid card-img-top p-4"/>
+                        <div class="card-body">
+                            <p class="title">@service.PageTitle</p>
+
+                            <div class="content">
+                                @(Html.Raw(Utils.TruncateAtWord(Utils.StripHTML(service.ServiceBrief?.ToString() ?? ""), 300)))
+                            </div>
+                        </div>
+                        <div class="card-footer ">
+                            <button class="btn btn-outline-primary onclick" data-action="redirect" data-value="@serviceItem.Url()" >
+                                @Umbraco.GetDictionaryValue("View More Service")
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @{
+            if (!sortingServices.Any())
+            {
+                <div class="row justify-content-center text-center mt-5">
+                    <div class="col">
+                        <img src="~/images/icons/file_search.svg" alt="No content icon" class="img-fluid small-icon"/>
+                        <span class="mt-5">@Umbraco.GetDictionaryValue("There is not content with this title") (@search)</span>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+
+
+</div>
+
+<script csp-manager-add-nonce="true">
+    var docUrl = "@docUrl";
+
+    $(document).ready(function () {
+    
+        $("#searchInput").on("keyup", function (e) {
+            if (e.key == "Enter") {
+                search($(this).val());
+            }
+        })
+
+        $(".select-for-sort").on("change", function () {
+            var selectedValue = $(this).val();
+            if (selectedValue == "ascendingAlphabetical") {
+                $(".sort-item").sort(function (a, b) {
+                    var aDataTest = a.getAttribute('data-alphabetical-order');
+                    var bDataTest = b.getAttribute('data-alphabetical-order');
+                    return aDataTest.localeCompare(bDataTest);
+                }).appendTo($(".sort-item").parent());
+            }
+            if (selectedValue == "descendingAlphabetical") {
+                $(".sort-item").sort(function (a, b) {
+                    var aDataTest = a.getAttribute('data-alphabetical-order');
+                    var bDataTest = b.getAttribute('data-alphabetical-order');
+                    return bDataTest.localeCompare(aDataTest);
+                }).appendTo($(".sort-item").parent());
+            }
+        })
+
+        document.addEventListener('click', function (event) {
+            // Check if the clicked element has the class 'dynamic-button'
+            if (event.target.closest('.clear-search')) {
+                search('');
+
+            }
+        });
+    });
+
+    function search(value){
+        var encodedURL = encodeURIComponent(docUrl);
+        var decodedURL = decodeURIComponent(encodedURL);
+        decodedURL = $("<div/>").html(decodedURL).text();
+        var redirect = decodedURL + `?search=${value}`;
+        window.location.href = redirect;
+    }
+
+
+</script>

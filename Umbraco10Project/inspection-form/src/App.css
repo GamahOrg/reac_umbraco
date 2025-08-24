@@ -1,0 +1,48 @@
+input {
+  text-align: right;
+}
+
+.filepond--credits {
+  display: none;
+}
+
+.filepond--drop-label {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+div.filepond--root {
+  margin-bottom: unset;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.rounded-card {
+  background: rgba(240, 240, 240, 0.33);
+  height: 350px;
+  align-content: center;
+}
+
+.rounded-card:hover {
+  background: rgba(240, 240, 240, 0.8);
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+}
+a.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+  display: none !important;
+}

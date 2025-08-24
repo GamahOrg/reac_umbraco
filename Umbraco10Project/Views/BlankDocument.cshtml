@@ -1,0 +1,127 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Forms.Web
+@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlankDocument>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+	var ancestorsList = Model.Ancestors().Reverse().ToList();
+	var ancestors = new AncestorsModel()
+	{
+		ancestors = ancestorsList,
+		content = Model,
+		disableRoot = true,
+		title = Model.Value("pageTitle")?.ToString() ?? ""
+	};
+}
+@Html.RenderUmbracoFormDependencies(Url)
+
+<div class="blank-document-page ">
+	@await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+	@if (Model.FormRef != null)
+	{
+		<div class="container mt-5">
+            @await Component.InvokeAsync("Form", new FormModel()
+            {
+                ModelId = Model?.Id.ToString() ?? "",
+                FormID = (Guid)(Model?.Value("formRef") ?? ""),
+                Title = Model?.Value("formTitle")?.ToString() ?? "",
+                Description = Model?.Value("formDescription")?.ToString() ?? "",
+                ProtectedByNafath = (bool)(Model?.Value("protectedByNafath") ?? false),
+            })
+
+		</div>
+	}
+
+
+</div>
+
+
+<script csp-manager-add-nonce="true">
+            (function (global, factory) {
+                typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+                    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+                        (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ar = {}));
+            }(this, (function (exports) { 'use strict';
+
+                var fp = typeof window !== "undefined" && window.flatpickr !== undefined
+                    ? window.flatpickr
+                    : {
+                        l10ns: {},
+                    };
+                var Arabic = {
+                    weekdays: {
+                        shorthand: ["أحد", "اثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة", "سبت"],
+                        longhand: [
+                            "الأحد",
+                            "الاثنين",
+                            "الثلاثاء",
+                            "الأربعاء",
+                            "الخميس",
+                            "الجمعة",
+                            "السبت",
+                        ],
+                    },
+                    months: {
+                        shorthand: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+                        longhand: [
+                            "يناير",
+                            "فبراير",
+                            "مارس",
+                            "أبريل",
+                            "مايو",
+                            "يونيو",
+                            "يوليو",
+                            "أغسطس",
+                            "سبتمبر",
+                            "أكتوبر",
+                            "نوفمبر",
+                            "ديسمبر",
+                        ],
+                    },
+                    firstDayOfWeek: 0,
+                    rangeSeparator: " إلى ",
+                    weekAbbreviation: "Wk",
+                    scrollTitle: "قم بالتمرير للزيادة",
+                    toggleTitle: "اضغط للتبديل",
+                    amPM: ["ص", "م"],
+                    yearAriaLabel: "سنة",
+                    monthAriaLabel: "شهر",
+                    hourAriaLabel: "ساعة",
+                    minuteAriaLabel: "دقيقة",
+                    time_24hr: false,
+                };
+                fp.l10ns.ar = Arabic;
+                var ar = fp.l10ns;
+
+                exports.Arabic = Arabic;
+                exports.default = ar;
+
+                Object.defineProperty(exports, '__esModule', { value: true });
+
+            })));
+
+            $(document).ready(function () {
+                $("[type=date]").flatpickr({
+                    enableTime: false,
+                    dateFormat: "Y-m-d",
+                    minDate: "today",
+                    locale: "ar", // Set Arabic as the language for the calendar
+                    disable: [
+                        function (date) {
+                            // Disable Fridays (5) and Saturdays (6)
+                            if (date.getDay() === 5 || date.getDay() === 6) {
+                                return true;
+                            }
+                            // Disable Saudi National Day (September 23rd)
+                            if (date.getDate() === 23 && date.getMonth() === 8) { // Month is 0-indexed, so 8 = September
+                                return true;
+                            }
+                            return false;
+                        }
+                    ],
+                });
+            });
+        </script>

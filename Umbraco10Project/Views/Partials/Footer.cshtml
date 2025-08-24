@@ -1,0 +1,175 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var settings = (MainSettings)Umbraco.Content("1189");
+}
+
+<footer class="bg-secondary container-fluid footer pb-4 p-lg-5">
+
+    <div class="container ">
+        <div class=" row text-white">
+            @{
+                if (settings?.FotterServices != null)
+                {
+                    <div class=" col-md-12 col-sm-12 mt-2 col-lg-3">
+                        <p class="fw-bold">@Umbraco.GetDictionaryValue("Some of our services")</p>
+                        @foreach (var footerItem in settings.FotterServices)
+                        {
+                            <ul class="navbar-nav">
+                                <li class="nav-item  mb-2">
+                                    <a href="@footerItem.Url()"
+                                       class="link-underline link-underline-opacity-0 text-white small">
+                                        @footerItem.Value("PageTitle")
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                }
+            }
+            @{
+                if (settings?.FooterUsefulLinks != null)
+                {
+                    <div class=" col-md-12 col-sm-12 mt-2 col-lg-3">
+                        <p class="fw-bold">@Umbraco.GetDictionaryValue("Useful Links")</p>
+                        @foreach (var footerItem in settings.FooterUsefulLinks)
+                        {
+                            <ul class="navbar-nav">
+                                <li class="nav-item  mb-2">
+                                    <a href="@footerItem.Url"
+                                       class="link-underline link-underline-opacity-0 text-white small">
+                                        @footerItem.Name
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                }
+            }
+            @{
+                if (settings?.FooterHelpAndSupport != null)
+                {
+                    <div class=" col-md-12 col-sm-12 mt-2 col-lg-3">
+                        <p class="fw-bold">@Umbraco.GetDictionaryValue("Help and Support Footer")</p>
+                        @foreach (var footerItem in settings.FooterHelpAndSupport)
+                        {
+                            <ul class="navbar-nav">
+                                <li class="nav-item  mb-2">
+                                    <a href="@footerItem.Url()"
+                                       class="link-underline link-underline-opacity-0 text-white small">
+                                        @footerItem.Value("PageTitle")
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                }
+            }
+
+            @{
+                if (settings?.SocialMediaLinks != null)
+                {
+                    <div class=" col-md-12 col-sm-12 mt-2 col-lg-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="fw-bold">@Umbraco.GetDictionaryValue("Follow us on")</p>
+                                <div class="">
+                                    @foreach (var social in settings.SocialMediaLinks)
+                                    {
+                                        var item = (SocialMediaLink)social.Content;
+                                        <a href="@item.Link" target="_blank" aria-label="@item.Title"
+                                           class="me-2 link-underline link-underline-opacity-0 text-white small">
+                                            <img alt="@item.Title" src="@item.Icon?.Url()" width="20" height="20"
+                                                 class="small-icon icon-white"/>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <p>@Umbraco.GetDictionaryValueOrDefault("Reach Tools","أدوات الإتاحة وامكانية الوصول")</p>
+                                <div class="">
+                                    <button aria-label="Change website color"
+                                            class="btn btn-link p-0 increaseFontSize">
+                                        <img alt="Change website color"
+                                             src="~/images/icons/search-add-stroke-rounded.svg" width="20"
+                                             height="20"
+                                             class="small-icon icon-white"/>
+                                    </button>
+                                    <button aria-label="Change website color"
+                                            class="btn btn-link p-0 decreaseFontSize">
+                                        <img alt="Change website color"
+                                             src="~/images/icons/search-minus-stroke-rounded.svg" width="20"
+                                             height="20"
+                                             class="small-icon icon-white"/>
+                                    </button>
+                                    <button aria-label="Change website color"
+                                            class="btn btn-link p-0 toggleBlackAndWhite">
+                                        <img alt="Change website color"
+                                             src="~/images/icons/view-stroke-standard.svg"
+                                             width="20"
+                                             height="20"
+                                             class="small-icon icon-white"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="mt-4 mb-4 text-white">
+        <hr class=""/>
+    </div>
+    <div class="container ">
+        <div class="  row  align-content-center">
+            <div class="col-lg-6 col-md-12 col-12 text-center text-lg-start">
+                @if (settings?.FooterRightPages != null)
+                {
+                    foreach (var footerItem in settings.FooterRightPages)
+                    {
+                        <a href="@footerItem.Url()"
+                           class="link-underline link-underline-opacity-0 text-white me-3 small">
+                            @footerItem.Value("PageTitle")
+                        </a>
+                    }
+                }
+                <p class="fw-bold mt-3 text-white"> @Umbraco.GetDictionaryValue("All rights reserved") © @(DateTime.Now.Year.ToString())</p>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12 text-center text-lg-end">
+                <a href="#">
+                    <img src="~/images/logos/REGA_LOGO_White.svg" class="img-fluid" alt="Rega footer logo"
+                         style="max-width: 150px"/>
+                </a>
+                <a href="https://raqmi.dga.gov.sa/platforms/platforms/67df69a4-c50b-49fc-9860-08dcd7d41e2a/platform-license">
+                    <img src="~/images/logos/dga.png" class="mt-2 mt-lg-0" alt="DGA Certificate"
+                         style="max-width: 200px">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script csp-manager-add-nonce="true">
+
+    $(document).ready(function () {
+
+
+        document.addEventListener('click', function (event) {
+            // Check if the clicked element has the class 'dynamic-button'
+            if (event.target.closest('.increaseFontSize')) {
+                increaseFontSize();
+            }
+            if (event.target.closest('.decreaseFontSize')) {
+                decreaseFontSize();
+            }
+            if (event.target.closest('.toggleBlackAndWhite')) {
+                toggleBlackAndWhite();
+            }
+        });
+    });
+
+
+
+</script>

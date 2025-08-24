@@ -1,0 +1,150 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<RegulatoryDocuments>
+@{
+    Layout = "Master.cshtml";
+    var ancestors = Model.Ancestors().Reverse().ToList();
+    if (ancestors.Count > 1)
+    {
+        ancestors.RemoveAt(1); // Remove the first parent
+    }
+}
+<div class="regulatory-documents services-list-page rega-page">
+    @await Html.PartialAsync("Header")
+    @await Html.PartialAsync("inner page banner")
+    @await Html.PartialAsync("settings-side")
+    @await Html.PartialAsync("menu2")
+
+
+    <div class="site-wrapper inside-wrapper">
+        <div class="bread-crumbs">
+            @foreach (var ancestor in ancestors)
+            {
+            <a class="bread-crumbs-item font-bold" href="@ancestor.Url()"> @ancestor.Name ></a>
+            }
+            <a class="bread-crumbs-item font-bold" href="@Model.Url()"> @Model?.Name </a>
+        </div>
+
+
+        <div class="section-container display-flexbox padding-top-15">
+            <div class="section-top-side margin-0 flex-start">
+                <div class="section-title font-bold text-start">
+                    @Model?.Name
+                </div>
+                <div class="services-list-filter display-flexbox">
+                    <div class="main-filter">
+                        <div class="radio-filter display-flexbox">
+                            <input class="radio-btn" type="radio" id="Policies" />
+                            <label class="radio-filter-label font-bold" for="Policies">
+                                @Umbraco.GetDictionaryValue("Policies Documents")
+                            </label>
+                        </div>
+                        <div class="radio-filter display-flexbox">
+                            <input class="radio-btn" type="radio" id="Regulatory" />
+                            <label class="radio-filter-label font-bold" for="Regulatory">
+                                @Umbraco.GetDictionaryValue("Regulatory Documents")
+                            </label>
+                        </div>
+                    </div>
+                    <div class="services-list-filters display-flexbox">
+                        <input type="search" id="searchInput" class="services-list-search" placeholder="@Umbraco.GetDictionaryValue("Search Service")" />
+                        <select class="services-list-select">
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                            <option class="services-list-option">
+                                @Umbraco.GetDictionaryValue("Sort by") : @Umbraco.GetDictionaryValue("Added date")
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="section-bottom-side with-gap display-flexbox">
+                <div class="section-left-side with-padding">
+
+                    <div class="filters-types display-flexbox">
+                        <div class="services-list-filter-text">
+                            @Umbraco.GetDictionaryValue("Filter Documents by")
+
+                        </div>
+                        <div class="filters-type display-flexbox">
+                            <div class="filters-type-text">
+                                @Umbraco.GetDictionaryValue("Filter")
+                            </div>
+                            <div class="filters-type-items  costom-scroll display-flexbox">
+                                <div class="filters-type-item display-flexbox">
+                                    <input type="checkbox" id="policies" class="checkbox-input checkbox-filter" value="policies" />
+                                    <label class="filters-type-item-label" for="policies">
+                                        @Umbraco.GetDictionaryValue("policies")
+                                    </label>
+                                </div>
+                                <div class="filters-type-item display-flexbox">
+                                    <input type="checkbox" id="regulatory" class="checkbox-input checkbox-filter" value="regulatory" />
+                                    <label class="filters-type-item-label" for="regulatory">
+                                        @Umbraco.GetDictionaryValue("Regulations")
+                                    </label>
+                                </div>
+  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-right-side">
+                    <div class="services-boxes display-flexbox">
+                        @{
+                            var filterNumber = 0;
+                            var regulatoryDocumentsItems = Model?.RegulatoryDocumentsItems;
+                            if (regulatoryDocumentsItems != null)
+                            {
+                                foreach (var regulatoryDocumentsItem in regulatoryDocumentsItems.Where(x => x.HasValue("typeOfDocuments")))
+                                {
+                                    ++filterNumber;
+                                    IPublishedContent? icon = regulatoryDocumentsItem.Icon;
+                                    string iconUrl = icon != null ? icon.Url() : "";
+
+                                    IPublishedContent? file = regulatoryDocumentsItem.File;
+                                    string fileUrl = file != null ? file.Url() : "";
+
+                                    <div class="services-box media-file-search data-box" data-type="@regulatoryDocumentsItem.Value("typeOfDocuments")" data-value="@regulatoryDocumentsItem.Value("typeOfDocuments")">
+                                        <div class="services-box-content">
+                                            <div class="services-box-title">
+                                                @regulatoryDocumentsItem.Title
+                                            </div>
+                                            <div class="services-box-img display-flexbox">
+                                                <img src="@iconUrl" alt="Document Icon"/>
+                                            </div>
+                                            <div class="services-box-brief">
+                                                @regulatoryDocumentsItem.Brief
+                                            </div>
+                                        </div>
+                                        <div class="btn-container flex-start">
+                                            <a href="@fileUrl" target="_blank" class="site-btn">
+                                                <div class="hover-btn-shape1"></div>
+                                                <div class="hover-btn-shape2"></div>
+                                                <p class="site-btn-text">
+                                                    @Umbraco.GetDictionaryValue("Read More")
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    @await Html.PartialAsync("Footer")
+
+</div>

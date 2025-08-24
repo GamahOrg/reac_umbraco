@@ -1,0 +1,235 @@
+﻿@using Examine;
+@using Examine.Search;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Search>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inject IExamineManager ExamineManager
+@using HtmlAgilityPack;
+@using uSync.Core
+@{
+	Layout = "Master.cshtml";
+    var lang = Umbraco.CultureDictionary.Culture.ToString();
+    bool ar = false;
+    if (lang == "ar-JO")
+    {
+        ar = true;
+    }
+    else
+    {
+        ar = false;
+    }
+}
+
+
+<div class="search-page rega-page">
+
+
+
+    <div class="site-wrapper inside-wrapper">
+        <div class="bread-crumbs">
+            <a class="bread-crumbs-item font-bold" href="/">  @Model?.Parent?.Name > </a>
+            <a class="bread-crumbs-item font-bold" href="">  @Model?.PageTitle  </a>
+        </div>
+
+        <div class="section-container display-flexbox padding-top-15">
+            <div class="section-top-side margin-0 flex-start">
+                <div class="section-title font-bold text-start">
+                    <h1>@Model?.PageTitle</h1>
+                </div>
+            </div>
+            <div class="section-bottom-side with-gap display-flexbox">
+                
+                <div class="section-right-side">
+                    <div class="search-box">
+                        <div class="search-title font-bold"> @Umbraco.GetDictionaryValue("What are you looking for ?") </div>
+                        <div class="search-input-page-container">
+                            <input class="search-input-page" type="search" />
+                            <img class="search-input-icon" src="~/images/search icon.png" alt="Search Icon" />
+                        </div>
+                    </div>
+
+                    <div class="search-items">
+                        @{
+                            var homePage = Umbraco.Content("1058");
+                            var homePagePath = homePage.Path;
+
+                            var searchTerm = string.Empty;
+                            searchTerm = string.IsNullOrWhiteSpace(Context.Request.Query["query"])
+                            ? string.Empty
+                            : Context.Request.Query["query"];
+                            var query = Context.Request.Query["query"];
+
+                            if (ExamineManager.TryGetIndex("ExternalIndex", out IIndex myIndex) && searchTerm != null && searchTerm.IsNullOrWhiteSpace() == false && String.IsNullOrWhiteSpace(searchTerm) == false)
+                            {
+                                var mySearcher = myIndex.Searcher;
+                                ISearchResults results;
+
+                                var pageSize = 5;
+                                var itemCount = 0;
+
+                                results = mySearcher.CreateQuery().Field("nodeName", searchTerm).And().Field("path", homePagePath.MultipleCharacterWildcard()).And().Field("__Published", "y").Not().Field("templateID", "0").Execute();
+
+                                if (lang == "ar-JO")
+                                {
+                                    results = mySearcher.CreateQuery().Field("nodeName_ar-jo", searchTerm).And().Field("path", homePagePath.MultipleCharacterWildcard()).And().Field("__Published", "y").Not().Field("templateID", "0").Execute();
+                                }
+
+                                int page = 1;
+                                if (!string.IsNullOrWhiteSpace(Context.Request.Query["page"]))
+                                {
+                                    int.TryParse(Context.Request.Query["page"], out page);
+                                }
+
+                                var totalPages = (int)Math.Ceiling((double)results.Count() / (double)pageSize);
+                                if (page > totalPages)
+                                {
+                                    page = totalPages;
+                                }
+                                else if (page < 1)
+                                {
+                                    page = 1;
+                                }
+
+                                if (results.Any())
+                                {
+                                    foreach (var result in results.Skip((page - 1) * pageSize).Take(pageSize))
+                                    {
+                                        var node = Umbraco.Content(result.Id);
+
+                                        if (node != null)
+                                        {
+
+                                            if (node.GetTemplateAlias() != "")
+                                            {
+
+                                                <a class="search-item display-flexbox" href="@node.Url()">
+                                                    <div class="search-item-bread-crumbs display-flexbox">
+                                                        <p class="search-item-link" href="/">
+                                                            Home  > 
+                                                        </p>
+                                                        <p class="search-item-link">
+                                                             @node.Name
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="search-item-title">
+                                                        @node.Value("pageTitle")
+                                                    </div>
+
+                                                    <div class="search-item-brief">
+                                                        @node.Value("shortBrief")
+                                                    </div>
+                                                </a>
+                                                itemCount++;
+                                            }
+                                            else
+                                            {
+
+                                            }
+
+                                        }
+                                    }
+
+                                    if (totalPages > 1)
+                                    {
+                                        var searchPageName = Umbraco.CultureDictionary.Culture.ToString() == "ar-JO" ? "/ar/search" : "/search";
+                                        <div class="pagination display-flexbox">
+                                            <ul class="pagination-numbers display-flexbox">
+                                                @if (page > 1)
+                                                {
+                                                    //@searchPageName/
+                                                    <li class="arrow-top-container display-flexbox">
+                                                        <a class="arrow-container rotate" href="@(Model.Url())/?query=@searchTerm&page=@(page-1)">
+                                                            ➜
+                                                        </a>
+                                                    </li>
+                                                }
+
+                                                @if (totalPages < 5)
+                                                {
+                                                    for (int p = 1; p < totalPages + 1; p++)
+                                                    {
+                                                        <li class="pagination-item @(p == page ? "active" : string.Empty)">
+                                                            <a class="pagination-number" href="@(Model.Url())/?query=@searchTerm&page=@p">@p</a>
+                                                        </li>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    for (int p = 1; p < totalPages + 1; p++)
+                                                    {
+                                                        //get first if page number greater then first node
+                                                        if (p == 1 && page != 1)
+                                                        {
+                                                            <li class="pagination-item @(p == page ? "active" : string.Empty)">
+                                                                <a class="pagination-number" href="@(Model.Url())/?query=@searchTerm&page=@p">@(!ar ? "First" : " الاولى ")</a>
+                                                            </li>
+                                                        }
+                                                        if (p == page)
+                                                        {
+                                                            //get three nodes before avtive
+                                                            for (int j = p - 3; j < p; j++)
+                                                            {
+                                                                if (j < 2)
+                                                                {
+                                                                    continue;
+                                                                }
+                                                                <li class="pagination-item @(j == page ? "active" : string.Empty)">
+                                                                    <a class="pagination-number" href="@(Model.Url())/?query=@searchTerm&page=@j">@j</a>
+                                                                </li>
+                                                            }
+                                    //avtive node
+                                                            <li class="pagination-item @(p == page ? "active" : string.Empty)">
+                                                                <a class="pagination-number" href="@(Model.Url())/?query=@searchTerm&page=@p">@p</a>
+                                                            </li>
+                                                            //get three nodes after active node
+                                                            for (int j = p + 1; j <= p + 3; j++)
+                                                            {
+                                                                if (j > totalPages)
+                                                                {
+                                                                    continue;
+                                                                }
+                                                                <li class="pagination-item @(j == page ? "active" : string.Empty)">
+                                                                    <a class="pagination-number" href="@(Model.Url())/?query=@searchTerm&page=@j">@j</a>
+                                                                </li>
+                                                            }
+                                                        }
+                                                        //get last if less than total of pages
+                                                        if (p == totalPages && page != totalPages)
+                                                        {
+                                                            <li class="pagination-item @(p == page ? "active" : string.Empty)">
+                                                                <a class="pagination-number" href="@(Model.Url())/?query=@searchTerm&page=@p">@(!ar ? "Last" : " الاخيرة ")</a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                }
+                                                @if (page < totalPages)
+                                                {
+                                                    <li class="arrow-top-container display-flexbox">
+                                                        <a class="arrow-container" href="@(Model.Url())/?query=@searchTerm&page=@(page+1)">
+                                                            ➜
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="no-items font-bold">@Umbraco.GetDictionaryValue("there are no search results for") "@query"</div>
+                                }
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

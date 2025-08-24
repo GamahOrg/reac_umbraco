@@ -1,0 +1,9 @@
+@using Umbraco10Project.App_Plugins.newsletterStudioExtensions.Controller.customHtmlEmailControl
+@{
+    var settings = Model.Email.Settings;
+}
+
+@if (Model.Model is CustomHtmlEmailControlViewModel customHtml)
+{
+    @Html.Raw(customHtml.Html)
+}

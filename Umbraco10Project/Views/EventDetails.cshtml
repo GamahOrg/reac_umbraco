@@ -1,0 +1,158 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Helpers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<EventDetails>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Models;
+@{
+    Layout = "Master.cshtml";
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        disableRoot = true,
+        title = Model?.Value("pageTitle")?.ToString() ?? ""
+    };
+    string currentPath = Context.Request.Path;
+    var isEnglish = currentPath.Contains("/en/");
+}
+<div class="event-details-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+    <div class="container mt-4">
+
+
+        <div class="row">
+
+            <div id="carouselEvents" class="carousel slide carousel-dark">
+                <div class="carousel-indicators">
+                    @{
+                        for (int i = 0; i < Model.EventsImages?.Count(); i++)
+                        {
+                            <button type="button" data-bs-target="#carouselEventsIndicators" data-bs-slide-to="@i" class="active" aria-current="true" aria-label="Slide @i"></button>
+                        }
+                    }
+                </div>
+                <div class="carousel-inner">
+
+                    @{
+                        @if (Model.EventsImages != null && Model.EventsImages.Any())
+                        {
+                            var counter = 1;
+                            foreach (var image in Model.EventsImages)
+                            {
+                                <div class="carousel-item @(counter == 1 ? "active" : "")">
+                                    <div  class="d-block w-100 justify-content-center d-flex" >
+                                        <img src="@image.Url()" alt="Event Image" class="img-fluid" style="max-height: 600px">
+                                    </div>
+                                </div>
+                                counter++;
+                            }
+                        }
+                    }
+                </div>
+            
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselEvents" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselEvents" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+          
+            </div>
+
+            <div class="col-12 mt-4">
+                <h5 class="title">
+                    @Model.EventTitle
+                </h5>
+                <div class="badge text-bg-light">
+                    @Model.EventType
+                </div>
+
+                <div class="content mt-2">
+                    @Html.Raw("<div class='content'>" + Model.EventBrief + "</div>")
+                </div>
+
+                <div class="event-dates">
+                    <div class="event-item-image">
+                        <img src="~/images/icons/calender.svg" class="small-icon" width="20" height="20" alt="Calender Icon"/>
+                        <span class="title">
+                            @Umbraco.GetDictionaryValue("Event Dates")
+                        </span>
+                    </div>
+                    <div class="event-item-information">
+
+                        <div class="event-information-details">
+                            <div class="display-flexbox event-date">
+                                <span class="title">
+                                    @Umbraco.GetDictionaryValue("From date") :
+                                </span>
+                                <span class="content">
+                                    @Calendar.TheDate(Model.StartDate, isEnglish)
+                                </span>
+                            </div>
+                            @{
+                                if (Model.HasValue("endDate"))
+                                {
+                                    <div class="display-flexbox event-date">
+                                        <span class="title">
+                                            @Umbraco.GetDictionaryValue("To date") :
+                                        </span>
+                                        <span class="content">
+                                            @Calendar.TheDate(Model.EndDate, isEnglish)
+                                        </span>
+                                    </div>
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+                @{
+                    if (Model.HasValue("eventLocation"))
+                    {
+                        <hr/>
+                        <div class="event-location">
+                            <div class="event-item-image">
+                                <img src="~/images/icons/location.svg" class="small-icon" width="20" height="20" alt="Calender Icon"/>
+                                <span class="title">
+                                    @Umbraco.GetDictionaryValue("Event location") :
+                                </span>
+                            </div>
+                            <p class="date-details">
+                                @Model.EventLocation
+                            </p>
+
+                        </div>
+                    }
+                }
+
+
+                @{
+                    if (Model.HasValue("targetAudience"))
+                    {
+                        <hr/>
+                        <div class="event-item">
+                            <div class="event-item-image">
+                                <img src="~/images/icons/targeted_ppl.svg" class="small-icon" width="20" height="20" alt="Calender Icon"/>
+                                <span class="title">
+                                    @Umbraco.GetDictionaryValue("Target Audience") :
+                                </span>
+                            </div>
+                            <p class="date-details">
+                                @Model.TargetAudience
+                            </p>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>

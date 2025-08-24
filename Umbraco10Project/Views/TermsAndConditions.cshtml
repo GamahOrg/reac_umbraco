@@ -1,0 +1,54 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TermsAndConditions>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+<div class="terms-and-conditions-page rega-page">
+	@*@await Html.PartialAsync("inner page header")*@
+    @await Html.PartialAsync("Header")
+	@await Html.PartialAsync("inner page banner")
+	@await Html.PartialAsync("settings-side")
+	@await Html.PartialAsync("menu2")
+
+    <div class="site-wrapper inside-wrapper">
+        <div class="bread-crumbs">
+            <a class="bread-crumbs-item font-bold" href="/">  @Model?.Parent?.Name  > </a>
+            <a class="bread-crumbs-item font-bold" href="#">  @Model?.Name </a>
+        </div>
+        <div class="section-container display-flexbox">
+            <div class="section-top-side margin-0 flex-start">
+                <div class="section-title font-bold text-start">
+                    <h1>@Model?.Name</h1>
+                </div>
+                
+            </div>
+            <div class="section-bottom-side with-gap display-flexbox">
+                <div class="section-right-side">
+                    <div class="terms-items display-flexbox">
+                        @{
+                            @if (Model?.TermsSections != null)
+                            {
+                                foreach (var termsSection in Model.TermsSections)
+                                {
+                                    <div class="terms-item display-flexbox">
+                                        <div class="terms-item-title font-bold">
+                                            @termsSection.SectionTitle
+                                        </div>
+                                        <div class="terms-item-brief section-brief">
+                                            @termsSection.SectionBrief
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        
+                        }
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("Footer")
+</div>

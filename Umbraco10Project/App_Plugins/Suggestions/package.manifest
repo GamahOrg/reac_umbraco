@@ -1,0 +1,9 @@
+{
+    // array of files we want to inject into the application on app_start
+    "css": [
+        "~/App_Plugins/Suggestions/suggestion.css"
+    ],
+    "javascript": [
+        "~/App_Plugins/Suggestions/suggestion.controller.js"
+    ]
+}

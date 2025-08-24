@@ -1,0 +1,55 @@
+﻿@model Umbraco10Project.Models.AncestorsModel
+@{
+    string GetTitle(IPublishedContent item)
+    {
+        if (item.HasValue("pageTitle") && !item.Value<string>("pageTitle").IsNullOrWhiteSpace())
+        {
+            return item.Value<string>("pageTitle") ?? "";
+        }
+
+        return item.Name;
+    }
+}
+<div class="bread-crumb p-4">
+    <div class="container">
+        <div>
+            @{
+                var counter = 1;
+                foreach (var ancestor in @Model.ancestors)
+                {
+                    <a href="@(Model?.disableRoot == true && counter == 2 ? null : ancestor.Url())"
+                       class="@(Model?.disableRoot == true && counter == 2 ? "disable" : "")">
+                        @GetTitle(ancestor)
+                    </a>
+
+                    <span>></span>
+                    counter += 1;
+                }
+            }
+            <a class="active" href="@Model.content.Url()"> @GetTitle(@Model?.content) </a>
+        </div>
+
+        <div class="mt-5 row">
+            <div class="col">
+                <h2>@GetTitle(Model.content)</h2>
+            </div>
+            @{
+                if (Model?.action != null)
+                {
+                    <div class="col w-100 start-service-button @(Model.ActionPushToEnd == true ? "text-end" : "")"
+                         style="
+                         @(Model.ActionPushToEnd == true ? "text-align: end !important;" : "")
+                         ">
+                        @foreach (var action in Model.action)
+                        {
+                            <button
+                                class="btn onclick @(action.Outline == true ? "btn-outline-primary" : "btn-primary") col @(action.PushToEnd == true ? "text-end mt-2" : "")"
+                                style="width: max-content;"
+                                data-action="redirect" data-value="@action.Url">@action.Text</button>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

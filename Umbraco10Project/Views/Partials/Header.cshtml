@@ -1,0 +1,107 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    string currentLanguage = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    string neededLang = currentLanguage == "ar-JO" ? "en-US" : "ar-JO";
+    IPublishedContent mainSettings = Umbraco.Content(1189);
+    IEnumerable<IPublishedContent> mainMenu = mainSettings.Value<IEnumerable<IPublishedContent>>("headerPages");
+}
+
+<nav class="navbar sticky-top navbar-light  bg-light navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="~/images/logos/REGA_LOGO.svg" alt="Rega Logo" width="150" height="60"/>
+
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @{
+                    if (mainMenu != null)
+                    {
+                        @foreach (var menuItem in mainMenu)
+                        {
+                            var menuLink = menuItem.TemplateId != null ? menuItem.Url() : "";
+                            var chidren = menuItem.Children().Where(x => x.HasValue("hidepagefromNavigation") && x.Value<bool>("hidepagefromNavigation") == false);
+                            if (chidren.Any())
+                            {
+                                <li class="nav-item dropdown">
+                                    @{
+                                        <a class="nav-link dropdown-toggle d-flex" role="button"
+                                           data-bs-toggle="dropdown" aria-expanded="True">
+                                            <span> @menuItem.Value("PageTitle")</span>
+                                            <div
+                                                class="dropdown-icon w-100 d-flex text-end justify-content-end align-items-center align-content-center me-lg-0 ms-lg-1 me-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M4.646 5.646a.5.5 0 0 1 .708 0L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    }
+                                    <ul class="dropdown-menu animate slideIn">
+                                        @foreach (var child in chidren.Where(x => x.Value<bool>("hidePageFromNavigation") != true))
+                                        {
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   href="@child.Url()"> @child.Value("PageTitle")</a>
+                                            </li>
+                                        }
+                                        @if (menuItem.Id == 1250)
+                                        {
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   href="@menuLink">@Umbraco.GetDictionaryValue("View all")</a>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex" href="@menuLink" role="button"
+                                       href="@menuItem.Url()">@menuItem.Value("PageTitle")</a>
+                                </li>
+                            }
+                        }
+                    }
+                }
+            </ul>
+            <div class="d-flex ">
+                <a href="@Model.Url(neededLang)"
+                   class="language-picker navbar-text justify-content-center align-content-center text-center">
+                    <img class="small-icon" width="20" height="20" src="~/images/icons/lang.svg" alt="Language Icon"/>
+
+                    @if (neededLang == "ar-JO")
+                    {
+                        <span class="">
+                            العربية
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="">
+                            English
+                        </span>
+                    }
+                </a>
+                <span class="m-2 vr"></span>
+
+                <a class="navbar-brand" href="https://www.vision2030.gov.sa/">
+                    <img src="~/images/logos/vision_2030.svg" alt="Rega Logo" width="60" height="60"/>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    
+</nav>

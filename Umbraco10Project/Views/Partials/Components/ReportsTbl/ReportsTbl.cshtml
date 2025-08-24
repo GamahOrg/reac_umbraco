@@ -1,0 +1,91 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<List<Umbraco10Project.Models.Report>>
+@{
+    var prevReportUmbUrl = Umbraco.Content(2627).Url();
+
+    var isEnglish = Context.Request.Path.ToString().Contains("/en/");
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col" class="justify-content-center text-center">@Umbraco.GetDictionaryValue("Order Number")</th>
+                <th scope="col" class="justify-content-center text-center">@Umbraco.GetDictionaryValue("TITLE2")</th>
+                <th scope="col" class="justify-content-center text-center">@Umbraco.GetDictionaryValue("State")</th>
+                <th scope="col" class="justify-content-center text-center">@Umbraco.GetDictionaryValue("Details")</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Model.Any())
+            {
+                @foreach (var report in Model.OrderByDescending(item => item.created_Date))
+                {
+                    <tr>
+                        <td class="justify-content-center text-center">@report.serial_Number</td>
+                        <td class="justify-content-center text-center">@report.title</td>
+                        <td class="justify-content-center text-center">
+                            @{
+                                if (report.state == "close" || report.state == "saved")
+                                {
+                                    <p style="color: #4d2132">
+                                        مغلق
+                                    </p>
+                                }
+                                else if (report.state == "Compliance" || report.state == "open")
+                                {
+                                    <p style="color: #00A488">
+                                        مفتوح
+                                    </p>
+                                }
+                                else if (report.state == "Reopen" || report.state == "reopen" || report.state == "investigation" || report.state == "Pending")
+                                {
+                                    <p>
+                                        تحت المعالجة
+                                    </p>
+                                }
+                                else if (report.state == "request")
+                                {
+                                    <p>
+                                        طلب معلومات
+                                    </p>
+                                }
+                            }
+                        </td>
+                        <td class="justify-content-center text-center">
+                            <img src="~/images/icons/view.svg" alt="View icon" cwidth="20" height="20" lass="small-icon text-center" style="cursor: pointer" data-id="@report.serial_Number" id="redirectUrl_@(report.serial_Number)">
+                        </td>
+
+                    </tr>
+
+                }
+            }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script csp-manager-add-nonce="true">
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+
+        $("[id^='redirectUrl_']").on("click", function () {
+
+            var serialNumber = $(this).attr("data-id");
+
+            $.ajax({
+                url: `/umbraco/surface/Emails/PrevReportFormItem?serialNumber=${serialNumber}&isEnglish=@isEnglish`,
+                type: 'GET',
+                //data: { id: id, transId: transId, random: random },
+                success: function (data) {
+                    window.location.href = data;
+                }
+            });
+
+        })
+
+    });
+</script>
+                                

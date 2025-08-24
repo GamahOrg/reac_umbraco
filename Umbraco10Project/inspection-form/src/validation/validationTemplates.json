@@ -1,0 +1,22 @@
+{
+  "email": {
+    "template": "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$",
+    "message": "validation.email"
+  },
+  "minMaxLength": {
+    "template": "^.{min,max}$",
+    "message": "validation.minMaxLength"
+  },
+  "numbersOnly": {
+    "template": "/^[0-9]*$/",
+    "message": "validation.numbers_only"
+  },
+  "phoneNumber": {
+    "template": "^05[0-9]{8}$",
+    "message": "validation.phoneNumber"
+  },
+  "rerRequestNumber": {
+    "template": "^(FR|SR|MJ|RJ|CR|DT|MR|EX)[a-zA-Z0-9]*$",
+    "message": "validation.rerRequestNumber"
+  }
+}

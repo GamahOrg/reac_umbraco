@@ -1,0 +1,52 @@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@model Umbraco10Project.Models.GenericApiResponse<Umbraco10Project.Controllers.Models.SuggestionsInquiriesModels.ContactValue>
+
+@{
+    var modelData = Json.Serialize(Model);
+}
+
+@* <div class="col text-end justify-content-end"> *@
+@* <a class="btn btn-outline-primary" asp-controller="Services" asp-action="LogOut" asp-route-language="arabic">Log
+out</a> *@
+@* </div> *@
+<div id="root">
+    <div class="spinner container p-2 text-center mt-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+
+<script csp-manager-add-nonce="true">
+    // Passing serialized model data to React
+    const modelData = @Html.Raw(modelData);
+    // Make sure the window object can access the data globally
+    window.modelData = modelData;
+    window.BASE_URL = "@Configuration["BaseUrl"]";
+    window.ATTACHMENTS_BASE_URL = "@Configuration["InspectionAttachmentsBaseUrl"]";
+
+    const maxRetries = 10; // Number of retry attempts
+    let retries = 0;
+
+    function loadScript() {
+        const script = document.createElement('script');
+        script.src = "/inspection-form/@Model.JsFile";
+        script.type = 'module';
+
+        // Error handling and retry mechanism
+        script.onerror = function () {
+            if (retries < maxRetries) {
+                retries++;
+                loadScript();
+            } else {
+            }
+        };
+
+        document.body.appendChild(script);
+    }
+    // Call the function to load the script
+    loadScript();
+
+</script>

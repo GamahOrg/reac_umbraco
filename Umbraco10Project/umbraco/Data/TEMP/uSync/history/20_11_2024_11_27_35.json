@@ -1,0 +1,1047 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/read-more-news.config",
+      "name": "Read More News",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Read More News/ar-JO",
+          "oldValue": "إقرأ أيضا",
+          "newValue": "اقرأ المزيد",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Read More News/en-US",
+          "oldValue": "Read also",
+          "newValue": "Read More",
+          "change": "Update"
+        }
+      ],
+      "key": "05f5456a-8ad0-4fed-8279-8f2bde175a4b"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/beneficiary-service.config",
+      "name": "Beneficiary service",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Beneficiary service/ar-JO",
+          "oldValue": "",
+          "newValue": "مركز خدمة المستفيدين",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Beneficiary service/en-US",
+          "oldValue": "",
+          "newValue": "Beneficiary service",
+          "change": "Create"
+        }
+      ],
+      "key": "b15e3b50-af07-48d9-966c-8451782f5034"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/click-here.config",
+      "name": "Click Here",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Click Here/ar-JO",
+          "oldValue": "",
+          "newValue": " اضغط هنا",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Click Here/en-US",
+          "oldValue": "",
+          "newValue": "Click Here",
+          "change": "Create"
+        }
+      ],
+      "key": "ddecd436-1385-4070-9a55-c06f210b74cc"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/regaulation-link-from-other-site.config",
+      "name": "Regaulation Link From Other Site",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Regaulation Link From Other Site/ar-JO",
+          "oldValue": "",
+          "newValue": "النظام في موقع هيئة الخبراء بمجلس الوزراء",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Regaulation Link From Other Site/en-US",
+          "oldValue": "",
+          "newValue": "النظام في موقع هيئة الخبراء بمجلس الوزراء",
+          "change": "Create"
+        }
+      ],
+      "key": "4f61c703-6392-44d4-b769-e63af8d9e4cd"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/frequently-asked-questions.config",
+      "name": "Frequently Asked Questions",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Frequently Asked Questions/ar-JO",
+          "oldValue": "",
+          "newValue": "الاسئلة الشائعة",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Frequently Asked Questions/en-US",
+          "oldValue": "",
+          "newValue": "Frequently Asked Questions",
+          "change": "Create"
+        }
+      ],
+      "key": "408c8bce-6906-4a95-86bc-162087993a8a"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/service-channels.config",
+      "name": "Service channels",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Service channels/ar-JO",
+          "oldValue": "",
+          "newValue": "قنوات التواصل",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Service channels/en-US",
+          "oldValue": "",
+          "newValue": "Service channels",
+          "change": "Create"
+        }
+      ],
+      "key": "144e2752-8f1b-42fa-8825-b1824e587a92"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/follow-us-on.config",
+      "name": "Follow us on",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Follow us on/ar-JO",
+          "oldValue": "تابعنا على",
+          "newValue": "وسائل التواصل الاجتماعي",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Follow us on/en-US",
+          "oldValue": "",
+          "newValue": "Follow us",
+          "change": "Create"
+        }
+      ],
+      "key": "1cf3d472-6818-4543-a92b-a10d617ea23c"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/status-of-legislation.config",
+      "name": "Status of legislation",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Status of legislation/ar-JO",
+          "oldValue": "",
+          "newValue": "حالة التشريع",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Status of legislation/en-US",
+          "oldValue": "",
+          "newValue": "Status of legislation",
+          "change": "Create"
+        }
+      ],
+      "key": "a1701c6e-9338-4423-9293-2de70b0f3725"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/read-also.config",
+      "name": "Read also",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Read also/ar-JO",
+          "oldValue": "",
+          "newValue": "اقرأ ايضا",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Read also/en-US",
+          "oldValue": "",
+          "newValue": "Read also",
+          "change": "Create"
+        }
+      ],
+      "key": "2a751699-9da9-4477-9120-99464e4be255"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/faqs-page.config",
+      "name": "FAQ's page",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "FAQ's page/ar-JO",
+          "oldValue": "",
+          "newValue": "صفحة الأسئلة الشائعة",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "FAQ's page/en-US",
+          "oldValue": "",
+          "newValue": "FAQ's page",
+          "change": "Create"
+        }
+      ],
+      "key": "2d7e1734-ae8a-4595-ba6f-e3b339beda72"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/beneficiaries-help-center.config",
+      "name": "Beneficiaries Help Center",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Beneficiaries Help Center/ar-JO",
+          "oldValue": "",
+          "newValue": "مركز خدمات المستفيدين",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Beneficiaries Help Center/en-US",
+          "oldValue": "",
+          "newValue": "Beneficiaries Help Center",
+          "change": "Create"
+        }
+      ],
+      "key": "49e59368-8435-4b3f-bc91-85a1099c4c23"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/accreditation-document.config",
+      "name": "Accreditation Document",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Accreditation Document/ar-JO",
+          "oldValue": "وثائق أداة الاعتماد",
+          "newValue": "مرفق أداة الإصدار",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Accreditation Document/en-US",
+          "oldValue": "",
+          "newValue": "Accreditation Document",
+          "change": "Create"
+        }
+      ],
+      "key": "1963f43b-f6af-4328-b2eb-e9fabad17ca7"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/view-more-service.config",
+      "name": "View More Service",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "View More Service/ar-JO",
+          "oldValue": "المزيد عن الخدمة",
+          "newValue": "تفاصيل الخدمة",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "View More Service/en-US",
+          "oldValue": "",
+          "newValue": "View More",
+          "change": "Create"
+        }
+      ],
+      "key": "bd0c1420-4e53-49a8-a45a-b3eb0b55e44a"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/release-date.config",
+      "name": "Release Date",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Release Date/ar-JO",
+          "oldValue": "تاريخ الاعتماد",
+          "newValue": "تاريخ الإصدار",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Release Date/en-US",
+          "oldValue": "",
+          "newValue": "Release Date",
+          "change": "Create"
+        }
+      ],
+      "key": "2c359f07-8a68-491d-b3eb-74b58616ed47"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/type-of-legislation.config",
+      "name": "Type of legislation",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Type of legislation/ar-JO",
+          "oldValue": "أداة اعتماد التشريع",
+          "newValue": "نوع التشريع",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Type of legislation/en-US",
+          "oldValue": "",
+          "newValue": "Type of legislation",
+          "change": "Create"
+        }
+      ],
+      "key": "c2f316a7-21bc-47c6-963e-0b534bb69dc9"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/search-via.config",
+      "name": "Search Via",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Search Via/ar-JO",
+          "oldValue": "استعلام بموجب النطاق:",
+          "newValue": "الاستعلام عن طريق:",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Search Via/en-US",
+          "oldValue": "",
+          "newValue": "Search Via:",
+          "change": "Create"
+        }
+      ],
+      "key": "bd2465f9-f6b3-40d0-bb83-8c18d6a9ffd3"
+    },
+    {
+      "handlerAlias": "DictionaryHandler",
+      "success": true,
+      "itemType": "IDictionaryItem",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Dictionary/legislation-type.config",
+      "name": "Legislation Type",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "ar-JO",
+          "path": "Legislation Type/ar-JO",
+          "oldValue": "أداة التشريع",
+          "newValue": "أداة إصدار التشريع",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "en-US",
+          "path": "Legislation Type/en-US",
+          "oldValue": "",
+          "newValue": "Legislation Type",
+          "change": "Create"
+        }
+      ],
+      "key": "d9bbb6aa-271f-421c-b74f-3c851793124e"
+    },
+    {
+      "handlerAlias": "TemplateHandler",
+      "success": false,
+      "itemType": "ITemplate",
+      "message": "The template InspectionForm.cshtml file is missing.",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Templates/inspectionform.config",
+      "name": "Inspection Form",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "947bf183-8cec-456d-ba03-f23172bb08eb"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/test.config",
+      "name": "test",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "e4016895-f508-4f93-8982-ce3ed3a1c83e"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/centralizedsearchresult.config",
+      "name": "Centralized Search  Result",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "1fabd7b2-37d8-4884-a88e-b340c2fb5e5a"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/mainsettings.config",
+      "name": "Main Settings",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "Key",
+          "path": "footerRightsLinks/Key",
+          "oldValue": "33c0828b-b436-42d1-8bed-d62272db8064",
+          "newValue": "587933d0-0cd1-4dfa-841a-5964158b61bb",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "footerRightsLinks/Name",
+          "oldValue": "(Blank)",
+          "newValue": "Footer Rights Links",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Description",
+          "path": "footerRightsLinks/Description",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Validation",
+          "path": "footerRightsLinks/RegEx",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "footerRightsLinks/SortOrder",
+          "oldValue": "0",
+          "newValue": "5",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "MandatoryMessage",
+          "path": "footerRightsLinks/MandatoryMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "ValidationRegExpMessage",
+          "path": "footerRightsLinks/ValidationRegExpMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "footerRightsLinks",
+          "path": "footerRightsLinks",
+          "oldValue": "",
+          "newValue": "Footer Rights Links",
+          "change": "Create"
+        }
+      ],
+      "key": "2b9c6bb1-a5c1-4159-a9c8-1a58a6cd79f9"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/regulationsitem.config",
+      "name": "Regulations Item",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "Name",
+          "path": "legislationDocuments/Name",
+          "oldValue": "وثائق أداة الاعتماد",
+          "newValue": "مرفق أداة الإصدار",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "legislationType/Name",
+          "oldValue": "أداة التشريع",
+          "newValue": "أداة إصدار التشريع",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Key",
+          "path": "regaulationLinkFromOtherSite/Key",
+          "oldValue": "5be1f30d-5ec7-4693-9bcb-3f78d5fc7d4c",
+          "newValue": "f168119d-397a-43a8-b66c-232054d21810",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "regaulationLinkFromOtherSite/Name",
+          "oldValue": "(Blank)",
+          "newValue": "رابط النظام في موقع هيئة الخبراء بمجلس الوزراء",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Description",
+          "path": "regaulationLinkFromOtherSite/Description",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Validation",
+          "path": "regaulationLinkFromOtherSite/RegEx",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "regaulationLinkFromOtherSite/SortOrder",
+          "oldValue": "0",
+          "newValue": "7",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "MandatoryMessage",
+          "path": "regaulationLinkFromOtherSite/MandatoryMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "ValidationRegExpMessage",
+          "path": "regaulationLinkFromOtherSite/ValidationRegExpMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "regaulationLinkFromOtherSite",
+          "path": "regaulationLinkFromOtherSite",
+          "oldValue": "",
+          "newValue": "رابط النظام في موقع هيئة الخبراء بمجلس الوزراء",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "ruleStatus/Name",
+          "oldValue": "حالة النشر",
+          "newValue": "حالة التشريع",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "ruleType/Name",
+          "oldValue": "أداة اعتماد التشريع",
+          "newValue": "نوع التشريع",
+          "change": "Update"
+        }
+      ],
+      "key": "75c88d08-96e6-4971-93eb-9485d245eebc"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/questionnaire.config",
+      "name": "Questionnaire",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "b3f26140-ef46-42f8-ab90-0ae087378965"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/questionnairepage.config",
+      "name": "Questionnaire Page",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "b9f56968-750e-44d9-ad77-ac6820937442"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/home.config",
+      "name": "Home",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "d98980cb-3b9d-4ba5-8df9-17828d37683b"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/contactusinfo.config",
+      "name": "contact us info",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "icon/SortOrder",
+          "oldValue": "3",
+          "newValue": "4",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "items/SortOrder",
+          "oldValue": "4",
+          "newValue": "5",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Key",
+          "path": "link/Key",
+          "oldValue": "4c41b20a-d5db-43f7-83ea-44d43e6cde97",
+          "newValue": "3ac89632-6d22-4ef1-a49b-c7c0355ce3d1",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "link/Name",
+          "oldValue": "(Blank)",
+          "newValue": "Link",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Description",
+          "path": "link/Description",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Validation",
+          "path": "link/RegEx",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "link/SortOrder",
+          "oldValue": "0",
+          "newValue": "3",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "MandatoryMessage",
+          "path": "link/MandatoryMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "ValidationRegExpMessage",
+          "path": "link/ValidationRegExpMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "link",
+          "path": "link",
+          "oldValue": "",
+          "newValue": "Link",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "Key",
+          "path": "titleFirst/Key",
+          "oldValue": "511bb44a-93b9-4bd3-9e98-d3b90bba0100",
+          "newValue": "362e0cb8-7929-4c07-b1e7-5a5c855a0dc4",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "titleFirst/Name",
+          "oldValue": "(Blank)",
+          "newValue": "Title First",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Description",
+          "path": "titleFirst/Description",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Validation",
+          "path": "titleFirst/RegEx",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "titleFirst/SortOrder",
+          "oldValue": "0",
+          "newValue": "6",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "MandatoryMessage",
+          "path": "titleFirst/MandatoryMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "ValidationRegExpMessage",
+          "path": "titleFirst/ValidationRegExpMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "titleFirst",
+          "path": "titleFirst",
+          "oldValue": "",
+          "newValue": "Title First",
+          "change": "Create"
+        }
+      ],
+      "key": "c64478ba-9cc3-419b-b7d9-12dfc5e8ef94"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/vision.config",
+      "name": "Vision",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "7630894d-928d-4b0b-bdb4-af1fbbd915aa"
+    }
+  ],
+  "date": "2024-11-20T11:27:35.806919+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 27,
+  "total": 683
+}

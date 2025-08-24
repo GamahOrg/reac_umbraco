@@ -1,0 +1,152 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<NafathLogin>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models;
+@using Umbraco10Project.Models
+@{
+    Layout = "Master.cshtml";
+    var res = ViewBag.res;
+    var redirectId = Context.Request.Query["redirectId"];
+    var redirectUrl = "";
+    if (string.IsNullOrEmpty(redirectId))
+    {
+        redirectUrl = Umbraco.Content(3078).Url();
+    }
+    else
+    {
+        redirectUrl = Umbraco.Content(redirectId.ToString()).Url();
+    }
+
+    var ancestorList = Model.Ancestors().Reverse().ToList();
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = ancestorList,
+        content = Model,
+        title = Model?.Name ?? ""
+    };
+}
+@if (res != null)
+{
+    <div class="musab">@res</div>
+}
+<div class="review-previous-report-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+    <div class="container mt-4">
+
+
+        <div class="nafath-container">
+            <div class="nafath-header">
+                @Umbraco.GetDictionaryValue("Nafath application")
+            </div>
+            <div class="nafath-body">
+                <div class="nafath-content container col-lg-9 p-sm-1 p-lg-5 m-lg-5 bg-white justify-content-center">
+                    <div class="nafath-box-main flex-row-reverse flex-row justify-content-center row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="row justify-content-center text-center">
+                                <div class="nafath-box-image col-12">
+                                    <img src="~/images/nafath.svg" alt="Nafath Image"/>
+                                </div>
+                                <div class="nafath-box-brief col-12">
+                                    @Umbraco.GetDictionaryValue("Please enter your ID/residence card number, then click enter.")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <form class="nafath-form display-flexbox" id="reviewReportForm" asp-controller="Nafath" asp-action="Login">
+                                <label class="nafath-label">@Umbraco.GetDictionaryValue("Enter the ID number")</label>
+                                <input id="idInput" name="id" class="nafath-input" type="tel"
+                                       style="font-size: 16px"
+                                       oninvalid="this.setCustomValidity('الرجاء إدخال رقم الهوية')"
+                                       autocomplete="off" autofocus required data-1p-ignore oninput="this.setCustomValidity('')"/>
+                                <input class="nafath-btn w-100" type="submit" value="@Umbraco.GetDictionaryValue("Submit")"/>
+                            </form>
+                            <div class="error-message alert alert-danger d-none" role="alert">
+                                حدث خطأ، الرجاء المحاولة مرة أخرى
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="random-popup justify-content-center d-none text-center row">
+                        <div class="col-auto mt-5" style="justify-items: center;">
+                            <div class="random-number">
+                                12
+                            </div>
+                        </div>
+                        <div class="popup-message mt-2 mb-4 col-12">
+                            @Umbraco.GetDictionaryValue("OpenNafathAndConfirm")
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+@section endscripts
+{
+    <script csp-manager-add-nonce="true">
+        var redirectUrl = "@redirectUrl";
+    </script>
+    <script csp-manager-add-nonce="true">
+        function waitToken() {
+            var tokenInterval = setInterval(function () {
+                $.ajax({
+                    url: `/umbraco/surface/Nafath/SetToken`,
+                    type: 'GET',
+                    success: function (data) {
+                        if (data.status == "COMPLETED") {
+                            var encodedURL = encodeURIComponent(redirectUrl);
+                            var decodedURL = decodeURIComponent(encodedURL);
+                            decodedURL = $("<div/>").html(decodedURL).text();
+                            clearInterval(tokenInterval);
+                            window.location.href = decodedURL;
+                            console.log(decodedURL);
+                        }
+
+                    }
+                });
+            }, 5000)
+        }
+        
+        $(document).ready(function () {
+            $('#reviewReportForm').submit(function (e) {
+                $(".error-message").addClass("d-none");
+                e.preventDefault(); // Prevent the default form submission
+                $.ajax({
+                    url: '/umbraco/surface/Nafath/Login',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    // if failed
+                    error: function (xhr, status, error) {
+                        // show error message in html
+                        $(".error-message").removeClass("d-none");
+
+                    },
+                    success: function (data) {
+                        let random = data.random;
+                        if(!random){
+                            $(".error-message").removeClass("d-none");
+                            return;
+                        }
+                        $(".random-popup").removeClass("d-none");
+                        $(".nafath-box-main").addClass("d-none");
+                        $(".random-number").text(random + "");
+                        waitToken();
+                    }
+                });
+
+            });
+
+        });
+
+    
+    </script>
+}

@@ -1,0 +1,25 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "PublishedContentHandler",
+      "success": true,
+      "itemType": "IContent",
+      "message": "Done",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/54787c90-9779-4a00-957c-55104cf05809/uSync/Content/dac1b946-4f2e-411a-8c6f-5aeca8b38e50.config",
+      "name": "Main Settings",
+      "path": "/54787c90-9779-4a00-957c-55104cf05809/uSync/Content",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "dac1b946-4f2e-411a-8c6f-5aeca8b38e50"
+    }
+  ],
+  "date": "2024-11-20T15:39:51.23891+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 1,
+  "total": 31
+}

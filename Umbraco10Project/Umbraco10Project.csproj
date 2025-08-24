@@ -1,0 +1,675 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Umbraco10Project</RootNamespace>
+	<PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))= </PathMap>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="custom\IUrlProvider.cs" />
+    <Compile Remove="custom\PageUrlProvider.cs" />
+    <Compile Remove="custom\PageUrlSegmentProvider.cs" />
+    <Compile Remove="custom\RegisterCustomSegmentProviderComposer.cs" />
+    <Compile Include="App_Plugins\newsletterStudioExtensions\controller\customContentPickerControl\CustomContentPickerControlData.cs" />
+    <Compile Include="App_Plugins\newsletterStudioExtensions\controller\customContentPickerControl\CustomContentPickerControlType.cs" />
+    <Compile Include="App_Plugins\newsletterStudioExtensions\controller\customContentPickerControl\CustomContentPickerControlViewModel.cs" />
+    <Compile Include="App_Plugins\newsletterStudioExtensions\controller\customHtmlEmailControl\CustomHtmlEmailControlData.cs" />
+    <Compile Include="App_Plugins\newsletterStudioExtensions\controller\customHtmlEmailControl\CustomHtmlEmailControlType.cs" />
+    <Compile Include="App_Plugins\newsletterStudioExtensions\controller\customHtmlEmailControl\CustomHtmlEmailControlViewModel.cs" />
+    <Content Update="Views\Partials\Components\ComplaintForm\ComplaintForm.cshtml.old">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Remove="Views\strategy.cshtml" />
+    <Content Remove="Views\homeV2.cshtml" />
+    <Content Remove="Views\Vision.cshtml" />
+    <Content Remove="Views\ServiceDetails2.cshtml" />
+    <Content Remove="Views\Questionnaire.cshtml" />
+    <Content Remove="Views\Pillars.cshtml" />
+    <Content Remove="Views\Partners.cshtml" />
+    <Content Remove="Views\JobOpenings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\robots.txt" />
+    <Content Update="old-news.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Remove="Views\ScriptManager\GTM\HeadBottom.cshtml" />
+    <_ContentIncludedByDefault Remove="uSync\v9\Content\complain.config" />
+    <_ContentIncludedByDefault Remove="uSync\v9\Content\sitemap.config" />
+    <Content Remove="uSync\v9\Content\يزيد-البواردي.config" />
+    <Content Remove="uSync\v9\Content\وفاء-طميحي.config" />
+    <Content Remove="uSync\v9\Content\نوف-القعيشيش.config" />
+    <Content Remove="uSync\v9\Content\نواف-الفرهود.config" />
+    <Content Remove="uSync\v9\Content\نجود-العتيبي.config" />
+    <Content Remove="uSync\v9\Content\محمد-العصيمي.config" />
+    <Content Remove="uSync\v9\Content\محمد-الحربي.config" />
+    <Content Remove="uSync\v9\Content\محمد-الحامد.config" />
+    <Content Remove="uSync\v9\Content\مالك-العقيل.config" />
+    <Content Remove="uSync\v9\Content\لينا-اللهيب.config" />
+    <Content Remove="uSync\v9\Content\ليان-ال-نملان.config" />
+    <Content Remove="uSync\v9\Content\غاليه-الفهد.config" />
+    <Content Remove="uSync\v9\Content\عمار-العمار.config" />
+    <Content Remove="uSync\v9\Content\عبدالله-الدبيخي.config" />
+    <Content Remove="uSync\v9\Content\عبدالله-الحربي_2lrnxzjs.config" />
+    <Content Remove="uSync\v9\Content\عبدالرحمن-شاهيني.config" />
+    <Content Remove="uSync\v9\Content\سيف-العتيبي.config" />
+    <Content Remove="uSync\v9\Content\سالم-ال-خداش.config" />
+    <Content Remove="uSync\v9\Content\ريما-التويجري.config" />
+    <Content Remove="uSync\v9\Content\ريم-المقحم.config" />
+    <Content Remove="uSync\v9\Content\رامز-ال-هادي.config" />
+    <Content Remove="uSync\v9\Content\جاسر-الجاسر.config" />
+    <Content Remove="uSync\v9\Content\omar-alwashmi.config" />
+    <Content Remove="uSync\v9\Content\abdulrazaq-alwaqassi.config" />
+    <Content Remove="uSync\v9\Dictionary\royal-decree.config" />
+    <Content Remove="uSync\v9\Dictionary\royal-court.config" />
+    <Content Remove="uSync\v9\Dictionary\ministerial-decision.config" />
+    <Content Remove="uSync\v9\Dictionary\accreditation.config" />
+    <Content Remove="uSync\v9\Content\وزير-الشؤون-البلدية-والقروية-والإسكان-يشكر-القيادة-على-موافقة-مجلس-الوزراء-منح-الهيئة-العامة-للعقار-صلاحية-التسجيل-العيني.config" />
+    <Content Remove="uSync\v9\Content\وزير-الشؤون-البلدية-والقروية-والإسكان-يرعى-مؤتمر-ومعرض-آفاق-ومستقبل-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\وزير-الإسكان-يرعى-ختام-ورش-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\وزير-الإسكان-يرأس-الاجتماع-الأول-لمجلس-إدارة-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\وزارة-العدل-توقع-اتفاقية-مع-الهيئة-العامة-للعقار-لتبادل-البيانات-وبناء-المؤشرات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\ورش-عمل-توصي-بتواجد-جهة-مشرفة-على-مشروع-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\وافي-يرخص-أكثر-من-100-ألف-وحدة-عقارية-للبيع-على-الخارطة-خلال-عام-2023م.config" />
+    <Content Remove="uSync\v9\Content\وافي-يخالف-عددا-من-المشاريع-العقارية-والمطورين-وتضبط-244-مشروع-ا-مخالف-ا-لنظام-البيع-على-الخارطة-خلال-النصف-الأول-من-عام-2023.config" />
+    <Content Remove="uSync\v9\Content\وافي-يتيح-أكثر-من-350-ألف-وحدة-عقارية-بالسوق-خلال-عام-2022م.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-يناير-يبدأ-استقبال-طلبات-ترخيص-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-و-الموارد-البشرية-يتفقان-على-إدراج-فئة-الخدمات-العقاري-ة-ضمن-برنامج-العمل-الحر.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-و-السجل-العقاري-تكملان-استعداداتهما-لبدء-أعمال-التسجيل-العيني-للعقار-في-حي-الفلاح-بمدينة-الرياض.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-نظام-الوساطة-العقارية-يدخل-حي-ز-النفاذ-بعد-180-يوم-ا.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ملتقى-الوساطة-العقارية-يجمع-الخبراء-والممارسين.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-غد-ا-انطلاق-قمة-بروبتك-السعودية-لتطوير-التقنيات-العقارية-في-السوق-السعودي.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-سبعة-أحياء-في-الرياض-تستعد-غد-ا-لبدء-تسجيل-عقاراتها-في-السجل-العقاري.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-توقع-مذكرة-تفاهم-مع-صندوق-الاستثمارات-العامة-لتعزيز-دور-المملكة-كمركز-للتكنولوجيا-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تعلن-بدء-استقبال-طلبات-ترخيص-المشاريع-على-الخارطة-بالتزامن-مع-نشر-اللائحة-التنفيذية-للنظام-بعد-اعتمادها.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تطلق-هويتها-البصرية-الجديدة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تطلق-غد-ا-ملتقى-الإعلام-العقاري-بهدف-تعزيز-التكامل-مع-القطاع-الإعلامي.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تطلق-خدمة-الاستعلام-عن-ترخيص-الإعلانات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تطلق-بروبتك-السعودية-الإثنين-القادم-بمشاركة-دولية-واسعة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تطلق-الأربعاء-القادم-ملتقى-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تطرح-مسودة-اللائحة-التنفيذية-لنظام-بيع-وتأجير-مشروعات-عقارية-على-الخارطة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تطرح-جدول-مخالفات-نظام-بيع-وتأجير-مشروعات-عقارية-على-الخارطة-لاستطلاع-العموم.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تضبط-4831-مخالفة-لضوابط-الإعلانات-العقارية-وضوابط-تحليل-أسواق-العقار.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تضبط-2291-إعلان-ا-عقاريا-مخالف-ا-وتصنف-55-منشأة-عقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تشارك-في-معرض-ريستاتكس.والمبارك-يعر-ف-بدورها-وخططها.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تستعرض-ممكنات-التقنية-العقارية-في-ليب-leap.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تستعرض-استراتيجيتها-خلال-ورشة-عمل.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تراخيص-جديدة-للبيع-على-الخارطة-بمساحة-2.8-مليون-متر-مربع-تقدر-قيمتها-السوقية-بـ-6-مليارات-ريال.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تدعو-ملا-ك-العقارات-في-سبعة-أحياء-في-الرياض-تسجيل-عقاراتهم-في-السجل-العقاري-ابتداء-من-اليوم.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تدعو-ملا-ك-العقارات-في-48-حي-في-الرياض-والدمام-والمدينة-المنورة-لتسجيل-عقاراتهم-في-السجل-العقاري-ابتداء-من-اليوم-ولمدة-90-يوم.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تدعو-م-لاك-العقارات-في-7-أحياء-بالرياض-إلى-سرعة-تسجيل-عقاراتهم-في-السجل-العقاري.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تدشن-مقرها-الجديد-وتعقد-الاجتماع-التاسع-لمجلسها.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تختتم-أعمال-ملتقى-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تختتم-أعمال-ملتقى-الإعلام-العقاري-بنسخته-الأولى.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تحيل-مخالفي-ضوابط-الإعلانات-العقارية-إلى-الجهات-المختصة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تحذر-من-التعامل-مع-غير-المرخصين-وتستدعي-وسطاء-أتاحوا-بيانتهم-لتأجير-الوحدات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تجتمع-مع-رئاسة-أمن-الدولة-للتأكيد-على-نزاهة-وعدالة-التعاملات-العقارية-والوساطة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تبدأ-بتطبيق-اللائحة-التنظيمية-للمزادات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تبدأ-بأعمال-الرقابة-وتدعو-الوسطاء-ومقدمي-الخدمات-العقارية-كافة-إلى-الامتثال-وعدم-الوقوع-في-المخالفات.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تبدأ-العمل-بمعايير-ترخيص-المنصات-العقارية-الإلكترونية-وتصنيفها-وضوابط-الإعلانات-العقارية-وتطلق-خدمات-عقاري.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-تؤهل-27-مطور-عقاري-لرخصة-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-نفذ-18-حملة-رقابية-مشتركة-خلال-شهر-مايو-لضمان-الامتثال-في-السوق-العقاري.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-نفذ-11-جولة-رقابية-مشتركة-خلال-شهر-يوليو-لضمان-الامتثال-في-السوق-العقاري.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-نف-ذ-31-جولة-رقابية-خلال-فبراير-الماضي-لضمان-الامتثال-في-السوق-العقاري.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-علن-عن-نجاح-تطبيق-السجل-العقاري-في-أول-أحياء-الرياض-وتأسيس-الخريطة-الرقمية-لعقارات-السعودية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-علن-عن-8-أحياء-مستفيدة-من-السجل-العقاري-في-مدينة-مكة-المكرمة-ابتداء-من-الـ18-من-ذي-القعدة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-علن-بدء-التسجيل-العقاري-في-8-أحياء-شرق-الرياض-ابتداء-من-17-ذي-الحجة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-صدر-اللائحة-التنفيذية-للمساهمات-العقارية-وتعلن-عن-استقبال-الطلبات-بموجبها.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-بدء-أعمال-السجل-العقاري-في-الرياض-اليوم-نقلة-نوعية-في-تاريخ-العقار-السعودي.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-انضمام-8-أحياء-جنوب-و-غرب-الرياض-للسجل-العقاري-ضمن-المرحلة-الثالثة.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-انتهاء-مدة-تسجيل-العقارات-في-السجل-العقاري-لــ-5-أحياء-بمدينة-الرياض-الخميس-القادم.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-الالتزام-بتوثيق-العقود-العقارية-يحفظ-الحقوق-ويعزز-الشفافية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-إصدار-أكثر-من-27-ألف-رخصة-عقارية-وأكثر-من-77-ألف-عقد-وساطة-خلال-3-أشهر.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-أكثر-من-89-ألف-رخصة-عقارية-خلال-48-ساعة-منذ-بدء-سريان-نظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-أكثر-من-46-ألف-رخصة-فال-العقارية-منذ-بدء-نظام-الوساطة-العقارية-منها-11-ألف-ا-خلال-الربع-الأول-لعام-2024م.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-أكثر-من-46-ألف-رخصة-فال-العقارية-منذ-بدء-نظام-الوساطة-العقارية-منها-11-ألف-ا-خلال-الربع-الأول-لعام-2024م-1.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-أكثر-من-20-ألف-زيارة-خلال-الربع-الأول-لعام-2024م-لضمان-الامتثال-بالأنظمة-في-التعاملات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-7-ملايين-عقد-موث-ق-في-إيجار-تعكس-زيادة-الثقة-في-القطاع-العقاري-السعودي.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-40-ألف-عقد-وساطة-وإزالة-أكثر-من-450-ألف-إعلان-عقاري-مخالف-منذ-بدء-الامتثال.config" />
+    <Content Remove="uSync\v9\Content\هوية-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\نظام-ملكية-الوحدات-العقارية-وفرزها-وإدارتها.config" />
+    <Content Remove="uSync\v9\Content\نظام-بيع-وتأجير-مشروعات-عقارية-على-الخارطة.config" />
+    <Content Remove="uSync\v9\Content\نظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\نظام-الوساطة-العقارية-الجديد.نقلة-نوعية-للسوق-العقاري-في-المملكة.config" />
+    <Content Remove="uSync\v9\Content\نظام-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\نظام-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\ميثاق-الخدمات.config" />
+    <Content Remove="uSync\v9\Content\منظومة-التشريعات-العقارية-تتيح-فرص-ا-واعدة-في-12-مهنة-في-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\منتدى-مستقبل-العقار.config" />
+    <Content Remove="uSync\v9\Content\منتدى-مستقبل-العقار-1.config" />
+    <Content Remove="uSync\v9\Content\من-نحن.config" />
+    <Content Remove="uSync\v9\Content\مليون-ريال-قيمة-غرامة-لمخالفة-منصة-عقارية-لضوابط-الإعلانات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\ملتقى-ومعرض-بيبان-الرياض.config" />
+    <Content Remove="uSync\v9\Content\ملتقى-القصيم-العقاري.config" />
+    <Content Remove="uSync\v9\Content\ملتقى-الاعلام-العقاري.config" />
+    <Content Remove="uSync\v9\Content\ملتقى-الإستثمار-البلدي.config" />
+    <Content Remove="uSync\v9\Content\معرض-مسكن-العقاري.config" />
+    <Content Remove="uSync\v9\Content\معرض-مسكن-العقاري-ينطلق-بنسخته-الثانية-في-ديسمبر-2023.config" />
+    <Content Remove="uSync\v9\Content\معرض-عسير-العقاري-و-المنتجات-التمويلية.config" />
+    <Content Remove="uSync\v9\Content\معرض-سيريدو-العقاري.config" />
+    <Content Remove="uSync\v9\Content\معرض-سيتي-سكيب-الرياض.config" />
+    <Content Remove="uSync\v9\Content\معرض-سيتي-سكيب-البحرين.config" />
+    <Content Remove="uSync\v9\Content\معرض-ريستاتكس-العقاري.config" />
+    <Content Remove="uSync\v9\Content\معرض-ريستاتكس-الشرقية.config" />
+    <Content Remove="uSync\v9\Content\معرض-ريستاتكس-الرياض.config" />
+    <Content Remove="uSync\v9\Content\معالي-وزير-الشؤون-البلدية-والقروية-والإسكان-رئيس-مجلس-إدارة-الهيئة-العامة-للعقار-يرعى-الحفل-التعريفي-لنظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\معالي-وزير-الإسكان-يشكر-القيادة-على-قرار-مجلس-الوزراء-بمنح-الهيئة-العامة-للعقار-صلاحية-الإشراف-على-نظام-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\معالي-وزير-الإسكان-يدشن-المقر-الجديد-للمعهد-العقاري-ومركز-خدمة-الشركاء-بالهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\معالي-محافظ-هيئة-عقارات-الدولة-يزور-مقر-هيئة-العقار.config" />
+    <Content Remove="uSync\v9\Content\معالي-محافظ-هيئة-العقار-يكشف-عن-خطط-ودور-الهيئة-خلال-الفترة-المقبلة.config" />
+    <Content Remove="uSync\v9\Content\معالي-محافظ-هيئة-العقار-يكشف-عن-خطط-ودور-الهيئة-خلال-الفترة-المقبلة-1.config" />
+    <Content Remove="uSync\v9\Content\معالي-محافظ-الهيئة-يلتقي-بسمو-أمير-القصيم-ويعقد-اللقاء-المفتوح-بغرفة-القصيم.config" />
+    <Content Remove="uSync\v9\Content\معالي-محافظ-الهيئة-يعقد-اللقاء-المفتوح-بغرفة-الرياض.config" />
+    <Content Remove="uSync\v9\Content\معالي-محافظ-الهيئة-يعقد-اللقاء-المفتوح-بغرفة-الأحساء.config" />
+    <Content Remove="uSync\v9\Content\معالي-محافظ-الهيئة-موافقة-مجلس-الوزراء-على-الاستراتيجية-الشاملة-للقطاع-العقاري-يؤكد-اهتمام-القيادة-بتنظيم-القطاع-العقاري-وتطويره-ورفع-كفاءته-وتشجيع-الاستثمار-فيه.config" />
+    <Content Remove="uSync\v9\Content\معالي-الأستاذ-ماجد-بن-عبدالله-الحقيل.config" />
+    <Content Remove="uSync\v9\Content\مشاركة-الهيئة-العامة-للعقار-بمعرض-ريستاتكس-العقاري-بالرياض.config" />
+    <Content Remove="uSync\v9\Content\مذكرة-تفاهم-تجمع-المركز-السعودي-للتحكيم-التجاري-والهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\مذكرة-تفاهم-بين-الهيئة-العامة-للعقار-ومؤسسة-البريد-السعودي.config" />
+    <Content Remove="uSync\v9\Content\محافظ-هيئة-العقار-يرفع-التهاني-لخادم-الحرمين-الشريفين-وولي-عهد.config" />
+    <Content Remove="uSync\v9\Content\محافظ-الهيئة-العامة-للعقار-يعلن-طرح-المسودة-الأولى-من-نظام-الوساطة-العقارية-ونظام-المساهمات-العقارية-لطلب-مرئيات-العموم.config" />
+    <Content Remove="uSync\v9\Content\محافظ-الهيئة-العامة-للعقار-يستقبل-وزير-الإسكان-والتخطيط-العمراني-الع-ماني.config" />
+    <Content Remove="uSync\v9\Content\مجلس-الهيئة-العامة-للعقار-يعقد-اجتماعه-السادس.config" />
+    <Content Remove="uSync\v9\Content\مجلس-الإدارة.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-يعقد-اجتماعه-الـ22.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-الـ26.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-الـ-25.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-الـ-23.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-الـ-21.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-الـ-19.ويستعرض-خطة-تطبيق-التسجيل-العيني.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-السادس-عشر-ويناقش-تنفيذ-القرارات-التنظيمية.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-السابع.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-السابع-عشر.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-الرابع.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعقد-اجتماعه-الثامن-عشر.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يعتمد-اللائحة-التنظيمية-للاستشارات-والتحليلات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يستعرض-إنجازات-الربع-الثاني-2018-م.config" />
+    <Content Remove="uSync\v9\Content\مجلس-إدارة-الهيئة-العامة-للعقار-يبحث-إصدار-معايير-الترخيص-للمنصات-العقارية-الإلكترونية.config" />
+    <Content Remove="uSync\v9\Content\مؤشرات-الأداء.config" />
+    <Content Remove="uSync\v9\Content\مؤتمر-ومعرض-ميفما.config" />
+    <Content Remove="uSync\v9\Content\مؤتمر-الاتحاد-الدولي-للعقار.config" />
+    <Content Remove="uSync\v9\Content\مؤتمر-آفاق-ومستقبل-القطاع-العقاري-بالمملكة-يختتم-فعاليته-بحضور-فاق-15-ألف.config" />
+    <Content Remove="uSync\v9\Content\مؤتمر-leap24.config" />
+    <Content Remove="uSync\v9\Content\م-لا-ك.config" />
+    <Content Remove="uSync\v9\Content\م-ل-اك-يسجل-49-نموا-في-الجمعيات-المعتمدة-و69-في-الجمعيات-المفعلة-خلال-2022.config" />
+    <Content Remove="uSync\v9\Content\ليس-لديك-صلاحية.config" />
+    <Content Remove="uSync\v9\Content\لجنة-معالجة-أخطاء-تسجيل-الملكية.config" />
+    <Content Remove="uSync\v9\Content\لجنة-معالجة-أخطاء-تسجيل-الملكية-العقارية-ملكية-تستقبل-4056-اعتراضا-خلال-عام-2020.config" />
+    <Content Remove="uSync\v9\Content\لتسهيل-تبادل-المعلومات-بين-الجهتين-العقار-توقع-مذكرة-تفاهم-مع-الهيئة-العامة-للزكاة-والدخل.config" />
+    <Content Remove="uSync\v9\Content\فعالية-اغلى-بلد.config" />
+    <Content Remove="uSync\v9\Content\فرز-الوحدات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\غرفة-الرياض-و-هيئة-العقار-تستعرضان-أبرز-ملامح-نظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\غد-ا-انطلاق-معرض-مسكن-العقاري-في-الرياض-بأكثر-من-60-ألف-عقار-متاحة-للتملك-المباشر-في-المعرض.config" />
+    <Content Remove="uSync\v9\Content\عن-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\عن-البيانات-المفتوحة.config" />
+    <Content Remove="uSync\v9\Content\طلب-مشاركة-البيانات.config" />
+    <Content Remove="uSync\v9\Content\طلب-بيانات-مفتوحة.config" />
+    <Content Remove="uSync\v9\Content\ضوابط.config" />
+    <Content Remove="uSync\v9\Content\ضوابط-حساب-الضمان-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\صور-من-ورشة-عمل-بناء-المؤشرات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\صور-من-الاجتماع-الثاني-لمجلس-إدارة-الهيئة.config" />
+    <Content Remove="uSync\v9\Content\صفحة-الوسائط.config" />
+    <Content Remove="uSync\v9\Content\شكر-ا-لك-البلاغات.config" />
+    <Content Remove="uSync\v9\Content\شكر-ا-لك-الاستبيان.config" />
+    <Content Remove="uSync\v9\Content\شركاؤنا.config" />
+    <Content Remove="uSync\v9\Content\سمو-محافظ-الأحساء-يستقبل-معالي-محافظ-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\سمو-محافظ-الأحساء-يستقبل-معالي-محافظ-الهيئة-العامة-للعقار-1.config" />
+    <Content Remove="uSync\v9\Content\سمو-محافظ-الأحساء-يستقبل-الرئيس-التنفيذي-للهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\سمو-الرئيس-التنفيذي-المكل-ف-للهيئة-العامة-للعقار-نظام-التسجيل-العيني-للعقار-تتويج-لجهود-المملكة-في-تطوير-قطاع-العقار.config" />
+    <Content Remove="uSync\v9\Content\سمو-أمير-الرياض-يستقبل-الرئيس-التنفيذي-لهيئة-العقار.config" />
+    <Content Remove="uSync\v9\Content\ركائز-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-يستقبل-رئيس-هيئة-تنظيم-القطاع-العقاري-القطري.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-نظام-المساهمات-العقارية-قناة-تمويلية-واستثمارية-جديدة-ت-ساهم-في-زيادة-المعروض-العقاري.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-نظام-البيع-والتأجير-على-الخارطة-يفتح-فرص-ا-جديدة-في-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-نستهدف-فتح-أسواق-جديدة-تساهم-في-تنويع-مصادر-دخل-الاقتصاد-الوطني-و-تدعم-الابتكار-من-خلال-التقنيات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-ما-شهده-اليوم-الأول-في-سيتي-سكيب-من-إطلاقات-لمشاريع-عقارية-بأكثر-من-65-مليار-تعكس-متانة-منظومة-التشريعات-العقارية-وجاذبية-السوق-العقاري-السعودي.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-الإعلام-شريك-في-تنمية-واستدامة-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-ابتداء-من-اليوم-العمل-وفق-نظام-الوساطة-العقارية-و180-يوم-لتصحيح-الأوضاع-بدون-مقابل-مالي.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-إطلاق-الشركة-الوطنية-للتسجيل-العيني-مرحلة-مهمة-في-إستراتيجية-الهيئة-لدعم-موثوقية-السوق-العقاري.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-605-مليارات-قيمة-الصفقات-العقارية-خلال-عام-من-تطبيق-نظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\رئيس-هيئة-العقار-1.3-مليون-خريطة-عقارية-مصححة-منذ-إطلاق-السجل-العقاري.config" />
+    <Content Remove="uSync\v9\Content\رئيس-الهيئة-العامة-للعقار-يلتقي-بالجهات-المعنية-بالسجل-العقاري-والتنظيمات-العقارية-الألمانية-بميونخ.config" />
+    <Content Remove="uSync\v9\Content\رئيس-الهيئة-العامة-للعقار-يفتتح-النسخة-الثانية-من-معرض-مسكن-العقاري.config" />
+    <Content Remove="uSync\v9\Content\حصر-دفع-الإيجار-للعقود-السكنية-من-خلال-القنوات-الرقمية-بدءا-من-15-يناير-بشكل-تدريجي.config" />
+    <Content Remove="uSync\v9\Content\حدث-e3.config" />
+    <Content Remove="uSync\v9\Content\حجز-موعد.config" />
+    <Content Remove="uSync\v9\Content\جدول-تصنيف-المخالفات-والعقوبات-المقررة-لها-وفقا-لنظام-المساهمات-العقارية-ولائحته-التنفيذية.config" />
+    <Content Remove="uSync\v9\Content\توقيع-اتفاقية-مع-جامعة-الأميرة-نورة.config" />
+    <Content Remove="uSync\v9\Content\تواصل-معنا.config" />
+    <Content Remove="uSync\v9\Content\تنظيم-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\تمويل-وافي-الثلاثي-يخلق-التنافسية-في-قطاع-التطوير-العقاري.config" />
+    <Content Remove="uSync\v9\Content\تعاون-بين-الهيئة-العامة-للعقار-والهيئة-العامة-للمساحة.config" />
+    <Content Remove="uSync\v9\Content\تعاون-بين-المعهد-العقاري-السعودي-واللجنة-العقارية-لتطوير-القطاع-العقاري-في-المملكة.config" />
+    <Content Remove="uSync\v9\Content\بيع-وتأجير-مشروعات-عقارية-على-الخارطة.config" />
+    <Content Remove="uSync\v9\Content\بوابة-نفاذ.config" />
+    <Content Remove="uSync\v9\Content\بوابة-العقار-الجيومكانية.config" />
+    <Content Remove="uSync\v9\Content\بروبتك-السعودية.config" />
+    <Content Remove="uSync\v9\Content\برنامج-فرز-الوحدات-العقارية-ي-عم-م-خدمة-تقديم-طلب-فرز-إلكتروني-على-جميع-المدن.config" />
+    <Content Remove="uSync\v9\Content\بالتنسيق-بين-الموارد-البشرية-و-هيئة-العقار-تمكين-جمعيات-الم-لا-ك-من-إصدار-الرقم-700.config" />
+    <Content Remove="uSync\v9\Content\انعقاد-القمة-العالمية-لقادة-العقار-مطلع-ديسمبر-المقبل.config" />
+    <Content Remove="uSync\v9\Content\انعقاد-الاجتماع-الـ24-لمجلس-إدارة-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\انطلاق-ورشة-التسجيل-العيني-للعقار-بمشاركة-152-شخصا-يمثلون-22-جهة.config" />
+    <Content Remove="uSync\v9\Content\انطلاق-أعمال-القمة-العالمية-لقادة-العقار-غدا-بالرياض.config" />
+    <Content Remove="uSync\v9\Content\انضم-إلينا.config" />
+    <Content Remove="uSync\v9\Content\الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الوسائط.config" />
+    <Content Remove="uSync\v9\Content\الوثائق-التنظيمية.config" />
+    <Content Remove="uSync\v9\Content\الهيكل-التنظيمي.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-تستقبل-رئيس-وأعضاء-جمعية-النادي-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للمنافسة-والهيئة-العامة-للعقار-توقعان-مذكرة-تفاهم-لتشجيع-المنافسة-في-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للمعارض-والهيئة-العامة-للعقار-يبحثان-س-بل-تطوير-أعمال-تنظيم-المعارض-والمؤتمرات-في-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للمساحة-والمعلومات-الجيومكانية-الهيئة-العامة-العقار-تبحثان-التقدم-في-برنامج-الشراكة-بينهما.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ووزارة-الموارد-البشرية-والتنمية-الاجتماعية-تنفذان-جولات-رقابية-مشتركة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-وهدف-يطلقان-برنامجا-لتوظيف-أكثر-من-11-ألف-باحث-عن-عمل-في-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ومنشآت-توقعان-مذكرة-لدعم-المنشآت-العقارية-الصغيرة-والمتوسطة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-وشركة-روشن-العقارية-ت-وق-عان-مذكرة-تفاهم.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-وجامعة-الفيصل-توقعان-مذكرة-تفاهم-لتعزيز-التعاون-وتطوير-القدرات-البشرية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-وبنك-التنمية-الاجتماعية-يدشنان-برنامج-الامتياز-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-وأمانة-القصيم-تنفذان-290-جولة-للرقابة-على-الالتزام-بنظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-و-مكاتفة-ي-وقعان-اتفاقية-تعاون-مشتركة-لرفع-الوعي-وتطوير-الإجراءات.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-و-الشركة-السعودية-لإدارة-المرافق-ي-وقعان-مذكرة-تفاهم.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-نظام-بيع-وتأجير-مشروعات-على-الخارطة-يحد-من-المخالفات-ويراقب-الوفاء-بالمتطلبات-الهندسية-والمحاسبية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-نحو-3-أشهر-على-نهاية-المهلة-التصحيحية-لنظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-قرابة-49-ألف-وحدة-مفروزة-خلال-النصف-الأول-من-2023م.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-غدا-الثلاثاء-تنتهي-المهلة-التصحيحية-لنظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ضبط-ومعالجة-3500-إعلان-ا-عقاري-ا-مخالف-ا-منذ-بدء-العمل-وفق-نظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-شريك-تشريعي-لمعرض-سيتي-سكيب.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-شريك-تشريعي-في-معرض-سيريدو-العقاري-2024-بجدة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-شريك-تشريعي-في-معرض-ريستاتكس-الرياض-العقاري-2024م.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-خلال-5-شهور-أكثر-من-32-ألف-وسيط-عقاري-أبرموا-أكثر-من-108-ألف-عقد-وساطة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توقع-مذكرة-تفاهم-مع-وزارة-البيئة-والمياه-والزراعة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توقع-مذكرة-تفاهم-مع-الهيئة-العامة-للمساحة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توقع-مذكرة-تعاون-مع-مجلس-الغرف-السعودية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توقع-اتفاقية-مع-مركز-الاتصال-الوطني-آمر.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توق-ع-مذكرة-تعاون-مع-الهيئة-العامة-للمنشآت-الصغيرة-والمتوسطة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توثيق-ما-يقارب-60-ألف-عقد-إيجار-تجاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توثيق-8-مليون-عقد-في-منصة-إيجار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-توث-ق-ما-يزيد-عن6.5-ملايين-عقد-إيجاري-حتى-نهاية-النصف-الأول-من-2023م.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تنظم-مؤتمر-ومعرض-آفاق-ومستقبل-القطاع-العقاري-الثاني.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تنظم-مؤتمر-بروبتك-السعودية-في-العاصمة-الرياض.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تنطلق-عمليات-السجل-العقاري-في-الرياض-وجدة-والدمام-ابتداء-من-شوال-القادم.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تقيم-ورشة-عمل-لتأهيل-الكوادر-الوطنية-في-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تقدم-خدمات-إضافية-لمنشآت-الوساطة-العقارية-المصنفة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تعلن-بدء-تطبيق-العمل-في-أنشطة-الوساطة-والخدمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تعلن-بدء-أعمال-السجل-العقاري-في-المدينة-المنورة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تعل-ق-ترخيص-منصة-عقارية-وتحيلها-إلى-الجهات-الأمنية-المختصة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تعقد-ورش-عمل-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تعقد-عدد-ا-من-ورش-العمل-التعريفية-للمنصات-العقارية-لاستكمال-متطلبات-ترخيص-المنصات-برخصة-فال-للوساطة-والتسويق-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تعقد-اجتماعها-الخامس-عشر-لبحث-مشروع-ضوابط-تحليل-السوق.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تعقد-اجتماعا-مع-الهيئة-العامة-للمنافسة-لتفعيل-أنظمة-المنافسة-العادلة-في-القطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطلق-مختبر-للتقنيات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطلق-خدمة-حفظ-مبلغ-الضمان-عن-طريق-إيجار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطلق-خدمة-ترخيص-الإعلان-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطلع-على-تجربة-السجل-العقاري-في-قطر.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطرح-مشروع-نظام-التسجيل-العيني-للعقار-في-المملكة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطرح-مشروع-اللائحة-التنفيذية-لنظام-الوساطة-العقارية-عبر-استطلاع-وتدعو-الجميع-لإبداء-المرئيات-حولها.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطرح-مسودة-لائحة-الاستشارات-والتحليلات-العقارية-عبر-منصة-استطلاع.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطرح-مسودة-اللائحة-التنفيذية-لنظام-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تطرح-مسودة-اللائحة-التنظيمية-للمزادات-العقارية-عبر-منصة-استطلاع.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-نحو-5-آلاف-مخالفة-لضوابط-الإعلانات-العقارية-وتحليل-أسواق-العقار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-7421-إعلان-ا-مخالف-ا-وت-صدر-5494-تفويض-ا-عقاري-ا.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-4363-إعلان-ا-مخالف-ا-وتسجل-14881-مستفيدا-في-خدمات-عقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-4293-مخالفة-لضوابط-الإعلانات-العقارية-وضوابط-تحليل-أسواق-العقار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-4-592-مخالفة-لضوابط-الإعلانات-العقارية-وضوابط-تحليل-أسواق-العقار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-3318-إعلان-ا-عقاريا-مخالف-ا-وترخ-ص-5-منصات-عقارية-إلكترونية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-2486-إعلانا-عقاريا-مخالفا-وتص-نف-39-منشأة-عقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تضبط-2289-إعلانا-عقاريا-مخالفا-وترخص-31-منشأة-وساطة-عقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تصدر-ضوابط-تحليل-أسواق-العقار-لتنظيم-النشاط-العقاري-غير-الحكومي.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تصدر-ضوابط-الإعلانات-العقارية-ومعايير-ترخيص-المنصات-العقارية-الإلكترونية-وتصنيفها.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تصدر-رخصة-فال-لـ-10-منصات-عقارية-إلكترونية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تصدر-اللائحة-التنفيذية-لنظام-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تصح-ح-380-693-إعلانا-عقاريا-مخالفا-وتصنف-1032-منشأة-عقارية-خلال-2021.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تصح-ح-380-693-إعلانا-عقاريا-مخالفا-وتصنف-1032-منشأة-عقارية-خلال-2021-1.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تشارك-في-ملتقى-صناع-العقار-بالقصيم.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تشارك-في-معرض-مشروعات-مدن-متميزة-في-عهد-خادم-الحرمين-الشريفين.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تشارك-في-معرض-ريستاتكس-جدة-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تشارك-في-معرض-ريستاتكس-الرياض-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تشارك-في-المعرض-الدولي-للعقارات-والاستثمار-expo-real-بميونخ.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تشارك-في-mipim-بمدينة-كان-الفرنسية-لنقل-تجاربها-في-التنظيم-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تسجل-7267-مستفيدا-لخدمات-عقاري-وتضبط-1673-إعلانا-مخالفا.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تستقبل-رواد-أعمال-الاستثمار-الجريء.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تستعرض-تجاربها-في-التشريعات-العقارية-خلال-مؤتمر-الاتحاد-الدولي-للعقار-في-سنغافورة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تزور-عدد-ا-من-منشآت-الوساطة-العقارية-المصن-فة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ترعى-النسخة-الثانية-من-معرض-مسكن-العقاري-في-الرياض.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ترخص-لـ-237-مسجلا-عقاريا-للقيام-بأعمال-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تدشن-موقعها-الإلكتروني.وتطلق-حسابها-في-تويتر.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تدشن-معرضها-الدائم-بمقرها-الجديد.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تدشن-مركز-التحكيم-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تدشن-المركز-السعودي-للتحكيم-العقاري-وتربط-المركز-الكترونيا-مع-وزارتي-العدل-والإسكان.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تختم-مشاركتها-في-معرضسيتي-سكيب-البحرين-2023.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تختم-فعاليات-بروبتك-السعودية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تختتم-مشاركتها-في-معرض-سيتي-سكيب-العالمي.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تختتم-مشاركتها-في-المعرض-الدولي-للعقارات-والاستثمار-expo-real-بميونخ.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تحقق-اعتماد-الآيزو-في-إدارة-المخاطر.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تحصل-على-شهادة-الآيزو-من-منظمة-المقاييس-الدولية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تتيح-عقد-الوساطة-بين-الوسيط-والمشتري-أو-الم-ستأجر.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تبدأ-تصنيف-مكاتب-وشركات-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تبحث-فرص-التطوير-ورفع-جودة-الخدمات-العقارية-مع-الجمعية-التعاونية-للإسكان.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-نفذ-33-جولة-رقابية-الشهر-الماضي-بمشاركة-عدد-ا-من-الجهات-الحكومية-لرفع-مستوى-الامتثال-في-السوق-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-سبعة-أحياء-م-ستفيدة-من-السجل-العقاري-في-الرياض.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-خمسة-أحياء-مستفيدة-من-السجل-العقاري-في-مدينة-الرياض-ابتداء-من-21-رمضان-الحالي.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-التسجيل-في-6-أحياء-بالمدينة-المنورة-ابتداء-من-24-ذو-الحجة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-التسجيل-في-11-حي-بمدينة-الرياض-ابتداء-من-22-محرم.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-التسجيل-في-10-أحياء-بمدينة-الرياض-ابتداء-من-28-صفر.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-التسجيل-العقاري-في-7-مناطق-عقارية-بمدينتي-الرياض-ومكة-المكرمة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-استقبال-طلبات-الترشيح-للدورات-التدريبية-في-مجال-الاستشارات-والتحليلات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-استقبال-طلبات-تسجيل-الدفعة-الثانية-في-البرنامج-التدريبي-لمساري-الاستشارات-والتحليلات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-48-حي-م-ستفيد-من-السجل-العقاري-في-الرياض-والدمام-والمدينة-المنورة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-حي-الفلاح-في-الرياض-منطقة-تسجيل-عقاري-ابتداء-من-17-شوال.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-بدء-التسجيل-في-عشرة-أحياء-مستفيدة-من-السجل-العقاري-في-مدينة-الرياض.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-شارك-في-ملتقى-القصيم-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-رخص-28-منصة-عقارية-إلكترونية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-دشن-منصتها-الإلكترونية-للمساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-حيل-92-وسيط-عقاري-للجهات-المختصة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-بالتعاون-مع-الهيئة-الملكية-لمدينة-مكة-المكرمة-والمشاعر-المقدسة-وأمانة-العاصمة-المقدسة-تعلن-بدء-أعمال-السجل-العقاري-في-مكة-المكرمة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-اليوم-انتهاء-فترة-طلبات-الترشيح-للقبول-في-البرنامج-التدريبي-في-مجال-الاستشارات-والتحليلات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-اليوم-الاثنين-20-نوفمبر-انتهاء-فترة-إبداء-المرئيات-حول-مسودة-اللائحة-التنفيذية-لنظام-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-النظام-الجديد-يدعم-سرعة-تملك-مشروعات-البيع-والتأجير-على-الخارطة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ارتفاع-نسبة-امتثال-المنصات-العقارية-الإلكترونية-في-تطبيق-ضوابط-الإعلانات.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-إصدار-أول-تشريع-عقاري-لإدارة-المرافق-خلال-الربع-الأول-للعام-المقبل-2024م.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-أكثر-من-مليون-عملية-عبر-منصة-م-لاك-حتى-نهاية-2023م.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-أكثر-من-96-ألف-وحدة-مفروزة-بمساحات-تتجاوز-30-مليون-متر-مربع-خلال-2023.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-أكثر-من-148-ألف-رخصة-حتى-الآن-وفالهو-المسمى-المعتمد-لرخص-ممارسة-أنشطة-الوساطة-والخدمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-أكثر-من-100-مليون-متر-مربع-مفروز-حتى-أكتوبر-الجاري.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-العقار-توقع-مذكرة-تعاون-مع-هيئة-المساحة-والمعلومات-الجيومكانية-للاستفادة-من-البيانات-والمعلومات-والخدمات-الجيومكانية.config" />
+    <Content Remove="uSync\v9\Content\المهندس-عبدالله-بن-سعود-الحماد.config" />
+    <Content Remove="uSync\v9\Content\المهندس-طارق-بن-عبدالله-الشهيب.config" />
+    <Content Remove="uSync\v9\Content\المنصات-العقارية-تستعد-للربط-الإلكتروني-مع-هيئة-العقار-لتنظيم-الإعلانات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\المكتبة.config" />
+    <Content Remove="uSync\v9\Content\المفرج-متحدث-ا-رسمي-ا-لـ-هيئة-العقار.config" />
+    <Content Remove="uSync\v9\Content\المعهد-العقاري-ينظم-برامج-متخصصة-للجان-النظر-في-طلبات-تملك-العقارات-إحكام.config" />
+    <Content Remove="uSync\v9\Content\المعهد-العقاري-السعودي.config" />
+    <Content Remove="uSync\v9\Content\المعهد-العقاري-السعودي-يعقد-الاجتماع-الأول-لمجلس-إدارته-ويهدف-إلى-تدريب-40-ألف-متدرب.config" />
+    <Content Remove="uSync\v9\Content\المعهد-العقاري-السعودي-يعقد-اجتماع-مجلس-إدارته-الأول.config" />
+    <Content Remove="uSync\v9\Content\المعهد-العقاري-السعودي-عقد-الاجتماع-الثاني-لمجلس-إدارته.config" />
+    <Content Remove="uSync\v9\Content\المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\المساهمات-العقارية-قناة-تمويلية-جديدة-متوازية-مع-الصناديق-الاستثمارية-العقارية.config" />
+    <Content Remove="uSync\v9\Content\المركز-السعودي-للتحكيم-العقاري.config" />
+    <Content Remove="uSync\v9\Content\المركز-الاعلامي.config" />
+    <Content Remove="uSync\v9\Content\المبارك-يشكر-القيادة-لتعيينه-محافظا-للهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\المبارك-كشف-عن-خطط-الهيئة-في-لقاء-مفتوح-في-غرفة-القصيم.config" />
+    <Content Remove="uSync\v9\Content\المبارك-كشف-عن-خطط-الهيئة-في-لقاء-مفتوح-في-غرفة-القصيم-1.config" />
+    <Content Remove="uSync\v9\Content\المؤشرات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\المؤشر-الإيجاري-أكثر-من-294-ألف-صفقة-في-سبتمبر.config" />
+    <Content Remove="uSync\v9\Content\اللوائح.config" />
+    <Content Remove="uSync\v9\Content\اللائحة-التنفيذية-لنظام-ملكية-الوحدات-العقارية-وفرزها-وإدارتها.config" />
+    <Content Remove="uSync\v9\Content\اللائحة-التنفيذية-لنظام-بيع-وتأجير-مشروعات-عقارية-على-الخارطة.config" />
+    <Content Remove="uSync\v9\Content\اللائحة-التنفيذية-لنظام-الوساطة.config" />
+    <Content Remove="uSync\v9\Content\اللائحة-التنفيذية-لنظام-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\اللائحة-التنفيذية-لنظام-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\اللائحة-التنظيمية-للمزادات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\اللائحة-التنظيمية-للاستشارات-والتحليلات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\القمة-العالمية-لقادة-العقار.config" />
+    <Content Remove="uSync\v9\Content\القمة-العالمية-لقادة-العقار-بالرياض-تناقش-أحدث-المستجدات-العقارية-محلي-ا-وعالمي-ا.config" />
+    <Content Remove="uSync\v9\Content\القمة-العالمية-لقادة-العقار-بالرياض-تدعو-للمرونة-والنمو-من-أجل-المستقبل.config" />
+    <Content Remove="uSync\v9\Content\القمة-العالمية-لقادة-العقار-إطلاق-عدد-من-الاتفاقيات-والمبادرات-لتعزيز-الشراكات-العالمية-واستدامة-القطاع.config" />
+    <Content Remove="uSync\v9\Content\القمة-السعودية-للبناء-والبنية-التحتية.config" />
+    <Content Remove="uSync\v9\Content\الفعاليات.config" />
+    <Content Remove="uSync\v9\Content\الضوابط-المنظمة-لتأهيل-وتصنيف-ممارسي-نشاط-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الصفحة-غير-موجودة.config" />
+    <Content Remove="uSync\v9\Content\الشيخ-محمد-بن-عبدالله-العياف.config" />
+    <Content Remove="uSync\v9\Content\الشروط-والأحكام-و-سياسة-الإستخدام.config" />
+    <Content Remove="uSync\v9\Content\السجل-العقاري.config" />
+    <Content Remove="uSync\v9\Content\السجل-العقاري-يصدر-أكثر-250-ألف-صك-تسجيل-ملكية-جديد-م-نذ-إطلاق-التسجيل-العيني-للعقار.config" />
+    <Content Remove="uSync\v9\Content\الرياض-تحتضن-معرض-مسكن-العقاري-النسخة-الثانية-في-ديسمبر-المقبل.config" />
+    <Content Remove="uSync\v9\Content\الرئيسية.config" />
+    <Content Remove="uSync\v9\Content\الرئيس-التنفيذي-للهيئة-العامة-للعقار-يثم-ن-موافقة-مجلس-الوزراء-على-نظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الرئيس-التنفيذي-المكلف-للهيئة-العامة-للعقار-يستقبل-وكيل-وزارة-الإسكان-والتخطيط-العمراني-الع-ماني.config" />
+    <Content Remove="uSync\v9\Content\الدكتور-محمد-بن-يحيى-آل-صايل.config" />
+    <Content Remove="uSync\v9\Content\الدكتور-بدر-بن-إبراهيم-بن-سعيدان.config" />
+    <Content Remove="uSync\v9\Content\الخدمات-الإلكترونية.config" />
+    <Content Remove="uSync\v9\Content\الحم-اد-36-مليار-ريال-حجم-عمليات-القطاع-العقاري-في-المنطقة-الشرقية-حتى-نهاية-الربع-الثالث-2023م.config" />
+    <Content Remove="uSync\v9\Content\الحقيل.يدشن-مؤتمر-بروبتك-السعودية-بنسخته-الأولى-بمشاركة-دولية-واسعة.config" />
+    <Content Remove="uSync\v9\Content\الحقيل-يكر-م-الوسطاء-العقاريين-المبادرين-في-الامتثال-لنظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الحقيل-يشكر-القيادة-لموافقة-مجلس-الوزراء-على-نظام-المساهمات-العقارية.config" />
+    <Content Remove="uSync\v9\Content\الحقيل-يشكر-القيادة-على-موافقة-مجلس-الوزراء-على-نظام-بيع-وتأجير-مشروعات-عقارية-على-الخارطة.config" />
+    <Content Remove="uSync\v9\Content\الحقيل-يرفع-الشكر-للقيادة-بالموافقة-على-الاستراتيجية-الشاملة-للقطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الحقيل-ي-شارك-منسوبي-الهيئة-العامة-للعقار-احتفالات-اليوم-الوطني-الـ-93.config" />
+    <Content Remove="uSync\v9\Content\الحقيل-إنشاء-الهيئة-العامة-للعقار-يعز-ز-أداء-القطاع-العقاري-ويرفع-من-مساهمته-في-الناتج-المحلي.config" />
+    <Content Remove="uSync\v9\Content\التقرير-السابق.config" />
+    <Content Remove="uSync\v9\Content\التقدم-لوظيفة.config" />
+    <Content Remove="uSync\v9\Content\التقارير.config" />
+    <Content Remove="uSync\v9\Content\التقارير-السنوية.config" />
+    <Content Remove="uSync\v9\Content\البلدية-والإسكان-و-هيئة-العقار-تطلقان-حملة-صور-وأرسل-للإعلانات-العقارية-المخالفة.config" />
+    <Content Remove="uSync\v9\Content\البلاغات.config" />
+    <Content Remove="uSync\v9\Content\البرامج-والمبادرات.config" />
+    <Content Remove="uSync\v9\Content\الانظمة.config" />
+    <Content Remove="uSync\v9\Content\الاستراتيجية-الشاملة-للقطاع-العقاري.config" />
+    <Content Remove="uSync\v9\Content\الادلة.config" />
+    <Content Remove="uSync\v9\Content\الإصدارات.config" />
+    <Content Remove="uSync\v9\Content\الأنظمة-واللوائح-والأدلة.config" />
+    <Content Remove="uSync\v9\Content\الأنظمة-واللوائح-والأدلة-old.config" />
+    <Content Remove="uSync\v9\Content\الأمير-سعود-بن-طلال-يثمن-قرار-مجلس-الوزراء-بنقل-اختصاص-التسجيل-العيني-للعقار-إلى-الهيئة-العامة-للعقار.config" />
+    <Content Remove="uSync\v9\Content\الأستاذ-هاني-بن-عبدالله-أبو-النجا.config" />
+    <Content Remove="uSync\v9\Content\الأستاذ-فهد-بن-منصور-الهاشم.config" />
+    <Content Remove="uSync\v9\Content\الأستاذ-عجلان-بن-عبدالعزيز-العجلان.config" />
+    <Content Remove="uSync\v9\Content\الأستاذ-عبدالعزيز-بن-محمد-السبيعي.config" />
+    <Content Remove="uSync\v9\Content\الأستاذ-عبدالرحمن-بن-عبدالله-الطويل.config" />
+    <Content Remove="uSync\v9\Content\الأستاذ-راكان-بن-عبدالله-آل-الشيخ.config" />
+    <Content Remove="uSync\v9\Content\الأسئلة-الشائعة.config" />
+    <Content Remove="uSync\v9\Content\الأخبار.config" />
+    <Content Remove="uSync\v9\Content\استطلاع-الوعي-2023.config" />
+    <Content Remove="uSync\v9\Content\استبيان.config" />
+    <Content Remove="uSync\v9\Content\اسأل-المتحدث-الرسمي.config" />
+    <Content Remove="uSync\v9\Content\إيجار.config" />
+    <Content Remove="uSync\v9\Content\إيجار-يؤكد-أهمية-إكمال-عملية-توثيق-العقد-الإلكتروني-قبل-إجراء-أي-عملية-دفع-للمستحقات.config" />
+    <Content Remove="uSync\v9\Content\إيجار-ي-برم-١٢-اتفاقية-مع-منصات-عقارية-لتسهيل-الإجراءات-التعاقدية.config" />
+    <Content Remove="uSync\v9\Content\إستراتيجية-الهيئة.config" />
+    <Content Remove="uSync\v9\Content\أكثر-من-50-جولة-رقابية-ت-نف-ذها-الهيئة-العامة-للعقار-وأمانة-منطقة-حائل-للتأكد-من-الالتزام-بنظام-الوساطة-العقارية.config" />
+    <Content Remove="uSync\v9\Content\xmlsitemap.config" />
+    <Content Remove="uSync\v9\Content\website-delivery-checklist.config" />
+    <Content Remove="uSync\v9\Content\violation-report_jsff1cph.config" />
+    <Content Remove="uSync\v9\Content\violation-report.config" />
+    <Content Remove="uSync\v9\Content\the-request-was-not-sent.config" />
+    <Content Remove="uSync\v9\Content\thank-you.config" />
+    <Content Remove="uSync\v9\Content\test-1.config" />
+    <Content Remove="uSync\v9\Content\terms-and-conditions.config" />
+    <Content Remove="uSync\v9\Content\system-engineer.config" />
+    <Content Remove="uSync\v9\Content\smtp.config" />
+    <Content Remove="uSync\v9\Content\site-map.config" />
+    <Content Remove="uSync\v9\Content\services-filter.config" />
+    <Content Remove="uSync\v9\Content\service.config" />
+    <Content Remove="uSync\v9\Content\search.config" />
+    <Content Remove="uSync\v9\Content\researcher_elma3tl5.config" />
+    <Content Remove="uSync\v9\Content\researcher.config" />
+    <Content Remove="uSync\v9\Content\real-estate-beneficiary_s2qichom.config" />
+    <Content Remove="uSync\v9\Content\real-estate-beneficiary.config" />
+    <Content Remove="uSync\v9\Content\questionnaire_mtgf2qvx.config" />
+    <Content Remove="uSync\v9\Content\questionnaire8.config" />
+    <Content Remove="uSync\v9\Content\questionnaire7.config" />
+    <Content Remove="uSync\v9\Content\questionnaire6.config" />
+    <Content Remove="uSync\v9\Content\questionnaire5_lonb1lt4.config" />
+    <Content Remove="uSync\v9\Content\questionnaire4_rqadvvb0.config" />
+    <Content Remove="uSync\v9\Content\questionnaire4.config" />
+    <Content Remove="uSync\v9\Content\questionnaire31.config" />
+    <Content Remove="uSync\v9\Content\questionnaire3.config" />
+    <Content Remove="uSync\v9\Content\questionnaire21.config" />
+    <Content Remove="uSync\v9\Content\questionnaire2.config" />
+    <Content Remove="uSync\v9\Content\questionnaire11.config" />
+    <Content Remove="uSync\v9\Content\questionnaire1.config" />
+    <Content Remove="uSync\v9\Content\questionnaire01.config" />
+    <Content Remove="uSync\v9\Content\questionnaire0.config" />
+    <Content Remove="uSync\v9\Content\questionnaire.config" />
+    <Content Remove="uSync\v9\Content\questionnaire-page.config" />
+    <Content Remove="uSync\v9\Content\property-owner.config" />
+    <Content Remove="uSync\v9\Content\project-management-institute.config" />
+    <Content Remove="uSync\v9\Content\professional-practitioner.config" />
+    <Content Remove="uSync\v9\Content\privacy-policy.config" />
+    <Content Remove="uSync\v9\Content\open-data-request_4m1feoby.config" />
+    <Content Remove="uSync\v9\Content\open-data-request.config" />
+    <Content Remove="uSync\v9\Content\open-data-kpis.config" />
+    <Content Remove="uSync\v9\Content\newsletter-registration_3hdjhma4.config" />
+    <Content Remove="uSync\v9\Content\newsletter-registration.config" />
+    <Content Remove="uSync\v9\Content\ministry-of-municipal-rural-affairs-housing.config" />
+    <Content Remove="uSync\v9\Content\ministry-of-justice.config" />
+    <Content Remove="uSync\v9\Content\marketing_covjnhzr.config" />
+    <Content Remove="uSync\v9\Content\marketing.config" />
+    <Content Remove="uSync\v9\Content\main-settings.config" />
+    <Content Remove="uSync\v9\Content\main-filter.config" />
+    <Content Remove="uSync\v9\Content\join-us.config" />
+    <Content Remove="uSync\v9\Content\individuals.config" />
+    <Content Remove="uSync\v9\Content\general.config" />
+    <Content Remove="uSync\v9\Content\general-authority-for-survey-and-geospatial-information.config" />
+    <Content Remove="uSync\v9\Content\facilities.config" />
+    <Content Remove="uSync\v9\Content\expo-real-2023.config" />
+    <Content Remove="uSync\v9\Content\emails.config" />
+    <Content Remove="uSync\v9\Content\email-configuration.config" />
+    <Content Remove="uSync\v9\Content\developer.config" />
+    <Content Remove="uSync\v9\Content\designers_ozln5idq.config" />
+    <Content Remove="uSync\v9\Content\designers.config" />
+    <Content Remove="uSync\v9\Content\customers.config" />
+    <Content Remove="uSync\v9\Content\complaint_sz3ljzft.config" />
+    <Content Remove="uSync\v9\Content\complaint.config" />
+    <Content Remove="uSync\v9\Content\book-appointment.config" />
+    <Content Remove="uSync\v9\Content\beneficiary-type.config" />
+    <Content Remove="uSync\v9\Content\ask-the-official-speaker_ns1j10dn.config" />
+    <Content Remove="uSync\v9\Content\ask-the-official-speaker.config" />
+    <Content Remove="uSync\v9\Content\apply-for-a-job_istfgmt0.config" />
+    <Content Remove="uSync\v9\Content\apply-for-a-job.config" />
+    <Content Remove="uSync\v9\Content\22-متحدثا-يناقشون-مؤتمر-ومعرض-آفاق-ومستقبل-القطاع-العقاري-الثاني-الأربعاء-المقبل.config" />
+    <Content Remove="uSync\v9\Blueprints\لم-يتم-ارسال-الطلب.config" />
+    <Content Remove="uSync\v9\Blueprints\شكرا-لك-أسال-المتحدث-الرسمي.config" />
+    <Content Remove="uSync\v9\Domains\en_en-us.config" />
+    <Content Remove="uSync\v9\Domains\ar-المركز-الاعلامي-الفعاليات_ar-jo.config" />
+    <Content Remove="uSync\v9\Dictionary\ملغي.config" />
+    <Content Remove="uSync\v9\Dictionary\لوائح.config" />
+    <Content Remove="uSync\v9\Dictionary\ضوابط.config" />
+    <Content Remove="uSync\v9\Dictionary\ساري.config" />
+    <Content Remove="uSync\v9\Dictionary\ساري-من-تاريخ.config" />
+    <Content Remove="uSync\v9\Dictionary\أنظمة.config" />
+    <Content Remove="uSync\v9\Dictionary\أدلة.config" />
+    <Content Remove="uSync\v9\Dictionary\legislation-type.config" />
+    <Content Remove="uSync\v9\Dictionary\accreditation-document.config" />
+    <Content Remove="uSync\v9\Content\هيئة-العقار-ت-علن-عن-بدء-التسجيل-العيني-في-11-حي-بمنطقة-القصيم-ابتداء-من-26-ربيع-الأول.config" />
+    <Content Remove="uSync\v9\Content\نوع-المستفيد.config" />
+    <Content Remove="uSync\v9\Content\منشآت.config" />
+    <Content Remove="uSync\v9\Content\معرض-التقنية-العقارية.config" />
+    <Content Remove="uSync\v9\Content\مطور.config" />
+    <Content Remove="uSync\v9\Content\مصمم.config" />
+    <Content Remove="uSync\v9\Content\مسرعات-الأعمال.config" />
+    <Content Remove="uSync\v9\Content\مستفيد-عقاري_s2qichom.config" />
+    <Content Remove="uSync\v9\Content\مستفيد-عقاري.config" />
+    <Content Remove="uSync\v9\Content\مجلس-التقنية-العقارية.config" />
+    <Content Remove="uSync\v9\Content\مجتمع-التقنية-العقارية_d5bltgza.config" />
+    <Content Remove="uSync\v9\Content\مجتمع-التقنية-العقارية.config" />
+    <Content Remove="uSync\v9\Content\مالك-عقار.config" />
+    <Content Remove="uSync\v9\Content\عامة.config" />
+    <Content Remove="uSync\v9\Content\توقيع-اتفاقية-مع-وزارة-الموارد-البشرية.config" />
+    <Content Remove="uSync\v9\Content\تقرير.config" />
+    <Content Remove="uSync\v9\Content\تصفية-الخدمات.config" />
+    <Content Remove="uSync\v9\Content\تسويق_covjnhzr.config" />
+    <Content Remove="uSync\v9\Content\تسويق.config" />
+    <Content Remove="uSync\v9\Content\انضم-الينا.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تدعو-ملاك-العقارات-في-خمسة-أحياء-بمدينة-الرياض-لتسجيل-عقاراتهم-في-السجل-العقاري-ابتداء-من-اليوم.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-تختتم-مشاركتها-في-منتدى-قطر-العقاري-الأول.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-التسجيل-العيني-في-حي-طيبة-بمدينة-الرياض-ابتداء-من-28-صفر.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-أعمال-السجل-العقاري-في-4-أحياء-بالمدينة-المنورة.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-ت-علن-عن-بدء-أعمال-السجل-العقاري-في-18-حيا-بمنطقة-الرياض-ابتداء-من-26-ربيع-الأول.config" />
+    <Content Remove="uSync\v9\Content\الهيئة-العامة-للعقار-الخميس-القادم-تنتهي-مدة-تسجيل-العقارات-في-السجل-العقاري-لــ-18-حيا-بالرياض-ومكة-المكرمة.config" />
+    <Content Remove="uSync\v9\Content\المصممين.config" />
+    <Content Remove="uSync\v9\Content\العملاء.config" />
+    <Content Remove="uSync\v9\Content\التقديم_tcrdo4ar.config" />
+    <Content Remove="uSync\v9\Content\التقديم.config" />
+    <Content Remove="uSync\v9\Content\التقدم-لوظيفة-old.config" />
+    <Content Remove="uSync\v9\Content\البيئة-التنظيمية.config" />
+    <Content Remove="uSync\v9\Content\افراد.config" />
+    <Content Remove="uSync\v9\Content\questionnaire5.config" />
+    <Content Remove="uSync\v9\Blueprints\المهندس-عبدالله-بن-سعود-الحماد.config" />
+    <_ContentIncludedByDefault Remove="wwwroot\sass\style.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\test\Alrai_Icons.png" />
+    <_ContentIncludedByDefault Remove="Views\Partials\Components\ApplyForJobForm\ApplyForJobForm.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Partials\Components\AskSpeakerForm\AskSpeakerForm.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Partials\Components\BookAppointmentForm\BookAppointmentForm.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Partials\Components\OpenDataRequestForm\OpenDataRequestForm.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="CsvHelper" Version="33.0.1" />
+    <PackageReference Include="FuzzySharp" Version="2.0.2" />
+    <PackageReference Include="GoogleReCaptcha.V3" Version="1.3.1" />
+    <PackageReference Include="MailKit" Version="4.8.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Mime-Detective" Version="24.7.1" />
+    <PackageReference Include="NewsletterStudio" Version="13.0.9" />
+    <PackageReference Include="NewsletterStudio.Plugins.Mailjet" Version="1.0.0-beta1" />
+    <PackageReference Include="Our.Umbraco.TheDashboard" Version="13.0.1" />
+    <PackageReference Include="PDFsharp" Version="6.1.1" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+    <PackageReference Include="SeoToolkit.Umbraco" Version="3.6.0" />
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="8.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
+    <PackageReference Include="TFE.CopyVariantContent" Version="1.1.0" />
+    <PackageReference Include="Umbraco.Cms" Version="13.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
+    <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="13.5.1" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.5.1" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.5.1" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.5.1" />
+    <PackageReference Include="Umbraco.Community.CSPManager" Version="1.4.1" />
+    <PackageReference Include="Umbraco.Forms" Version="13.2.5" />
+    <PackageReference Include="Umbraco.Forms.StaticAssets" Version="13.2.5" />
+    <PackageReference Include="uSync.Complete" Version="13.1.7" />
+    <PackageReference Include="uSync.Forms" Version="13.3.0" />
+    <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\newsletterStudioExtensions\controller\customContentPickerControl\edit.controller.js" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\controller\customContentPickerControl\edit.html" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\controller\customContentPickerControl\view.html" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\controller\customHtmlEmailControl\edit.controller.js" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\controller\customHtmlEmailControl\edit.html" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\controller\customHtmlEmailControl\view.html" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\lang\en-US.xml" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\package.manifest" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\views\controls\customContentPicker.cshtml" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\Views\control\customhtml.cshtml" />
+    <Content Include="App_Plugins\newsletterStudioExtensions\views\Macros\ContentPickerMacro.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="App_Plugins\regaPlugins\exchange\exchange.settings.html" />
+    <Content Include="App_Plugins\regaPlugins\newsletterStudio\themes\RegaTheme\macros\Latest-News.cshtml" />
+    <Content Include="App_Plugins\regaPlugins\newsletterStudio\themes\RegaTheme\theme.json" />
+    <Content Include="old-news.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Folder Include="Controllers\Forms\Workflow\" />
+    <Folder Include="custom\" />
+    <Folder Include="uSync\v9\RelationTypes\" />
+    <Folder Include="Views\ScriptManager\GoogleAnalytics\" />
+    <Folder Include="Views\ScriptManager\GTM\" />
+    <Folder Include="Views\Partials\CentralizedSearch\" />
+    <Folder Include="wwwroot\css\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="analysis.html" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Razor files are needed for the backoffice to work correctly -->
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Remove RazorCompileOnBuild and RazorCompileOnPublish when not using ModelsMode InMemoryAuto -->
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+    <AssemblyName>$(Umbraco10Project)</AssemblyName>
+    <UserSecretsId>e9581320-8529-404f-af0e-f0d3eee8039d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+</Project>

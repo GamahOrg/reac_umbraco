@@ -1,0 +1,75 @@
+﻿@using Newtonsoft.Json
+@using Umbraco10Project.Helpers
+@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    Layout = "Master.cshtml";
+    var home = (Home)Model;
+    var aboutUs = Umbraco.Content("1218");
+}
+
+<div class="home">
+    <div class="container-fluid p-0 d-flex home-header justify-content-center align-content-center" loading="lazy"
+         style="background-image: url('@home.HeaderImage?.Url()');">
+        <div class="row container">
+            <div class="col-12 ps-5 pe-5  d-flex justify-content-center align-items-end">
+                <div class="home-header-overlay-text col text-white">
+                    <h1 class="text-white">@Utils.StripHTML(home?.RealEstateMainTitle?.Replace("&quot;", "\"").Replace("&nbsp;", "") ?? "")</h1>
+                    <p class="col-lg-6 col-12 mt-4">@Utils.StripHTML(home?.SectionBrief?.ToString()?.Replace("&quot;", "\"").Replace("&nbsp;", "") ?? "")</p>
+                    <button class="btn btn-light text-center align-content-center onclick" aria-label="More About Rega" data-action="redirect" data-value="@aboutUs?.Url()" >@Umbraco.GetDictionaryValue("More about Rega")</button>
+                </div>
+
+
+            </div>
+            <div class="col-12  d-flex  justify-content-center align-items-end ">
+                <div class="scroll-icon ex-3">
+                    <span class="wheel"></span>
+                    <span class="arrow up"></span>
+                    <span class="arrow down"></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // .scroll-icon on click scroll to the next section
+        $(".scroll-icon").on("click", function () {
+            $('html, body').animate({
+                scrollTop: $(".home-blocks").offset().top - 100
+            }, 1000);
+        });
+    </script>
+    <div class="home-blocks">
+        @await Html.PartialAsync("NewsSection")
+
+        @await Html.PartialAsync("Statistics")
+
+        @if (Model.Value<bool>("searchCenterEnable"))
+        {
+            @await Html.PartialAsync("CentralizedSearch/HomeCentralizedSearch")
+        }
+
+        @await Html.PartialAsync("Services")
+
+        @if (Model.Value<bool>("enableNewsLetter"))
+        {
+            @* @await Html.PartialAsync("NewsLetter") *@
+            @await Umbraco.RenderMacroAsync("RegaNewsletterStudioSignup", new
+            {
+                mailingList =
+                    JsonConvert.SerializeObject(new SubscribeModel()
+                    {
+                        Title = Model.Value<string>("newsLetterTitle") ?? "",
+                        Description = Model.Value<string>("newsLetterBreif") ?? "",
+                        MailingList = home?.MailingList
+                    })
+            })
+        }
+
+        @* *@
+
+
+    </div>
+
+</div>

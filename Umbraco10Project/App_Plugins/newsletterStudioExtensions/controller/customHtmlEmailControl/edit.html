@@ -1,0 +1,15 @@
+<div ng-controller="newsletterStudioExtensions.controller.customHtmlEmailControl.EditController as editVm"
+     ng-init="editVm.init(vm,vm.selectedControl)">
+
+    <div class="ns-property-group">
+        <ns-umb-property label="ns_control_customHtml_pasteHtml" description="">
+            <textarea ng-model="editVm.control.html" rows="10" style="width:100%">
+            </textarea>
+        </ns-umb-property>
+    </div>
+    <div class="ns-property-group">
+        <ns-umb-property label="ns_margin" description="">
+            <ns-margin-editor ng-model="editVm.control.padding"></ns-margin-editor>
+        </ns-umb-property>
+    </div>
+</div>

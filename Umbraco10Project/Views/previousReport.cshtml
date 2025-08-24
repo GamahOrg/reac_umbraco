@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Models
+@using uSync.Core
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<PreviousReport>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+    var isEnglish = Context.Request.Path.ToString().Contains("/en/");
+    var Review = Umbraco.Content(2649);
+    var id = Context.Request.Query["id"];
+    var transid = Context.Request.Query["id"];
+    var random = Context.Request.Query["random"];
+    string ReviewUrl = Review.Url();
+    if (!string.IsNullOrWhiteSpace(id))
+    {
+        ReviewUrl = $"{ReviewUrl}?id={id}&&transid={transid}&&random={random}";
+    }
+
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        disableRoot = true,
+        title = Model?.Value("pageTitle")?.ToString() ?? ""
+    };
+}
+
+<div class="previous-report-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+    <div class="container mt-4">
+
+
+        <div class="col text-end justify-content-end">
+            <a class="btn btn-outline-primary" id="previousBTN"> @Umbraco.GetDictionaryValue("Previous reports")</a>
+            <a class="btn btn-outline-primary" asp-controller="Services" asp-action="LogOut" asp-route-language="@(isEnglish ? "" : "arabic")"> @Umbraco.GetDictionaryValue("Sign Out")</a>
+        </div>
+
+        <div class="row">
+
+            <div class="apply-for-job-form">
+                @await Component.InvokeAsync("PrevReportForm")
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script csp-manager-add-nonce="true">
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+
+        $("#previousBTN").on("click", function () {
+            var Link = "@ReviewUrl";
+            var decodedURL = decodeURIComponent(Link);
+            decodedURL = $("<div/>").html(decodedURL).text();
+
+            $.ajax({
+                url: `/umbraco/surface/Emails/PrevReports?isEnglish=@isEnglish`,
+                type: 'GET',
+                //data: { id: id, transId: transId, random: random },
+                success: function (data) {
+                    window.location.href = data;
+                }
+            });
+
+        })
+
+    });
+
+</script>

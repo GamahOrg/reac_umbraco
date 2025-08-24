@@ -1,0 +1,205 @@
+﻿@using Umbraco10Project.Helpers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.WafiModel>
+
+@{
+    var cityId = Model.QueryParm.CityId;
+    var licenseRequestTypeId = Model.QueryParm.LicenseRequestTypeId;
+    var docUrl = Model.QueryParm.ModelUrl;
+    var currentPage = Model.QueryParm.CurrentPage;
+    
+}
+<div class="wafi-projects-page">
+    <h5>@Model.Title</h5>
+
+    @if(Model.ShowController){
+        <div class="row">
+            <div class="col-lg-6 col-md-6 mt-md-0 col-12 mt-2 mt-lg-0">
+                <select class="wafi-city-select form-select" aria-label="City Select" asp-for="@cityId">
+                    <option class="services-list-option" value="">
+                        @Umbraco.GetDictionaryValueOrDefault("City", "المدينة")
+                    </option>
+
+                    @{
+                        if (Model.cityList != null && Model.cityList?.Data != null)
+                        {
+                            foreach (var item in Model.cityList.Data)
+                            {
+                                <option class="services-list-option" value="@item.id">
+                                    @item.cityName
+                                </option>
+                            }
+                        }
+                    }
+
+                </select>
+            </div>
+            <div class="col-lg-6 col-md-6 mt-md-0 col-12 mt-2 mt-lg-0">
+                <select class="wafi-license-type-select form-select" aria-label="License Select" asp-for="@licenseRequestTypeId">
+                    <option value="">
+                        @Umbraco.GetDictionaryValueOrDefault("License type", "نوع الرخصة")
+                    </option>
+
+                    @{
+                        if (Model.licenseRequestType != null && Model.licenseRequestType.Data != null)
+                        {
+                            foreach (var item in Model.licenseRequestType.Data)
+                            {
+                                <option value="@item.id">
+                                    @item.name
+                                </option>
+                            }
+                        }
+                    }
+
+                </select>
+            </div>
+        </div>
+    }
+
+        @{
+            if (Model.response?.Data?.Results == null || Model.response.Data.Results.Count == 0)
+            {
+                if (Model.ShowAlert)
+                {
+                    <div class="alert alert-warning mt-4 text-center" role="alert">
+                        <h4 class="alert-heading">@Umbraco.GetDictionaryValueOrDefault("Not Exist","غير موجود")</h4>
+                        <p>
+                            @Umbraco.GetDictionaryValueOrDefault("inquiry not exist","الاستعلام الذي تبحث عنه غير موجود")
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <h5 class="title h-2rem overflow-hidden mt-4">@Umbraco.GetDictionaryValue("No Content")</h5>
+
+                }
+            }
+            else
+            {
+
+                <div class="row mt-4">
+                    @{
+                        foreach (var item in Model.response.Data.Results)
+                        {
+                            <div class="col-lg-6 col-12 mb-2">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <p class="title fw-bold">@item.ProjectName</p>
+                                        <p class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Facility", "المطور"): </span>@item.FacilityName</p>
+                                        <p class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Location", "الموقع"): </span>@item.AreaName - @item.CityName</p>
+                                        <div class="">
+                                            <div class="badge text-bg-light">
+                                                <img src="~/images/icons/timer.svg" class="small-icon ms-1 me-1" alt="Project status icon">@item.LicenseProjectStatusName
+                                            </div>
+                                            <div class="badge text-bg-light">
+                                                <img src="~/images/icons/license-third-party.svg" alt="License Request Type icon" class="small-icon ms-1 me-1">@item.LicenseRequestTypeName
+                                            </div>
+
+                                            @{
+                                                foreach (var subUnit in item.LicenseProjectSubUnitType)
+                                                {
+                                                    <div class="badge text-bg-light">
+                                                        @subUnit
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                        <p class="mt-2">
+                                            @(Html.Raw(Utils.TruncateAtWord(Utils.StripHTML(item.ProjectDescription), 300)))
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-outline-primary onclick" data-action="redirect" data-value="@Model.ResultPage?id=@item.LicenseProjectId">@Umbraco.GetDictionaryValue("View More")</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="row mt-2">
+
+                    @{
+                        if (Model.response.Data.PageCount >= 1)
+                        {
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item  @(@Model.response.Data.CurrentPage == 1 ? "disabled" : "")">
+                                        <a class="page-link" href="@(Model.QueryParm.ModelUrl)?tabActive=Wafi Projects&cityId=@cityId&licenseRequestTypeId=@licenseRequestTypeId&currentPage=@(Model.response.Data.CurrentPage - 1)">&laquo;</a>
+                                    </li>
+                                    @{
+                                        int startPage = Math.Max(1, Model.response.Data.CurrentPage - 2);
+                                        int endPage = Math.Min(Model.response.Data.PageCount, Model.response.Data.CurrentPage + 2);
+                                        if (Model.response.Data.CurrentPage <= 3)
+                                        {
+                                            startPage = 1;
+                                            endPage = Math.Min(5, Model.response.Data.PageCount); // Display up to page 5, or fewer if totalPages < 5
+                                        }
+                                        else if (Model.response.Data.CurrentPage >= Model.response.Data.PageCount - 2)
+                                        {
+                                            startPage = Math.Max(Model.response.Data.PageCount - 4, 1); // Display the last 5 pages, or start from page 1 if totalPages < 5
+                                            endPage = Model.response.Data.PageCount;
+                                        }
+                                        else
+                                        {
+                                            startPage = Model.response.Data.CurrentPage - 2;
+                                            endPage = Model.response.Data.CurrentPage + 2;
+                                        }
+
+                                        @for (int p = startPage; p <= endPage; p++)
+                                        {
+                                            <li class="page-item">
+                                                <a class="page-link @(p == Model.response.Data.CurrentPage ? "active" : string.Empty)" href="@(Model.QueryParm.ModelUrl)?tabActive=Wafi Projects&licenseRequestTypeId=@licenseRequestTypeId&cityId=@cityId&currentPage=@p">@p</a>
+                                            </li>
+                                        }
+                                    }
+                                    <li class="page-item @(@Model.response.Data.CurrentPage == Model.response.Data.PageCount ? "disabled" : "")">
+                                        <a class="page-link" href="@(Model.QueryParm.ModelUrl)?tabActive=Wafi Projects&cityId=@cityId&licenseRequestTypeId=@licenseRequestTypeId&currentPage=@(Model.response.Data.CurrentPage + 1)">&raquo;</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        }
+                        else
+                        {
+                            <div class="row justify-content-center text-center mt-5">
+                                <div class="col">
+                                    <img src="~/images/icons/file_search.svg" alt="No content icon" class="img-fluid small-icon" width="20" height="20"/>
+                                    <span class="mt-5">@Umbraco.GetDictionaryValue("There is not content with this title")</span>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        }
+
+</div>
+
+<script csp-manager-add-nonce="true">
+
+    $(document).ready(function () {
+        var docUrl = "@docUrl";
+        var cityId = "@cityId";
+        var licenseRequestTypeId = "@licenseRequestTypeId";
+        var currentPage = "@currentPage";
+
+        $(".wafi-city-select").on("change", function () {
+            var selectedValue = $(this).val();
+            var encodedURL = encodeURIComponent(docUrl);
+            var decodedURL = decodeURIComponent(encodedURL);
+            decodedURL = $("<div/>").html(decodedURL).text();
+            var redirect = decodedURL + `?tabActive=Wafi Projects&cityId=${selectedValue}&licenseRequestTypeId=${licenseRequestTypeId}&&currentPage=${currentPage}`;
+            window.location.href = redirect;
+        })
+        $(".wafi-license-type-select").on("change", function () {
+            var selectedValue = $(this).val();
+            var encodedURL = encodeURIComponent(docUrl);
+            var decodedURL = decodeURIComponent(encodedURL);
+            decodedURL = $("<div/>").html(decodedURL).text();
+            var redirect = decodedURL + `?tabActive=Wafi Projects&cityId=${cityId}&licenseRequestTypeId=${selectedValue}&&currentPage=1`;
+            window.location.href = redirect;
+        })
+
+    });
+</script>

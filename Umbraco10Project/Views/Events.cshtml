@@ -1,0 +1,332 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Helpers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Events>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Models;
+@using uSync.Core
+@{
+    Layout = "Master.cshtml";
+    var docUrl = Model.Url();
+    var search = Context.Request.Query["search"];
+    var sort = Context.Request.Query["sort"];
+
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        disableRoot = true,
+        title = Model?.Value("pageTitle")?.ToString() ?? ""
+    };
+
+
+    string currentPath = Context.Request.Path;
+    var isEnglish = currentPath.Contains("/en/");
+
+    const int pageSize = 12;
+    var page = 1;
+    if (!string.IsNullOrWhiteSpace(Context.Request.Query["page"]))
+    {
+        int.TryParse(Context.Request.Query["page"], out page);
+    }
+
+    var totalPages = (int)Math.Ceiling((double)Model.Children().Count() / (double)pageSize);
+    if (string.IsNullOrWhiteSpace(search))
+    {
+        search = "";
+    }
+    else
+    {
+        totalPages = (int)Math.Ceiling((double)Model.Children().Where(x => x.Value("eventTitle").ToString().Contains(search)).Count() / (double)pageSize);
+    }
+
+    if (page > totalPages)
+    {
+        page = totalPages;
+    }
+    else if (page < 1)
+    {
+        page = 1;
+    }
+
+    List<IPublishedContent> sortingEvents;
+    if (sort.ToString() == "ascending")
+    {
+        sortingEvents = Model.Children().Where(x => x.Value("eventTitle").ToString().Contains(search)).OrderBy(item => item.Value("startDate")).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+    }
+    else
+    {
+        sortingEvents = Model.Children().Where(x => x.Value("eventTitle").ToString().Contains(search)).OrderByDescending(item => item.Value("startDate")).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+    }
+}
+
+<div class="events-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+    <div class="pt-3 pb-3 justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="input-group">
+                        <div class="input-group-text ">
+                            <img src="~/images/icons/search.svg" class="small-icon" width="20" height="20" alt="search icon"/>
+                        </div>
+                        <input type="text" class="form-control " id="searchInput" value="@search" placeholder="@Umbraco.GetDictionaryValue("Search")">
+                        @{
+                            if (!string.IsNullOrWhiteSpace(search))
+                            {
+                                <button type="button" class="input-group-text clear-search" data-bs-toggle="tooltip" data-bs-placement="bottom"  data-bs-title="@(!Umbraco.GetDictionaryValue("Clear").IsNullOrWhiteSpace() ? Umbraco.GetDictionaryValue("Clear") : "Clear")">
+                                    <img src="~/images/icons/cancel.svg" class="small-icon" width="20" height="20" alt="Cancel icon"/>
+                                </button>
+                            }
+                        }
+
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 mt-md-0 col-12 mt-2 mt-lg-0">
+                    <select class="form-select events-select-for-sort" aria-label="Default select example">
+                        @{
+                            if (sort.ToString() == "ascending")
+                            {
+                                <option class="services-list-option" value="descending">
+                                    @Umbraco.GetDictionaryValue("Descending")
+                                </option>
+                                <option class="services-list-option" value="ascending" selected>
+                                    @Umbraco.GetDictionaryValue("Ascending")
+                                </option>
+                            }
+                            else
+                            {
+                                <option class="services-list-option" value="descending" selected>
+                                    @Umbraco.GetDictionaryValue("Descending")
+                                </option>
+                                <option class="services-list-option" value="ascending">
+                                    @Umbraco.GetDictionaryValue("Ascending")
+                                </option>
+                            }
+                        }
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+
+
+        <div class="row">
+
+            @{
+                if (string.IsNullOrWhiteSpace(search))
+                {
+                    search = "";
+                }
+
+                foreach (var eventItem in sortingEvents)
+                {
+                    var item = (EventDetails)eventItem;
+                    var dateForSort = item.StartDate.ToString("yyy/MM/dd", new System.Globalization.CultureInfo("en-US")).Replace("/", "");
+
+
+                    <div class="col-lg-4 col-md-6 col-12 p-2">
+                        <div class="card" data-order="@dateForSort">
+                            @if (item?.EventsImages != null && item.EventsImages.Any())
+                            {
+                                foreach (var image in item.EventsImages.Take(1))
+                                {
+                                    <img src="@image.Url()" alt="Event" class="card-img-top card-img-top-fixed"/>
+                                }
+                            }
+                            <div class="card-body">
+
+                                <p class="title">
+                                    @item?.EventTitle
+                                </p>
+                                <div class="badge text-bg-light">
+                                    @item?.EventType
+                                </div>
+
+                                <hr/>
+                                <div class="event-dates">
+                                    <div class="event-item-image">
+                                        <img src="~/images/icons/calender.svg" class="small-icon" width="20" height="20" alt="Calender Icon"/>
+                                        <span class="title">
+                                            @Umbraco.GetDictionaryValue("Event Dates")
+                                        </span>
+                                    </div>
+                                    <div class="event-item-information">
+
+                                        <div class="event-information-details">
+                                            <div class="display-flexbox event-date">
+                                                <span class="title">
+                                                    @Umbraco.GetDictionaryValue("From date") :
+                                                </span>
+                                                <span class="content">
+                                                    @Calendar.TheDate(item.StartDate, isEnglish)
+                                                </span>
+                                            </div>
+                                            @{
+                                                if (eventItem.HasValue("endDate"))
+                                                {
+                                                    <div class="display-flexbox event-date">
+                                                        <span class="title">
+                                                            @Umbraco.GetDictionaryValue("To date") :
+                                                        </span>
+                                                        <span class="content">
+                                                            @Calendar.TheDate(item.EndDate, isEnglish)
+                                                        </span>
+                                                    </div>
+                                                }
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @{
+                                    if (eventItem.HasValue("eventLocation"))
+                                    {
+                                        <hr/>
+                                        <div class="event-location">
+                                            <div class="event-item-image">
+                                                <img src="~/images/icons/location.svg" class="small-icon" width="20" height="20" alt="Calender Icon"/>
+                                                <span class="title">
+                                                    @Umbraco.GetDictionaryValue("Event location") :
+                                                </span>
+                                            </div>
+                                            <p class="date-details">
+                                                @item.EventLocation
+                                            </p>
+
+                                        </div>
+                                    }
+                                }
+
+
+                                @{
+                                    if (eventItem.HasValue("targetAudience"))
+                                    {
+                                        <hr/>
+                                        <div class="event-item">
+                                            <div class="event-item-image">
+                                                <img src="~/images/icons/targeted_ppl.svg" class="small-icon" width="20" height="20" alt="Calender Icon"/>
+                                                <span class="title">
+                                                    @Umbraco.GetDictionaryValue("Target Audience") :
+                                                </span>
+                                            </div>
+                                            <p class="date-details">
+                                                @item.TargetAudience
+                                            </p>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-outline-primary onclick" data-action="redirect" data-value="@item.Url()" >@Umbraco.GetDictionaryValue("Read More News")</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+        </div>
+
+        <div class="row mt-2">
+
+            @{
+                if (totalPages >= 1)
+                {
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item  @(@page == 1 ? "disabled" : "")">
+                                <a class="page-link" href="@(Model.Url())?page=@(page - 1)&search=@(search)&sort=@(sort)">&laquo;</a>
+                            </li>
+                            @{
+                                int startPage = Math.Max(1, page - 2);
+                                int endPage = Math.Min(totalPages, page + 2);
+                                if (page <= 3)
+                                {
+                                    startPage = 1;
+                                    endPage = Math.Min(5, totalPages); // Display up to page 5, or fewer if totalPages < 5
+                                }
+                                else if (page >= totalPages - 2)
+                                {
+                                    startPage = Math.Max(totalPages - 4, 1); // Display the last 5 pages, or start from page 1 if totalPages < 5
+                                    endPage = totalPages;
+                                }
+                                else
+                                {
+                                    startPage = page - 2;
+                                    endPage = page + 2;
+                                }
+
+                                @for (int p = startPage; p <= endPage; p++)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link @(p == page ? "active" : string.Empty)" href="@(Model.Url())?page=@p&search=@(search)&sort=@(sort)">@p</a>
+                                    </li>
+                                }
+                            }
+                            <li class="page-item @(@page == totalPages ? "disabled" : "")">
+                                <a class="page-link" href="@(Model.Url())?page=@(page + 1)&search=@(search)&sort=@(sort)">&raquo;</a>
+                            </li>
+                        </ul>
+                    </nav>
+                }
+                else
+                {
+                    <div class="row justify-content-center text-center mt-5">
+                        <div class="col">
+                            <img src="~/images/icons/file_search.svg" alt="No content icon" width="20" height="20" class="img-fluid small-icon"/>
+                            <span class="mt-5">@Umbraco.GetDictionaryValue("There is not content with this title") (@search)</span>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+
+
+</div>
+<script csp-manager-add-nonce="true">
+    var docUrl = "@docUrl";
+
+    function search(value){
+        var encodedURL = encodeURIComponent(docUrl);
+        var decodedURL = decodeURIComponent(encodedURL);
+        decodedURL = $("<div/>").html(decodedURL).text();
+        var redirect = decodedURL + `?search=${value}`;
+        window.location.href = redirect;
+    }
+
+    $(document).ready(function () {
+
+        $("#searchInput").on("keyup", function (e) {
+            if (e.key == "Enter") {
+                search($(this).val());
+            }
+        })
+        $(".events-select-for-sort").on("change", function () {
+            var encodedURL = encodeURIComponent(docUrl);
+            var decodedURL = decodeURIComponent(encodedURL);
+            decodedURL = $("<div/>").html(decodedURL).text();
+            window.location.href = decodedURL + `?sort=${$(this).val()}`;
+
+        })
+
+        document.addEventListener('click', function (event) {
+            // Check if the clicked element has the class 'dynamic-button'
+            if (event.target.closest('.clear-search')) {
+                search('');
+
+            }
+        });
+
+    });
+
+</script>

@@ -1,0 +1,58 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<FAqs>
+@{
+    Layout = "Master.cshtml";
+    var ancestorsList = Model.Ancestors().Reverse().ToList();
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = ancestorsList,
+        content = Model,
+        disableRoot = true,
+        title = Model.Value("pageTitle")?.ToString() ?? ""
+    };
+}
+<div class="faqs-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+    <div class="container mt-5">
+
+
+        <div class="row">
+            <div class="accordion accordion-flush" id="accordionFAQ">
+
+
+                @{
+                    var counter = 1;
+                    foreach (var faqItem in Model.Questions)
+                    {
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button @(counter == 1 ? "" : "collapsed")"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        aria-label="collapse"
+                                        data-bs-target="#@faqItem.Key"
+                                        aria-expanded="@(counter == 1)"
+                                        aria-controls="@faqItem.Key">
+                                    @faqItem.Question
+                                </button>
+                            </h2>
+                            <div id="@faqItem.Key" class="accordion-collapse collapse @(counter == 1 ? "show" : "")" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    @faqItem.Answer
+                                </div>
+                            </div>
+                        </div>
+                        counter += 1;
+                    }
+                }
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

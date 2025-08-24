@@ -1,0 +1,34 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "PublishedContentHandler",
+      "success": true,
+      "itemType": "IContent",
+      "message": "Done",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/2f4bf1b4-daff-40a9-8f89-348a2a250936/uSync/Content/dac1b946-4f2e-411a-8c6f-5aeca8b38e50.config",
+      "name": "Main Settings",
+      "path": "/2f4bf1b4-daff-40a9-8f89-348a2a250936/uSync/Content",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "footerUsefulLinks",
+          "path": "Property/footerUsefulLinks",
+          "oldValue": "null",
+          "newValue": "\"[{\\\"udi\\\":\\\"umb://document/155c75b8c2e34b268451fcd2838119b6\\\"},{\\\"udi\\\":\\\"umb://document/ca078f98b22f425784db91441f056501\\\"},{\\\"name\\\":\\\"Digital Government Authority\\\",\\\"target\\\":\\\"_blank\\\",\\\"url\\\":\\\"https://dga.gov.sa/en\\\"}]\"",
+          "change": "Update"
+        }
+      ],
+      "key": "dac1b946-4f2e-411a-8c6f-5aeca8b38e50"
+    }
+  ],
+  "date": "2024-11-20T15:40:47.233742+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 1,
+  "total": 31
+}

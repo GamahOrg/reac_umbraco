@@ -1,0 +1,31 @@
+@using Umbraco10Project.Helpers
+@model PublishedContentModel
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    string currentPath = Context.Request.Path;
+    var isEnglish = currentPath.Contains("/en/");
+    var news = (NewsDetails)Model;
+    var dateForSort = news.NewsDate.ToString("yyy/MM/dd", new System.Globalization.CultureInfo("en-US")).Replace("/", "");
+
+    <div class="card " data-order="@dateForSort"
+         style="height: 100%">
+
+        <div class="card-body">
+
+            <a class="title text-decoration-none" href="@news?.Url()">@news.NewsTitle</a>
+            <div class="mb-2 mt-2">
+                <span class="text-primary">تاريخ النشر:</span>
+                <span class="text-primary">@Calendar.TheSmallDate(news.NewsDate, isEnglish)</span>
+            </div>
+            <div class="content">
+                @(Html.Raw(Utils.TruncateAtWord(Utils.StripHTML(news.NewsText?.ToString()?.Replace("&quot;", "\"").Replace("&nbsp;", "") ?? ""), 300)))
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-outline-primary onclick" data-action="redirect"
+                    data-value="@news.Url()">@Umbraco.GetDictionaryValue("Read More News")</button>
+        </div>
+    </div>
+}

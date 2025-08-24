@@ -1,0 +1,271 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "TemplateHandler",
+      "success": false,
+      "itemType": "ITemplate",
+      "message": "The template InspectionForm.cshtml file is missing.",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Templates/inspectionform.config",
+      "name": "Inspection Form",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "947bf183-8cec-456d-ba03-f23172bb08eb"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/test.config",
+      "name": "test",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "e4016895-f508-4f93-8982-ce3ed3a1c83e"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/mainsettings.config",
+      "name": "Main Settings",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "footerRightPages/SortOrder",
+          "oldValue": "7",
+          "newValue": "5",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Key",
+          "path": "footerUsefulLinks/Key",
+          "oldValue": "656e7db0-0d50-4015-a232-79c830465fae",
+          "newValue": "7267f0df-d90f-4b5d-ae25-10cf54ac1cd4",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Description",
+          "path": "footerUsefulLinks/Description",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Validation",
+          "path": "footerUsefulLinks/RegEx",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "SortOrder",
+          "path": "footerUsefulLinks/SortOrder",
+          "oldValue": "6",
+          "newValue": "1",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "MandatoryMessage",
+          "path": "footerUsefulLinks/MandatoryMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "ValidationRegExpMessage",
+          "path": "footerUsefulLinks/ValidationRegExpMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        }
+      ],
+      "key": "2b9c6bb1-a5c1-4159-a9c8-1a58a6cd79f9"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/questionnaire.config",
+      "name": "Questionnaire",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "b3f26140-ef46-42f8-ab90-0ae087378965"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/mediacenter.config",
+      "name": "Media Center",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "46a78910-c649-4edf-9789-e006c5e521ed"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/questionnairepage.config",
+      "name": "Questionnaire Page",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "b9f56968-750e-44d9-ad77-ac6820937442"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/home.config",
+      "name": "Home",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "d98980cb-3b9d-4ba5-8df9-17828d37683b"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/contactus.config",
+      "name": "Contact Us",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "Description",
+          "path": "serviceButtonPage/Description",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Validation",
+          "path": "serviceButtonPage/RegEx",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "MandatoryMessage",
+          "path": "serviceButtonPage/MandatoryMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "ValidationRegExpMessage",
+          "path": "serviceButtonPage/ValidationRegExpMessage",
+          "oldValue": "(Blank)",
+          "newValue": "(Blank)",
+          "change": "Update"
+        }
+      ],
+      "key": "ae7ee7a9-250e-4e66-8e15-b5ceb82a4754"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/vision.config",
+      "name": "Vision",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "7630894d-928d-4b0b-bdb4-af1fbbd915aa"
+    }
+  ],
+  "date": "2025-01-15T09:09:58.348+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 9,
+  "total": 708
+}

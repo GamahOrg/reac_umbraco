@@ -1,0 +1,83 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CentralizedSearch>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Models
+@{
+Layout = "Master.cshtml";
+SearchInput searchInput = new SearchInput();
+var ancestorsList = Model.Ancestors().Reverse().ToList();
+var ancestors = new AncestorsModel()
+{
+ancestors = ancestorsList,
+content = Model,
+disableRoot = true,
+title = Model.Value("pageTitle")?.ToString() ?? ""
+};
+}
+
+<div class="centralized-search-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <p>@Model.ShortBrief</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                @await Component.InvokeAsync("RenderForm", new { formId = Model.FormRef, theme = "centralized-search", includeScripts = true })
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@* <script csp-manager-add-nonce="true"> *@
+@* *@
+@*     async function getFieldMappings(formGuid) { *@
+@*         try { *@
+@*             const response = await fetch(`/umbraco/api/customform/formmapping/${formGuid}`); *@
+@*             return await response.json(); *@
+@*         } catch (error) { *@
+@*             console.error('Error fetching field mappings:', error); *@
+@*             return {}; *@
+@*         } *@
+@*     } *@
+@*      *@
+@*     document.addEventListener('submit', async function (event) { *@
+@*             event.preventDefault(); *@
+@* *@
+@*             const formData = new FormData(event.target); *@
+@*             const formObject = {}; *@
+@*             formData.forEach((value, key) => { *@
+@*                 formObject[key] = value; *@
+@*             }); *@
+@*         // Fetch the field mappings (GUID to alias/label) *@
+@*             const formGuid = '4d71558e-b9b9-49ac-84d9-4f3b40d092f8'; // Replace with your form GUID *@
+@*             const fieldMappings = await getFieldMappings(formGuid); *@
+@* *@
+@*             // Map GUID keys to human-readable field aliases *@
+@*             const mappedFormObject = {}; *@
+@*             for (const [guid, value] of Object.entries(formObject)) { *@
+@*                 const fieldKey = fieldMappings[guid] || guid; // Use GUID if alias not found *@
+@*                 mappedFormObject[fieldKey] = value; *@
+@*             } *@
+@*             fetch('@Url.Action("result", "CentralizedSearch")', { *@
+@*                 method: 'POST', *@
+@*                 headers: { *@
+@*                     'Content-Type': 'application/json', *@
+@*                 }, *@
+@*                 body: JSON.stringify(mappedFormObject) *@
+@*             }) *@
+@*                 .then(response => response.json()) *@
+@*                 .then(data => { *@
+@*                     // Display form values on the page *@
+@*                     document.querySelector('#formResult').innerHTML = JSON.stringify(data); *@
+@*                 }) *@
+@*                 .catch(error => console.error('Error:', error)); *@
+@*     }); *@
+@* *@
+@* *@
+@* </script> *@

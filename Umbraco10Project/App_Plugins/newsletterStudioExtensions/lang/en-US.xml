@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en" culture="en-US">
+    <area alias="ns">
+        <key alias="control_customHtml">HTML</key>
+        <key alias="control_customHtml_pasteHtml">Paste HTML</key>
+        <key alias="control_customContentPicker">Content</key>
+        <key alias="control_customContentPicker_selectContent">Select Content</key>
+        <key alias="control_customContentPicker_textAlign">Text Align</key>
+        <key alias="control_customContentPicker_showImage">Show Image</key>
+        <key alias="control_customContentPicker_title">Title</key>
+        <key alias="control_customContentPicker_overrideTitle">Override Title</key>
+
+    </area>
+</language>

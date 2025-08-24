@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Reports>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+    var isEnglish = Context.Request.Path.ToString().Contains("/en/");
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        disableRoot = true,
+        title = Model?.Value("pageTitle")?.ToString() ?? ""
+    };
+}
+<div class="reports-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+    <div class="container mt-4">
+
+
+        <div class="col text-end justify-content-end">
+            <a class="btn btn-outline-primary" asp-controller="Services" asp-action="Back" asp-route-language="@(isEnglish ? "" : "arabic")"> العودة</a>
+            <a class="btn btn-outline-primary" asp-controller="Services" asp-action="LogOut" asp-route-language="@(isEnglish ? "" : "arabic")"> @Umbraco.GetDictionaryValue("Sign Out") </a>
+        </div>
+
+
+        <div class="row mt-4 p-2">
+            @await Component.InvokeAsync("ReportsTbl")
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,43 @@
+@using Umbraco10Project.Helpers
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<div class="col-lg-6 col-md-6 col-xl-4 col-sm-12 col-12 mb-4">
+    <div class="card m-1">
+        <div class="card-body">
+            <p class=" h5">
+                @Model.Value("Header")
+            </p>
+            <div class="badge text-bg-success text-white">
+                @Umbraco.GetDictionaryValue(@Model.Value<string>("RuleStatus") ?? "")
+            </div>
+            <div class="badge text-bg-light">
+                @Umbraco.GetDictionaryValue(@Model.Value<string>("RuleType") ?? "")
+            </div>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <span class="content">
+                        @Umbraco.GetDictionaryValue("Publish Date"):
+                    </span>
+
+                    <span class="">
+                        @(Model.HasValue("PublishDate") ? Calendar.ConvertToHijri(Model.Value<DateTime>("PublishDate")) : "-")
+                            </span>
+
+                </div>
+                <div class="col-12">
+                    <span class="content">
+                        @Umbraco.GetDictionaryValue("Release Date"):
+                    </span>
+                    <span class="">
+                        @(Model.HasValue("ReleaseDate") ? Calendar.ConvertToHijri(Model.Value<DateTime>("ReleaseDate")) : "-")
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn-outline-primary btn onclick" data-action="redirect" data-value="@Model.Url()"
+                    type="button">@Umbraco.GetDictionaryValue("View More")</button>
+        </div>
+    </div>
+</div>

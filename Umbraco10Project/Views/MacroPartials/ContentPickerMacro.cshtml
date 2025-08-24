@@ -1,0 +1,14 @@
+@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+
+@if (Model.MacroParameters["contentPicker"] != null)
+{
+    var nodeId = Model.MacroParameters["contentPicker"].ToString();
+    var content = Umbraco.Content(nodeId);
+    if (content != null)
+    {
+        <div class="content">
+            <h2>@content.Name</h2>
+            <p>@content.Value("bodyText")</p> <!-- Replace with your field alias -->
+        </div>
+    }
+}

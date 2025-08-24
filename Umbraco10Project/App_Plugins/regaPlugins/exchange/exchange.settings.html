@@ -1,0 +1,11 @@
+<div ng-controller="NewsletterStudio.Plugins.Mailjet.SettingsController as pVm" ng-init="pVm.init(vm)">
+    <label class="control-group ns-label-full">
+        <span>
+            Sandbox Mode
+            <small>Check to activate Mailjet Sandbox mode</small>
+        </span>
+        <span>
+            <input type="checkbox" ng-model="vm.model.emailServiceProvider.settings.mj_sandboxMode" />
+        </span>
+    </label>
+</div>

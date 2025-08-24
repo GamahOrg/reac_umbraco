@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/Users/alhazmy13/.nuget/packages/</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/Users/alhazmy13/.nuget/packages/</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.12.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="/Users/alhazmy13/.nuget/packages/" />
+  </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.analyzers/3.3.4/buildTransitive/Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.analyzers/3.3.4/buildTransitive/Microsoft.CodeAnalysis.Analyzers.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.expansions.core/13.1.7/buildTransitive/uSync.Expansions.Core.props" Condition="Exists('$(NuGetPackageRoot)usync.expansions.core/13.1.7/buildTransitive/uSync.Expansions.Core.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.snapshots/13.1.7/buildTransitive/uSync.Snapshots.props" Condition="Exists('$(NuGetPackageRoot)usync.snapshots/13.1.7/buildTransitive/uSync.Snapshots.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.publisher/13.1.7/buildTransitive/uSync.Publisher.props" Condition="Exists('$(NuGetPackageRoot)usync.publisher/13.1.7/buildTransitive/uSync.Publisher.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.peopleedition/13.1.7/buildTransitive/uSync.PeopleEdition.props" Condition="Exists('$(NuGetPackageRoot)usync.peopleedition/13.1.7/buildTransitive/uSync.PeopleEdition.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.history/13.2.5/buildTransitive/uSync.History.props" Condition="Exists('$(NuGetPackageRoot)usync.history/13.2.5/buildTransitive/uSync.History.props')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.forms.staticassets/13.2.5/buildTransitive/Umbraco.Forms.StaticAssets.props" Condition="Exists('$(NuGetPackageRoot)umbraco.forms.staticassets/13.2.5/buildTransitive/Umbraco.Forms.StaticAssets.props')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.forms/13.2.5/buildTransitive/Umbraco.Forms.props" Condition="Exists('$(NuGetPackageRoot)umbraco.forms/13.2.5/buildTransitive/Umbraco.Forms.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.forms/13.3.0/buildTransitive/uSync.Forms.props" Condition="Exists('$(NuGetPackageRoot)usync.forms/13.3.0/buildTransitive/uSync.Forms.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.exporter/13.1.7/buildTransitive/uSync.Exporter.props" Condition="Exists('$(NuGetPackageRoot)usync.exporter/13.1.7/buildTransitive/uSync.Exporter.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.backoffice.targets/13.2.5/buildTransitive/uSync.BackOffice.Targets.props" Condition="Exists('$(NuGetPackageRoot)usync.backoffice.targets/13.2.5/buildTransitive/uSync.BackOffice.Targets.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.backoffice.assets/13.2.5/buildTransitive/uSync.BackOffice.Assets.props" Condition="Exists('$(NuGetPackageRoot)usync.backoffice.assets/13.2.5/buildTransitive/uSync.BackOffice.Assets.props')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.community.cspmanager/1.4.1/buildTransitive/Umbraco.Community.CSPManager.props" Condition="Exists('$(NuGetPackageRoot)umbraco.community.cspmanager/1.4.1/buildTransitive/Umbraco.Community.CSPManager.props')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.cms.staticassets/13.5.1/buildTransitive/Umbraco.Cms.StaticAssets.props" Condition="Exists('$(NuGetPackageRoot)umbraco.cms.staticassets/13.5.1/buildTransitive/Umbraco.Cms.StaticAssets.props')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.cms.targets/13.5.1/buildTransitive/Umbraco.Cms.Targets.props" Condition="Exists('$(NuGetPackageRoot)umbraco.cms.targets/13.5.1/buildTransitive/Umbraco.Cms.Targets.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore/8.0.8/buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore/8.0.8/buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco.common/3.6.0/buildTransitive/SeoToolkit.Umbraco.Common.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco.common/3.6.0/buildTransitive/SeoToolkit.Umbraco.Common.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco.sitemap/3.6.0/buildTransitive/SeoToolkit.Umbraco.Sitemap.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco.sitemap/3.6.0/buildTransitive/SeoToolkit.Umbraco.Sitemap.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco.siteaudit/2.6.0/buildTransitive/SeoToolkit.Umbraco.SiteAudit.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco.siteaudit/2.6.0/buildTransitive/SeoToolkit.Umbraco.SiteAudit.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco.scriptmanager/3.6.0/buildTransitive/SeoToolkit.Umbraco.ScriptManager.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco.scriptmanager/3.6.0/buildTransitive/SeoToolkit.Umbraco.ScriptManager.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco.robotstxt/3.6.0/buildTransitive/SeoToolkit.Umbraco.RobotsTxt.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco.robotstxt/3.6.0/buildTransitive/SeoToolkit.Umbraco.RobotsTxt.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco.redirects/3.6.0/buildTransitive/SeoToolkit.Umbraco.Redirects.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco.redirects/3.6.0/buildTransitive/SeoToolkit.Umbraco.Redirects.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco.metafields/3.6.0/buildTransitive/SeoToolkit.Umbraco.MetaFields.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco.metafields/3.6.0/buildTransitive/SeoToolkit.Umbraco.MetaFields.props')" />
+    <Import Project="$(NuGetPackageRoot)seotoolkit.umbraco/3.6.0/buildTransitive/SeoToolkit.Umbraco.props" Condition="Exists('$(NuGetPackageRoot)seotoolkit.umbraco/3.6.0/buildTransitive/SeoToolkit.Umbraco.props')" />
+    <Import Project="$(NuGetPackageRoot)our.umbraco.thedashboard/13.0.1/buildTransitive/Our.Umbraco.TheDashboard.props" Condition="Exists('$(NuGetPackageRoot)our.umbraco.thedashboard/13.0.1/buildTransitive/Our.Umbraco.TheDashboard.props')" />
+    <Import Project="$(NuGetPackageRoot)newsletterstudio/13.0.9/buildTransitive/NewsletterStudio.props" Condition="Exists('$(NuGetPackageRoot)newsletterstudio/13.0.9/buildTransitive/NewsletterStudio.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.visualstudio.azure.containers.tools.targets/1.21.0/build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.visualstudio.azure.containers.tools.targets/1.21.0/build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">/Users/alhazmy13/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.4</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgLucene_Net Condition=" '$(PkgLucene_Net)' == '' ">/Users/alhazmy13/.nuget/packages/lucene.net/4.8.0-beta00016</PkgLucene_Net>
+    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">/Users/alhazmy13/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5</PkgMicrosoft_Extensions_ApiDescription_Server>
+    <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">/Users/alhazmy13/.nuget/packages/microsoft.visualstudio.azure.containers.tools.targets/1.21.0</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
+  </PropertyGroup>
+</Project>

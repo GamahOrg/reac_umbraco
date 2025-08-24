@@ -1,0 +1,317 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media/9eb4d92c-16b1-4d8d-ab75-a86d8447f424.config",
+      "name": "3 3 2",
+      "path": "/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "9eb4d92c-16b1-4d8d-ab75-a86d8447f424"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media/3c0e8323-5f55-4764-bf13-7d5a89f4528c.config",
+      "name": "Corporate",
+      "path": "/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "3c0e8323-5f55-4764-bf13-7d5a89f4528c"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media/bc968a93-2e7f-4217-9fdd-f1e6a885abe4.config",
+      "name": "Passport",
+      "path": "/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "bc968a93-2e7f-4217-9fdd-f1e6a885abe4"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media/3446a359-5235-45ff-b6b0-29d901d33a3d.config",
+      "name": "Student",
+      "path": "/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "3446a359-5235-45ff-b6b0-29d901d33a3d"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media/0c43243c-9751-4e3e-8e30-50648e272b08.config",
+      "name": "Certifcate",
+      "path": "/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "0c43243c-9751-4e3e-8e30-50648e272b08"
+    },
+    {
+      "handlerAlias": "PublishedContentHandler",
+      "success": true,
+      "itemType": "IContent",
+      "message": "Done (Slow publish 11219ms)",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Content/97a252c6-8b24-473c-bfcc-6a96a54e6d41.config",
+      "name": "الرئيسية",
+      "path": "/1854e3d5-12a2-471e-ba86-9dd1c7377b36/uSync/Content",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "Template",
+          "path": "Template",
+          "oldValue": "(Blank)",
+          "newValue": "1056",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "description",
+          "path": "Property/description",
+          "oldValue": "null",
+          "newValue": "\"The Real Estate General Authority (REGA) was created in 2017 with the aim of regulating, overseeing, and promoting non-governmental real estate activities. Its main goal is to attract investments to the real estate sector while aligning with the comprehensive strategy of the sector.\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "enableNewsLetter",
+          "path": "Property/enableNewsLetter",
+          "oldValue": "null",
+          "newValue": "\"1\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "headerImage",
+          "path": "Property/headerImage",
+          "oldValue": "null",
+          "newValue": "\"[{\\\"key\\\":\\\"fe030622-3b5c-465b-bcf6-345be51f2401\\\",\\\"mediaKey\\\":\\\"9eb4d92c-16b1-4d8d-ab75-a86d8447f424\\\"}]\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "keywords",
+          "path": "Property/keywords",
+          "oldValue": "\"[\\\"Rega\\\",\\\"الهيئة العامة للعقار\\\"]\"",
+          "newValue": "\"[\\n  \\\"Rega\\\",\\n  \\\"الهيئة العامة للعقار\\\"\\n]\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "linkButton",
+          "path": "Property/linkButton",
+          "oldValue": "\"umb://document/544e08698ebf4f17a9032aa5389ca00a\"",
+          "newValue": "\"umb://document/18ba0e1000a941abbcd98f60a65ef8d8\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "mailingList",
+          "path": "Property/mailingList",
+          "oldValue": "null",
+          "newValue": "\"[\\n  {\\n    \\\"workspaceKey\\\": \\\"00000000-0000-0000-0000-000000000000\\\",\\n    \\\"mailingListKey\\\": \\\"00000000-0000-0000-0000-000000000000\\\"\\n  }\\n]\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "newsLetterBreif",
+          "path": "Property/newsLetterBreif",
+          "oldValue": "null",
+          "newValue": "\"كن على إستعداد لمتابعة كافة الاخبار عن الهيئة ,والضوابط العقارية المستقبلية. قم بإدخال بريدك الإليكتروني ليصلك كل جديد\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "newsLetterBreif",
+          "path": "Property/newsLetterBreif",
+          "oldValue": "null",
+          "newValue": "\"Be prepared to follow all the news about REGA and future regulations. Enter your email to keep updated\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "newsLetterTitle",
+          "path": "Property/newsLetterTitle",
+          "oldValue": "null",
+          "newValue": "\"القائمة البريدية\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "newsLetterTitle",
+          "path": "Property/newsLetterTitle",
+          "oldValue": "null",
+          "newValue": "\"Mailing List\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "pageName",
+          "path": "Property/pageName",
+          "oldValue": "\"الصفحة الرئيسية | الهيئة العامة للعقار  ‌\"",
+          "newValue": "\"الهيئة العامة للعقار\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "pageName",
+          "path": "Property/pageName",
+          "oldValue": "null",
+          "newValue": "\"Real Estate General Authority\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "pageTitle",
+          "path": "Property/pageTitle",
+          "oldValue": "null",
+          "newValue": "\"الهيئة العامة للعقار\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "pageTitle",
+          "path": "Property/pageTitle",
+          "oldValue": "\"Home\"",
+          "newValue": "\"Real Estate General Authority\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "realEstateMainTitle",
+          "path": "Property/realEstateMainTitle",
+          "oldValue": "\"The Real Estate General Authority\"",
+          "newValue": "\"Real Estate General Authority\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "searchCenterBrief",
+          "path": "Property/searchCenterBrief",
+          "oldValue": "null",
+          "newValue": "\"Navigate through our platform to verify the legitimacy of real estate listings, access licensing details, and support regulatory compliance for a secure market environment.\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "searchCenterTitle",
+          "path": "Property/searchCenterTitle",
+          "oldValue": "null",
+          "newValue": "\"Real Estate Inquiry Service\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "sectionBrief",
+          "path": "Property/sectionBrief",
+          "oldValue": "null",
+          "newValue": "\"{\\\"markup\\\":\\\"<p>تأسست الهيئة العامة للعقار عام 2017 لتنظيم النشاط العقاري غير الحكومي، والإشراف عليه، وتطويره بهدف تعزيز وتشجيع الاستثمار في القطاع العقاري، وتحقيق مستهدفات الاستراتيجية الشاملة للقطاع العقاري.</p>\\\",\\\"blocks\\\":{\\\"contentData\\\":[],\\\"settingsData\\\":[]}}\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "sectionBrief",
+          "path": "Property/sectionBrief",
+          "oldValue": "null",
+          "newValue": "\"{\\\"markup\\\":\\\"<p>The Real Estate General Authority (REGA) was created in 2017 with the aim of regulating, overseeing, and promoting non-governmental real estate activities. Its main goal is to attract investments to the real estate sector while aligning with the comprehensive strategy of the sector.</p>\\\",\\\"blocks\\\":{\\\"contentData\\\":[],\\\"settingsData\\\":[]}}\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "socialMediaImage",
+          "path": "Property/socialMediaImage",
+          "oldValue": "null",
+          "newValue": "\"umb://media/ba6d866b399d4d158df62ecef4617b90\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "statisticsItems",
+          "path": "Property/statisticsItems",
+          "oldValue": "\"[{\\\"key\\\":\\\"60a99c04-c2dc-4c3c-9004-c4529b9dcac3\\\",\\\"name\\\":\\\"Item 1\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":\\\"[]\\\",\\\"number\\\":\\\"15,311\\\",\\\"title\\\":\\\"وحدة عقارية مرخصة للبيع على الخارطة \\\"},{\\\"key\\\":\\\"1eb24b12-fc4b-463e-a71c-2758853636be\\\",\\\"name\\\":\\\"Item 2\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":\\\"[]\\\",\\\"number\\\":\\\"7,020\\\",\\\"title\\\":\\\"ترخيص لأنشطة الوساطة العقارية\\\"},{\\\"key\\\":\\\"1008dce1-6730-4ed7-9f9c-3fe0e19123aa\\\",\\\"name\\\":\\\"Item 3\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":\\\"[]\\\",\\\"number\\\":\\\"20,343\\\",\\\"title\\\":\\\"متدربين من المعهد العقاري\\\"},{\\\"key\\\":\\\"79fae008-a930-43a5-8ac3-b9edec31c9a5\\\",\\\"name\\\":\\\"Item 4\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":\\\"[]\\\",\\\"number\\\":\\\"230\\\",\\\"title\\\":\\\"مزاد عقاري موافق عليه \\\"},{\\\"key\\\":\\\"a11b8aee-f22d-4235-9c24-4567084a78e8\\\",\\\"name\\\":\\\"Item 5\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":\\\"[]\\\",\\\"number\\\":\\\"61,849\\\",\\\"title\\\":\\\"ترخيص إعلان عقاري\\\"},{\\\"key\\\":\\\"bb9674a6-fc6e-4a3f-b16f-14ed143d9d94\\\",\\\"name\\\":\\\"Item 6\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":\\\"[]\\\",\\\"number\\\":\\\"470,517\\\",\\\"title\\\":\\\"مستفيد \\\"}]\"",
+          "newValue": "\"[{\\\"key\\\":\\\"60a99c04-c2dc-4c3c-9004-c4529b9dcac3\\\",\\\"name\\\":\\\"Item 1\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"ec89b099-7968-46e8-aec4-a40a75173e69\\\",\\\"mediaKey\\\":\\\"3c0e8323-5f55-4764-bf13-7d5a89f4528c\\\"}],\\\"number\\\":\\\"9395\\\",\\\"title\\\":\\\"وحدة عقارية مرخصة للبيع على الخارطة \\\"},{\\\"key\\\":\\\"1eb24b12-fc4b-463e-a71c-2758853636be\\\",\\\"name\\\":\\\"Item 2\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"6314333b-fc5a-45b3-a588-077eddfd1966\\\",\\\"mediaKey\\\":\\\"bc968a93-2e7f-4217-9fdd-f1e6a885abe4\\\"}],\\\"number\\\":\\\"91379\\\",\\\"title\\\":\\\"ترخيص لأنشطة الوساطة العقارية\\\"},{\\\"key\\\":\\\"1008dce1-6730-4ed7-9f9c-3fe0e19123aa\\\",\\\"name\\\":\\\"Item 3\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"e6327d3b-da76-4dae-a28b-e3e34ca733aa\\\",\\\"mediaKey\\\":\\\"3446a359-5235-45ff-b6b0-29d901d33a3d\\\"}],\\\"number\\\":\\\"33751\\\",\\\"title\\\":\\\"متدربين من المعهد العقاري\\\"},{\\\"key\\\":\\\"79fae008-a930-43a5-8ac3-b9edec31c9a5\\\",\\\"name\\\":\\\"Item 4\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"e677a975-2e60-48e3-b06e-a6acb00abf75\\\",\\\"mediaKey\\\":\\\"4f94001c-b0ef-4439-9310-38c6f1a8c5fe\\\"}],\\\"number\\\":\\\"16832\\\",\\\"title\\\":\\\"ترخيص لانشطة الوسطاة العقارية\\\"},{\\\"key\\\":\\\"a11b8aee-f22d-4235-9c24-4567084a78e8\\\",\\\"name\\\":\\\"Item 5\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"03c4d61a-ed85-41ce-8662-1d909686840e\\\",\\\"mediaKey\\\":\\\"0c43243c-9751-4e3e-8e30-50648e272b08\\\"}],\\\"number\\\":\\\"98944\\\",\\\"title\\\":\\\"ترخيص إعلان عقاري\\\"},{\\\"key\\\":\\\"bb9674a6-fc6e-4a3f-b16f-14ed143d9d94\\\",\\\"name\\\":\\\"Item 6\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"c4928606-02ed-48c0-b123-3cc32617244b\\\",\\\"mediaKey\\\":\\\"41177547-ecef-406a-b9db-c339416da5e2\\\"}],\\\"number\\\":\\\"228008\\\",\\\"title\\\":\\\"\\\\\\\"عقد ايجار \\\\\\\"سكني - ايجار\\\"}]\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "statisticsItems",
+          "path": "Property/statisticsItems",
+          "oldValue": "\"[{\\\"key\\\":\\\"b9f3a7fe-8eb5-46a4-8cc3-adb30be291d2\\\",\\\"name\\\":\\\"Item 1\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[],\\\"number\\\":\\\"848\\\",\\\"title\\\":\\\"Training Courses\\\"},{\\\"key\\\":\\\"af38ffaf-3995-46c0-81f7-8d4737a5f62a\\\",\\\"name\\\":\\\"Item 2\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[],\\\"number\\\":\\\"38,579\\\",\\\"title\\\":\\\"Units licensed for sale on the map\\\"},{\\\"key\\\":\\\"7e7e27fc-be44-47fc-9c1a-8c972244af2f\\\",\\\"name\\\":\\\"Item 3\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[],\\\"number\\\":\\\"96,700\\\",\\\"title\\\":\\\"Classified real estate facility\\\"},{\\\"key\\\":\\\"c1a7f595-c7b5-4f49-b896-841499e90760\\\",\\\"name\\\":\\\"Item 4\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[],\\\"number\\\":\\\"2,800,000\\\",\\\"title\\\":\\\"Notarized leases\\\"}]\"",
+          "newValue": "\"[{\\\"key\\\":\\\"b9f3a7fe-8eb5-46a4-8cc3-adb30be291d2\\\",\\\"name\\\":\\\"Item 1\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"b3b7e161-006f-4238-87cf-fb2d544d9867\\\",\\\"mediaKey\\\":\\\"3c0e8323-5f55-4764-bf13-7d5a89f4528c\\\"}],\\\"number\\\":\\\"9395\\\",\\\"title\\\":\\\"Units licensed for sale on the map\\\"},{\\\"key\\\":\\\"af38ffaf-3995-46c0-81f7-8d4737a5f62a\\\",\\\"name\\\":\\\"Item 2\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"e01f1da0-2748-4162-9199-503e0a9d1a29\\\",\\\"mediaKey\\\":\\\"bc968a93-2e7f-4217-9fdd-f1e6a885abe4\\\"}],\\\"number\\\":\\\"91379\\\",\\\"title\\\":\\\"Real Estate Brokerage Activities License\\\"},{\\\"key\\\":\\\"7e7e27fc-be44-47fc-9c1a-8c972244af2f\\\",\\\"name\\\":\\\"Item 3\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"bea34e80-6d90-41e1-8140-d6c46c006f50\\\",\\\"mediaKey\\\":\\\"3446a359-5235-45ff-b6b0-29d901d33a3d\\\"}],\\\"number\\\":\\\"33751\\\",\\\"title\\\":\\\"Trainees from the Real Estate Institute\\\"},{\\\"key\\\":\\\"c1a7f595-c7b5-4f49-b896-841499e90760\\\",\\\"name\\\":\\\"Item 4\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"acdea8d0-911f-4e26-bc1b-e814c02d6350\\\",\\\"mediaKey\\\":\\\"4f94001c-b0ef-4439-9310-38c6f1a8c5fe\\\"}],\\\"number\\\":\\\"16832\\\",\\\"title\\\":\\\"Real Estate Brokerage Activities License\\\"},{\\\"key\\\":\\\"290fff26-7975-415a-9319-a4f086b2bd2f\\\",\\\"name\\\":\\\"Item 5\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"24e6cccf-ff5a-4205-b92e-592bc3e615d9\\\",\\\"mediaKey\\\":\\\"0c43243c-9751-4e3e-8e30-50648e272b08\\\"}],\\\"number\\\":\\\"98944\\\",\\\"title\\\":\\\"Real estate advertising license\\\"},{\\\"key\\\":\\\"68eb6c81-35e9-4cef-a235-5578aa6b4c86\\\",\\\"name\\\":\\\"Item 6\\\",\\\"ncContentTypeAlias\\\":\\\"statisticsItem\\\",\\\"PropType\\\":null,\\\"icon\\\":[{\\\"key\\\":\\\"445648a0-bc53-4e84-b426-66f3dcff5a82\\\",\\\"mediaKey\\\":\\\"41177547-ecef-406a-b9db-c339416da5e2\\\"}],\\\"number\\\":\\\"228008\\\",\\\"title\\\":\\\"Residential Lease Contract - Ejar\\\"}]\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "statisticsTitle",
+          "path": "Property/statisticsTitle",
+          "oldValue": "\"احصاءات الربع الأول 2024\"",
+          "newValue": "\"احصاءات الربع الثالث 2024\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "statisticsTitle",
+          "path": "Property/statisticsTitle",
+          "oldValue": "\"Statistics\"",
+          "newValue": "\"Statistics - Q3 2024\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "title",
+          "path": "Property/title",
+          "oldValue": "\"الصفحة الرئيسية | الهيئة العامة للعقار  ‌  ‌\"",
+          "newValue": "\"الهيئة العامة للعقار\"",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "title",
+          "path": "Property/title",
+          "oldValue": "\"Home Page | Real Estate General Authority\"",
+          "newValue": "\"Real Estate General Authority\"",
+          "change": "Update"
+        }
+      ],
+      "key": "97a252c6-8b24-473c-bfcc-6a96a54e6d41"
+    }
+  ],
+  "date": "2025-01-01T16:09:04.352219+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 6,
+  "total": 16
+}

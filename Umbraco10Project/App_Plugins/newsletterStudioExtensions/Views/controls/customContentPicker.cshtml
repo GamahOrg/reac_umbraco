@@ -1,0 +1,71 @@
+@inject Umbraco.Cms.Core.Web.IUmbracoContextAccessor UmbracoContextAccessor
+@using Microsoft.IdentityModel.Tokens
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Web.Common.PublishedModels
+@using Umbraco.Extensions
+@using Umbraco10Project.App_Plugins.newsletterStudioExtensions.Controller.customContentPickerControl
+@using uSync.Core
+@{
+    var settings = Model.Email.Settings;
+    IPublishedContent selectedContent = null;
+    var title = "";
+    var img = "";
+    var url = "";
+
+    // Access the Umbraco context and query the content by ID
+    if (Model.Model is CustomContentPickerControlViewModel emailModel && emailModel.SelectedContent != null)
+    {
+        if (UmbracoContextAccessor.TryGetUmbracoContext(out var umbracoContext))
+        {
+            var contentQuery = umbracoContext.Content;
+            selectedContent = contentQuery.GetById((int)emailModel.SelectedContent);
+            url = selectedContent.Url();
+            if (selectedContent.ContentType.Alias == "newsDetails")
+            {
+                var temp = (NewsDetails)selectedContent;
+                title = temp.Name;
+                img = temp.NewsImages?.First()?.Url() ?? "";
+            }
+            else
+            {
+                title = selectedContent.Value<string>("pageTitle");
+                if (string.IsNullOrWhiteSpace(title))
+                {
+                    title = selectedContent.Name;
+                }
+                
+            }
+        }
+    }
+}
+
+
+@if (Model.Model is CustomContentPickerControlViewModel item)
+{
+    <a href="@url" style="text-decoration:none">
+        <div style="justify-content: @item.TextAlign; text-align: @item.TextAlign; padding: @item.Padding.Top @item.Padding.Right @item.Padding.Bottom @item.Padding.Left;">
+            @if (selectedContent != null)
+            {
+                if (item.ShowImage)
+                {
+                    <img src="@img" class="" style="max-width: 200px" alt="...">
+                }
+
+                if (item.OverrideTitle)
+                {
+                    <p>@item.Title</p>
+                }
+                else
+                {
+                    <p>@title</p>
+
+                }
+            }
+            else
+            {
+                <p>No content selected or content not found.</p>
+                <!-- Fallback message -->
+            }
+        </div>
+    </a>
+}

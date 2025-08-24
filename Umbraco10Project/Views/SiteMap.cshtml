@@ -1,0 +1,50 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<SiteMap>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+    var home = Umbraco.Content("1058");
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = Model.Ancestors().Reverse().ToList(),
+        content = Model,
+        title = Model?.Value("pageTitle")?.ToString() ?? ""
+    };
+}
+
+<div class="site-map-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+
+    <div class="container mt-4">
+
+        <div class="row">
+            @{
+                foreach (var sitePage in home.Children().Where(x => x.Children().Count() > 0).Where(x => !x.Value<bool>("Statistics")).Where(x => !x.IsDocumentType("realEstateGeneralAuthority")))
+                {
+                    <div class="site-map-item">
+                        <p class="text-primary title">
+                            @sitePage.Name
+                        </p>
+                        <ul class="site-map-item-child display-flexbox">
+                            @foreach (var subItem in sitePage.Children())
+                            {
+                                if(subItem.Value<bool>("hidePageFromNavigation")) continue;
+                                <li>
+                                    <a class="site-map-item-child-link" href="@subItem.Url()">
+                                        @subItem.Name
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+
+        </div>
+
+    </div>
+
+
+</div>

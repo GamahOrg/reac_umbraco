@@ -1,0 +1,209 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco10Project.Helpers
+@using uSync.Core
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.WafiDevelopersModel>
+
+@{
+    var qualificationTypeId = Model.QueryParm.QualificationTypeId;
+    var facilityName = Model.QueryParm.FacilityName;
+    var docUrl = Model.QueryParm.ModelUrl;
+    bool ar = Umbraco.CultureDictionary.Culture.ToString() == "ar-JO";
+
+}
+
+<div class="wafi-developers-page">
+    <h5>@Model.Title</h5>
+    @if (Model.ShowController)
+    {
+        <div class="row">
+            <div class="col-lg-6 col-md-6 mt-md-0 col-12 mt-2 mt-lg-0">
+                <div class="input-group">
+                    <div class="input-group-text ">
+                        <img src="~/images/icons/search.svg" class="small-icon" width="20" height="20" alt="search icon"/>
+                    </div>
+                    <input type="text" class="form-control " id="searchInput" value="@facilityName" placeholder="@Umbraco.GetDictionaryValue("Search")">
+                    @{
+                        if (!string.IsNullOrWhiteSpace(facilityName))
+                        {
+                            <button type="button" class="input-group-text clear-search" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@(!Umbraco.GetDictionaryValue("Clear").IsNullOrWhiteSpace() ? Umbraco.GetDictionaryValue("Clear") : "Clear")">
+                                <img src="~/images/icons/cancel.svg" class="small-icon" width="20" height="20" alt="Cancel icon"/>
+                            </button>
+                        }
+                    }
+
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mt-md-0 col-12 mt-2 mt-lg-0">
+                <select class="wafi-developers-qualification-select form-select" aria-label="Developers qualification Select" asp-for="@qualificationTypeId">
+                    <option class="services-list-option" value="">
+                        @Umbraco.GetDictionaryValue("License type", "نوع الرخصة")
+                    </option>
+
+                    @{
+                        if (Model.QualificationTypes != null && Model.QualificationTypes.Data != null)
+                        {
+                            foreach (var item in Model.QualificationTypes.Data)
+                            {
+                                <option class="services-list-option" value="@item.id">
+                                    @item.typeName
+                                </option>
+                            }
+                        }
+                    }
+
+                </select>
+            </div>
+
+        </div>
+    }
+    <div class="row mt-4">
+        @{
+            if (Model.Response?.Data?.Results == null || Model.Response.Data.Results.Count == 0)
+            {
+                if (Model.ShowAlert)
+                {
+                    <div class="alert alert-warning mt-4 text-center" role="alert">
+                        <h4 class="alert-heading">@Umbraco.GetDictionaryValueOrDefault("Not Exist","غير موجود")</h4>
+                        <p>
+                            @Umbraco.GetDictionaryValueOrDefault("inquiry not exist","الاستعلام الذي تبحث عنه غير موجود")
+
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <h5 class="title h-2rem overflow-hidden mt-4">@Umbraco.GetDictionaryValue("No Content")</h5>
+
+                }
+            }
+            else
+            {
+                @if (Model.Response?.Data?.Results != null)
+                {
+                    foreach (var item in Model.Response?.Data?.Results)
+                    {
+                        <div class="col-lg-6 col-12 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="title">@item.FacilityName</div>
+                                    <div class="badge @(item.StatusName == "فعال" ? "text-bg-primary" : "text-bg-danger text-white") ">@Umbraco.GetDictionaryValueOrDefault(item.StatusName, item.StatusName)</div>
+                                    <div class="small">
+                                        <span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Location", "الموقع"): </span>@item.CityName
+                                    </div>
+                                    <div class="small">
+                                        <span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("License number", "رقم الرخصة"): </span>@item.CertificateNumber
+                                    </div>
+                                    <div class="small">
+                                        <span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("License type", "نوع الرخصة"): </span>@item.QualificationTypeName
+                                    </div>
+                                    <div class="small">
+                                        <span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Qualification Start Date", "بداية شهادة التأهيل"): </span>@Calendar.TheSmallDate(item.QulificationStartDate, !ar)
+                                    </div>
+                                    <div class="small">
+                                        <span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Qualification End Date", "نهاية شهادة التأهيل"): </span>@Calendar.TheSmallDate(item.QulificationEndDate, !ar)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+
+                <div class="row mt-2">
+
+                    @{
+                        if (Model.Response?.Data?.PageCount >= 1)
+                        {
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item  @(@Model.Response.Data.CurrentPage == 1 ? "disabled" : "")">
+                                        <a class="page-link" href="@(Model.QueryParm.ModelUrl)?tabActive=Wafi Developers&qualificationTypeId=@(qualificationTypeId)&facilityName=@(facilityName)&currentDeveloperPage=@(Model.Response.Data.CurrentPage - 1)">&laquo;</a>
+                                    </li>
+                                    @{
+                                        int startPage = Math.Max(1, Model.Response.Data.CurrentPage - 2);
+                                        int endPage = Math.Min(Model.Response.Data.PageCount, Model.Response.Data.CurrentPage + 2);
+                                        if (Model.Response.Data.CurrentPage <= 3)
+                                        {
+                                            startPage = 1;
+                                            endPage = Math.Min(5, Model.Response.Data.PageCount); // Display up to page 5, or fewer if totalPages < 5
+                                        }
+                                        else if (Model.Response.Data.CurrentPage >= Model.Response.Data.PageCount - 2)
+                                        {
+                                            startPage = Math.Max(Model.Response.Data.PageCount - 4, 1); // Display the last 5 pages, or start from page 1 if totalPages < 5
+                                            endPage = Model.Response.Data.PageCount;
+                                        }
+                                        else
+                                        {
+                                            startPage = Model.Response.Data.CurrentPage - 2;
+                                            endPage = Model.Response.Data.CurrentPage + 2;
+                                        }
+
+                                        @for (int p = startPage; p <= endPage; p++)
+                                        {
+                                            <li class="page-item">
+                                                <a class="page-link @(p == Model.Response.Data.CurrentPage ? "active" : string.Empty)" href="@(Model.QueryParm.ModelUrl)?tabActive=Wafi Developers&qualificationTypeId=@(qualificationTypeId)&facilityName=@(facilityName)&currentDeveloperPage=@p">@p</a>
+                                            </li>
+                                        }
+                                    }
+                                    <li class="page-item @(@Model.Response.Data.CurrentPage == Model.Response.Data.PageCount ? "disabled" : "")">
+                                        <a class="page-link" href="@(Model.QueryParm.ModelUrl)?tabActive=Wafi Developers&qualificationTypeId=@(qualificationTypeId)&facilityName=@(facilityName)&currentDeveloperPage=@(Model.Response.Data.CurrentPage + 1)">&raquo;</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        }
+                        else
+                        {
+                            <div class="row justify-content-center text-center mt-5">
+                                <div class="col">
+                                    <img src="~/images/icons/file_search.svg" alt="No content icon" width="20" height="20" class="img-fluid small-icon"/>
+                                    <span class="mt-5">@Umbraco.GetDictionaryValue("There is not content with this title")</span>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        }
+    </div >
+</div >
+
+<script csp-manager-add-nonce="true">
+    var docUrl = "@docUrl";
+    var qualificationTypeId = "@qualificationTypeId";
+    var facilityName = "@facilityName";
+    function search(value){
+        var encodedURL = encodeURIComponent(docUrl);
+        var decodedURL = decodeURIComponent(encodedURL);
+        decodedURL = $("<div/>").html(decodedURL).text();
+        var redirect = decodedURL + `?tabActive=Wafi Developers&qualificationTypeId=${qualificationTypeId}&facilityName=${value}`;
+        window.location.href = redirect;
+    }
+
+    $(document).ready(function () {
+
+        $("#searchInput").on("keyup", function (e) {
+            if (e.key == "Enter") {
+                search($(this).val());
+            }
+        })
+
+        $(".wafi-developers-qualification-select").on("change", function () {
+            var selectedValue = $(this).val();
+            var encodedURL = encodeURIComponent(docUrl);
+            var decodedURL = decodeURIComponent(encodedURL);
+            decodedURL = $("<div/>").html(decodedURL).text();
+            var redirect = decodedURL + `?tabActive=Wafi Developers&qualificationTypeId=${selectedValue}&facilityName=${facilityName}`;
+            window.location.href = redirect;
+        })
+
+        document.addEventListener('click', function (event) {
+            // Check if the clicked element has the class 'dynamic-button'
+            if (event.target.closest('.clear-search')) {
+                search('');
+
+            }
+        });
+
+    });
+</script>

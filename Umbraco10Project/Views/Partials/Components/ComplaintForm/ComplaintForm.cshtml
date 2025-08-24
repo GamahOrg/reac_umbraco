@@ -1,0 +1,48 @@
+﻿@using Umbraco.Community.CSPManager.TagHelpers
+@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.ComplaintModels>
+
+@{
+    var fullName = Model.FullName;
+    var idNumber = Model.IdNumber;
+}
+
+
+@await Component.InvokeAsync("Form", new FormModel()
+{
+    ModelId = Model?.ModelId ?? "",
+    FormID = Model?.FormID,
+    Title = Model?.Title ?? "",
+    Description = Model?.Description ?? "",
+    ProtectedByNafath = Model?.ProtectedByNafath ?? false,
+})
+
+
+<script csp-manager-add-nonce="true">
+
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const complaintName = document.querySelector('.complaint-name');
+        const complaintId = document.querySelector('.complaint-id-number');
+
+        const decodeHtmlEntities = (text) => {
+            const textarea = document.createElement('textarea');
+            textarea.innerHTML = text;
+            return textarea.value;
+        };
+
+
+        complaintName.value = decodeHtmlEntities("@fullName");
+        
+        complaintId.value = "@idNumber";
+        console.log(complaintName.value)
+        complaintName.dispatchEvent(new Event('change'));
+        complaintId.dispatchEvent(new Event('change'));
+
+        complaintName.setAttribute('readonly', 'readonly');
+        complaintId.setAttribute('readonly', 'readonly');
+
+    });
+
+
+</script>

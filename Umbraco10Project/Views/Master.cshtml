@@ -1,0 +1,171 @@
+﻿@using Umbraco.Forms.Web
+@using Microsoft.Extensions.Configuration;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject IConfiguration Configuration
+@{
+    Layout = null;
+    var lang = Umbraco.CultureDictionary.Culture.ToString();
+
+    var mainSettings = Umbraco.Content(1189);
+    var pageTitle = Model.HasValue("pageTitle") ? Model.Value("pageTitle") : Model.HasValue("title") ? Model.Value("title") : Model.Parent?.Name + "-" + Model.Name;
+    string dir = lang == "ar-JO" ? "rtl" : "ltr";
+
+    string pageKeywords = "";
+    @if (Model.HasValue("keywords") && Model.Value("keywords") != null)
+    {
+        var tags = Model.Value<IEnumerable<string>>("keywords");
+        @foreach (var tag in tags)
+        {
+            pageKeywords += tag + ",";
+        }
+    }
+
+    var browserTabIcon = mainSettings.Value<IPublishedContent>("browserTabIcon");
+    var projectName = mainSettings.Value("projectName");
+}
+
+
+<!DOCTYPE html>
+<html lang="@Model.GetCultureFromDomains()" dir="@dir">
+<head >
+    <meta charset="utf-8">
+    <meta content="gzip"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"/>
+    <meta name="format-detection" content="telephone=no">
+
+    <title> @pageTitle </title>
+
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="google-site-verification" content="kizCKqkpJXyno6Om_7BRHCbSnA4C11m8AsGWfBew-WY"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/media/favicon_io/site.webmanifest">
+
+
+    <!--Address Bar color -->
+    @{
+        if (mainSettings.HasValue("addressBarColor"))
+        {
+            var addressBarColor = mainSettings.Value("addressBarColor");
+
+            <!-- Chrome, Firefox OS and Opera -->
+            <meta name="theme-color" content="@addressBarColor">
+            <!-- Windows Phone -->
+            <meta name="msapplication-navbutton-color" content="@addressBarColor">
+            <!-- iOS Safari -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="@addressBarColor">
+        }
+    }
+
+    <link rel="icon" href="@(browserTabIcon == null ? "" : browserTabIcon.Url())">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@projectName">
+    <meta name="twitter:image" content="https://rega.gov.sa/images/rega-new-logo.png?4362984378"/>
+    <!-- Open Graph data -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="500"/>
+    <meta property="og:image:height" content="500"/>
+    <meta property="og:image" name="og:image" content="https://rega.gov.sa/media/favicon_io/apple-touch-icon.png" data-rh="true"/>
+
+
+    <!--Cach-->
+    <meta http-equiv="cache-control" content="max-age=2592000, public"/>
+    <meta http-equiv="expires" content="max-age=2592000, public"/>
+    <meta http-equiv="expires" content="Tue, 01 Jan 2023 1:00:00 GMT"/>
+    <meta http-equiv="pragma" content="max-age=2592000, public"/>
+
+    <!--This Script will be used to show Search bar in the search results-->
+    @{
+        //replce 111 with the Search page ID if exist
+        var searchPage = Umbraco.Content(1068);
+        //"url": "@rootURL",
+        //"target": "@rootURL/@searchPage.Url()?q={search_term_string}",
+
+        if (searchPage != null)
+        {
+            <script type="application/ld+json">
+                {
+                    "@@context": "https://schema.org",
+                    "@@type": "WebSite",
+                    "url": "",
+                    "potentialAction": {
+                        "@@type": "SearchAction",
+                        "target": "searchPage.Url()?q={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                }
+            </script>
+        }
+    }
+
+    @if (lang == "ar-JO")
+    {
+        @* <link href="~/css/vendors/bootstrap.rtl.min.css" rel="stylesheet"/> *@
+        <link href="~/css/css/style.rtl.css" rel="stylesheet"/>
+    }
+    else
+    {
+        @* <link href="~/css/vendors/bootstrap.min.css" rel="stylesheet"/> *@
+        <link href="~/css/css/style.css" rel="stylesheet"/>
+
+    }
+
+    <link rel="stylesheet" href="~/css/vendors/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="~/css/vendors/owl.theme.default.min.css"/>
+    <link rel="stylesheet" href="~/css/vendors/flatpickr.min.css"/>
+    <link rel="stylesheet" href="~/css/vendors/bootstrap-datetimepicker.min.css"/>
+
+    @Html.RenderUmbracoFormDependencies(Url)
+    <meta-fields></meta-fields>
+
+    <render-script position="HeadBottom" csp-manager-add-nonce="true"></render-script>
+    <script src="~/scripts/vendors/jquery-3.7.1.min.js"></script>
+    <script src="~/scripts/vendors/countUp.umd.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-63J7CXE97P" csp-manager-add-nonce="true"></script>
+    <script csp-manager-add-nonce="true">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-63J7CXE97P');
+    </script>
+</head>
+<body class="container-fluid p-0">
+
+<render-script position="BodyTop" csp-manager-add-nonce="true"></render-script>
+@await Html.PartialAsync("Header")
+<div id="wrap">
+    <div id="main" class="clear-top">
+        @RenderBody()
+    </div>
+</div>
+@await Html.PartialAsync("Footer")
+
+
+@RenderSection("endscripts", required: false)
+<render-script position="BodyBottom"></render-script>
+<script src="~/scripts/vendors/bootstrap.bundle.min.js"></script>
+<script src="~/scripts/vendors/scrollreveal.min.js"></script>
+<script src="~/scripts/vendors/flatpickr.min.js"></script>
+<script src="~/scripts/vendors/owl.carousel.min.js"></script>
+<script src="~/scripts/main/toc.js"></script>
+<script src="~/scripts/main/scripts.js"></script>
+<script src="~/scripts/vendors/bootstrap-hijri-datetimepicker.min.js"></script>
+<script csp-manager-add-nonce="true">
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+
+</body>
+</html>

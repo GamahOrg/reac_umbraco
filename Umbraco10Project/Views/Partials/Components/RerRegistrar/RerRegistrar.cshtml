@@ -1,0 +1,176 @@
+﻿@using Umbraco.Licensing.Webservices
+@using Umbraco10Project.Helpers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.RerRegistrarModel>
+
+@{
+    var docUrl = Model.QueryParm.ModelUrl;
+    var currentPage = Model.QueryParm.CurrentPage;
+    var licenseNumber = Model.QueryParm.LicenseNumber;
+
+    string GetStatus(string status)
+    {
+        if (status == "Active")
+        {
+            return "رخصة فعالة";
+        }
+        return "رخصة غير فعالة";
+    }
+}
+<div class="rer-registrar-page">
+    <h5>@Model.Title</h5>
+
+    @if (Model.ShowController)
+    {
+        <div class="row">
+            <div class="col-lg-12 col-md-12 mt-md-0 col-12 mt-2 mt-lg-0">
+                <div class="input-group">
+                    <div class="input-group-text ">
+                        <img src="~/images/icons/search.svg" class="small-icon" width="20" height="20" alt="search icon"/>
+                    </div>
+                    <input type="text" class="form-control " id="searchInput" value="@licenseNumber" placeholder="@Umbraco.GetDictionaryValue("License number")">
+                    @{
+                        if (!string.IsNullOrWhiteSpace(licenseNumber))
+                        {
+                            <button type="button" class="input-group-text clear-search" data-bs-toggle="tooltip" data-bs-placement="bottom"  data-bs-title="@(!Umbraco.GetDictionaryValue("Clear").IsNullOrWhiteSpace() ? Umbraco.GetDictionaryValue("Clear") : "Clear")">
+                                <img src="~/images/icons/cancel.svg" class="small-icon" width="20" height="20" alt="Cancel icon"/>
+                            </button>
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    }
+    @{
+        if (Model.response.Data == null || Model.response.Data.Count == 0)
+        {
+            if (Model.ShowAlert)
+            {
+                <div class="alert alert-warning mt-4 text-center" role="alert">
+                    <h4 class="alert-heading">@Umbraco.GetDictionaryValueOrDefault("Not Exist","غير موجود")</h4>
+                    <p>
+                        @Umbraco.GetDictionaryValueOrDefault("inquiry not exist","الاستعلام الذي تبحث عنه غير موجود")
+
+                    </p>
+                </div>
+            }
+            else
+            {
+                <h5 class="title h-2rem overflow-hidden mt-4">@Umbraco.GetDictionaryValue("No Content")</h5>
+
+            }
+        }
+        else
+        {
+
+            <div class="row mt-4">
+                @{
+                    foreach (var item in Model.response.Data)
+                    {
+                        <div class="col-lg-6 col-12 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div class="title text-primary">@item.Name</div>
+                                    <div class="badge text-bg-success text-white">
+                                        @GetStatus(item.license_status)
+                                    </div>
+                                    <div class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("License number", "رقم الرخصة"): </span>@item.license_number</div>
+                                    @if (item.issuance_date != null)
+                                    {
+                                        <div class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Issuance date", "تاريخ اصدار الرخصة"): </span>@Calendar.TheDate((DateTime)item.issuance_date, false)
+                                        </div>
+
+                                    }
+                                    @if (item.expire_date != null)
+                                    {
+                                        <div class="small"><span class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Expire date", "تاريخ انتهاء الرخصة"): </span>@Calendar.TheDate((DateTime)item.expire_date, false)
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="row mt-2">
+
+                @{
+                    if (Model.response.TotalCount >= 1)
+                    {
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item  @(@Model.response.Page == 1 ? "disabled" : "")">
+                                    <a class="page-link" href="@(Model.QueryParm.ModelUrl)?tabActive=Rer Registrar&currentPage=@(Model.response.Page - 1)">&laquo;</a>
+                                </li>
+                                @{
+                                    int startPage = Math.Max(1, Model.response.Page - 2);
+                                    int endPage = Math.Min(Model.response.TotalCount, Model.response.Page + 2);
+                                    if (Model.response.Page <= 3)
+                                    {
+                                        startPage = 1;
+                                        endPage = Math.Min(5, Model.response.TotalCount); // Display up to page 5, or fewer if totalPages < 5
+                                    }
+                                    else if (Model.response.Page >= Model.response.TotalCount - 2)
+                                    {
+                                        startPage = Math.Max(Model.response.TotalCount - 4, 1); // Display the last 5 pages, or start from page 1 if totalPages < 5
+                                        endPage = Model.response.TotalCount;
+                                    }
+                                    else
+                                    {
+                                        startPage = Model.response.Page - 2;
+                                        endPage = Model.response.Page + 2;
+                                    }
+
+                                    @for (int p = startPage; p <= endPage; p++)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link @(p == Model.response.Page ? "active" : string.Empty)" href="@(Model.QueryParm.ModelUrl)?tabActive=Rer Registrar&currentPage=@p">@p</a>
+                                        </li>
+                                    }
+                                }
+                                <li class="page-item @(@Model.response.Page == Model.response.TotalCount ? "disabled" : "")">
+                                    <a class="page-link" href="@(Model.QueryParm.ModelUrl)?tabActive=Rer Registrar&currentPage=@(Model.response.Page + 1)">&raquo;</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    }
+                }
+            </div>
+        }
+    }
+
+</div>
+
+<script csp-manager-add-nonce="true">
+    var docUrl = "@docUrl";
+    var licenseNumber = "@licenseNumber";
+    function search(value){
+        var encodedURL = encodeURIComponent(docUrl);
+        var decodedURL = decodeURIComponent(encodedURL);
+        decodedURL = $("<div/>").html(decodedURL).text();
+        var redirect = decodedURL + `?tabActive=Rer Registrar&licenseNumber=${value}`;
+        window.location.href = redirect;
+    }
+
+    $(document).ready(function () {
+
+        $("#searchInput").on("keyup", function (e) {
+            if (e.key == "Enter") {
+                search($(this).val());
+            }
+        })
+
+        document.addEventListener('click', function (event) {
+            // Check if the clicked element has the class 'dynamic-button'
+            if (event.target.closest('.clear-search')) {
+                search('');
+
+            }
+        });
+
+
+    });
+</script>

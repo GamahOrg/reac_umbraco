@@ -1,0 +1,46 @@
+@model Umbraco.Forms.Web.Models.FieldViewModel
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco.Cms.Web.Common
+@using Umbraco.Forms.Web
+@using uSync.Core
+
+@inject UmbracoHelper umbracoHelper
+
+
+@{
+    var settings = Model.AdditionalSettings;
+    var autocompleteAttribute = Model.GetSettingValue<string>("AutocompleteAttribute", string.Empty);
+    var x =
+        new List<SelectListItem>
+        {
+            new () { Value = "", Text = @umbracoHelper.GetDictionaryValueOrDefault("-- select one --", "-- select one --") },
+            new () { Value = "Makkah", Text = "منطقة مكة المكرمة" },
+            new () { Value = "Riyadh", Text = "منطقة الرياض" },
+            new () { Value = "Tabouk", Text = "منطقة تبوك" },
+            new () { Value = "Northen", Text = "منطقة الحدود الشمالية" },
+            new () { Value = "Jouf", Text = "منطقة الجوف" },
+            new () { Value = "AlMedina", Text = "منطقة المدينة المنورة" },
+            new () { Value = "Qassim", Text = "منطقة القصيم" },
+            new () { Value = "Hail", Text = "منطقة حائل" },
+            new () { Value = "Najran", Text = "منطقة نجران" },
+            new () { Value = "Aseer", Text = "منطقة عسير" },
+            new () { Value = "Baha", Text = "منطقة الباحة" },
+            new () { Value = "Jazan", Text = "منطقة جازان" },
+            new () { Value = "EasternProvince", Text = "المنطقة الشرقية" }
+        };
+}
+
+<select class="@Html.GetFormFieldClass(Model.FieldTypeName) form-select umbraco-forms-region-dropdown"
+        name="@Model.Name"
+        id="@Model.Id"
+        data-umb="@Model.Id"
+        style="min-width:50%"
+        @if (string.IsNullOrWhiteSpace(autocompleteAttribute) == false) { <text>autocomplete="@autocompleteAttribute"</text> }
+        @if (Model.Mandatory) { <text> data-val="true" data-val-required="@Model.RequiredErrorMessage" aria-required="true" </text> }
+        @if (!string.IsNullOrWhiteSpace(Model.ToolTip)) { <text> aria-describedby="@(Model.Id)_description" </text> }>
+    @foreach (var pv in x)
+    {
+        @: <option value="@pv.Value" @(Model.ContainsValue(pv.Value) ? "selected" : string.Empty)>@pv.Text</option>
+    }
+</select>

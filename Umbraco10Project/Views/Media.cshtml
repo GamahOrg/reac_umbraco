@@ -1,0 +1,120 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Media>
+@using Umbraco10Project.Helpers
+@using Umbraco10Project.Models;
+@{
+    Layout = "Master.cshtml";
+    string currentPath = Context.Request.Path;
+    var isEnglish = currentPath.Contains("/en/");
+}
+<div class="media-page rega-page">
+
+    <div class="site-wrapper inside-wrapper">
+        <div class="bread-crumbs">
+            <a class="bread-crumbs-item font-bold" href="/"> @Model?.Parent?.Parent?.Name > </a>
+            <span class="bread-crumbs-item font-bold"> @Model?.Parent?.Name > </span>
+            <a class="bread-crumbs-item font-bold" href=""> @Model?.Name </a>
+        </div>
+
+        <div class="section-container display-flexbox padding-top-15">
+            <div class="section-top-side margin-0 flex-start">
+                <div class="section-title font-bold text-start">
+                    <h1>@Model.Value("pageTitle")</h1>
+                </div>
+                <div class="publications-filters  search-filters display-flexbox">
+                    <input id="searchInput" type="search" class="site-input" placeholder="@Umbraco.GetDictionaryValue("Search Service")">
+                </div>
+            </div>
+            <div class="section-bottom-side with-gap display-flexbox">
+                <div class="swiper media-boxes">
+                    <div class="swiper-wrapper">
+                        @{
+                            IEnumerable<IPublishedElement> mediaItems = Model.Value<IEnumerable<IPublishedElement>>("mediaItems");
+                            double itemsCounter = mediaItems.Count();
+                            var pageSize = 10;
+                            double calcItems = itemsCounter / 10;
+                            var pageCount = Math.Ceiling(calcItems);
+                            for (int i = 0; i < pageCount; i++)
+                            {
+                                <div class="swiper-slide">
+                                    <div class="media-images">
+                                        <div class="media-images-section media-images-section-1 display-flexbox">
+                                            @foreach (var item in mediaItems.Skip(i * pageSize).Take(pageSize).OrderByDescending(x => x.Value("date")))
+                                            {
+                                                DateTime date = item.Value<DateTime>("date");
+                                                var itemDate = Calendar.TheDate(date, isEnglish);
+                                                var dateForSort = date.ToString("yyy/MM/dd", new System.Globalization.CultureInfo("en-US")).Replace("/", "");
+                                                IPublishedContent itemMedia = item.Value<IPublishedContent>("mediaFile");
+                                                string itemMediaUrl = itemMedia != null ? itemMedia.Url() : "";
+                                                if (item.HasValue("mediaType"))
+                                                {
+                                                    if (item.Value("mediaType").ToString() == "Video")
+                                                    {
+                                                        if (item.HasValue("youTubeLink"))
+                                                        {
+                                                            IPublishedContent youTubeImage = item.Value<IPublishedContent>("youTubeImage");
+                                                            string youTubeImageUrl = youTubeImage != null ? youTubeImage.Url() : "";
+                                                            <a class="media-box sort-item youTube media-file-search" href="@item.Value("youTubeLink")" data-fancybox="gallery" data-order="@dateForSort" style="background-image: url('@youTubeImageUrl')">
+                                                                <div class="media-box-content">
+                                                                    <div class="media-content">
+                                                                        <span class="media-type">@item.Value("mediaType")</span>
+                                                                        <span class="media-date">@itemDate</span>
+                                                                    </div>
+                                                                    <div class="media-description">@item.Value("brief")</div>
+                                                                </div>
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a class="media-box sort-item video-type  media-file-search" href="@itemMediaUrl" data-order="@dateForSort" data-fancybox="gallery">
+                                                                <video class="media-box-video">
+                                                                    <source src="@itemMediaUrl" type="video/mp4">
+                                                                </video>
+                                                                <div class="media-box-content">
+                                                                    <div class="media-content">
+                                                                        <span class="media-type">@item.Value("mediaType")</span>
+                                                                        <span class="media-date">@itemDate</span>
+                                                                    </div>
+                                                                    <div class="media-description">@item.Value("brief")</div>
+                                                                </div>
+                                                            </a>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class="media-box sort-item media-file-search" href="@itemMediaUrl" data-fancybox="gallery" data-order="@dateForSort" style="background-image: url('@itemMediaUrl')">
+                                                            <div class="media-box-content">
+                                                                <div class="media-content">
+                                                                    <span class="media-type">@item.Value("mediaType")</span>
+                                                                    <span class="media-date">@itemDate</span>
+                                                                </div>
+                                                                <div class="media-description">@item.Value("brief")</div>
+                                                            </div>
+                                                        </a>
+                                                    }
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
+                    </div>
+                    <div class="media-section-swiper-btns">
+                        <div class="media-section-swiper-brev display-flexbox">
+                            <img src="~/images/prev.png" alt="Prev icon"/>
+                        </div>
+                        <div class="media-section-swiper-next display-flexbox">
+                            <img src="~/images/next.png" alt="Next icon"/>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

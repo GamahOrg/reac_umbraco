@@ -1,0 +1,112 @@
+@using Umbraco10Project.Helpers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.RerTitleInquiryModel>
+
+
+<div class="rer-title-inquiry-page">
+    <h5>@Model.Title</h5>
+
+    @if (Model.response.GeneralInformation == null)
+    {
+        if (Model.ShowAlert)
+        {
+            <div class="alert alert-warning mt-4 text-center" role="alert">
+                <h4 class="alert-heading">@Umbraco.GetDictionaryValueOrDefault("Not Exist","غير موجود")</h4>
+                <p>
+                    @Umbraco.GetDictionaryValueOrDefault("inquiry not exist","الاستعلام الذي تبحث عنه غير موجود")
+                </p>
+            </div>
+        }
+        else
+        {
+            <h5 class="title h-2rem overflow-hidden mt-4">@Umbraco.GetDictionaryValue("No Content")</h5>
+        }
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+
+                <div class="h5 text-primary">@Umbraco.GetDictionaryValueOrDefault("Real Estate Information", "معلومات العقار")</div>
+                <div class="row">
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("Real Estate Number", "رقم العقار")</p>
+                        <p class="text-secondary">@Model.response.GeneralInformation?.RealEstateNumber</p>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("Deed Number", "رقم الصك")</p>
+                        @if (Model.response.OriginMojDeed != null)
+                        {
+                            <p class="text-secondary">@Model.response.OriginMojDeed?.Number</p>
+                        }
+                        else if (Model.response.OriginMojDeeds?.Count > 0)
+                        {
+                            <p class="text-secondary">@Model.response.OriginMojDeeds[0].Number</p>
+                        }
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("Area Size","مساحة العقار")</p>
+                        <p class="text-secondary">@Model.response.Spatial?.AreaSize م٢</p>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("First Registration Date", "تاريخ النشر")</p>
+                        <p class="text-secondary">@Model.response.GeneralInformation?.FirstRegistrationDateG</p>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <p>
+                            @Umbraco.GetDictionaryValueOrDefault("Property Use","استخدام العقار")
+                        </p>
+                        <p class="text-secondary">@Model.response.Spatial?.PropertyUse</p>
+                    </div>
+                </div>
+
+                <div class="h5 text-primary mt-4">@Umbraco.GetDictionaryValueOrDefault("Location Details", "المعلومات الجغرافية")</div>
+                <div class="row">
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("City","المدينة")</p>
+                        <p class="text-secondary">@Model.response.Address?.CityNameAr</p>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("District","الحي")</p>
+                        <p class="text-secondary">@Model.response.Address?.DistrictNameAr</p>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("Plan Number","رقم المخطط")</p>
+                        <p class="text-secondary">@Model.response.Address?.PlanNumber</p>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <p>@Umbraco.GetDictionaryValueOrDefault("Parcel Number","رقم القطعة")</p>
+                        <p class="text-secondary">@Model.response.Address?.ParcelNumber</p>
+                    </div>
+                </div>
+                @if (Model.response.OwnerInformation != null)
+                {
+                    <div class="h5 text-primary mt-4">@Umbraco.GetDictionaryValueOrDefault("Owner Information", "معلومات الملاك")</div>
+                    <div class="row">
+                        @foreach (var item in Model.response.OwnerInformation)
+                        {
+                            <div class="row">
+                                <div class="">
+                                    <div class="card-body row">
+                                        <div class="col-auto justify-content-center text-center pe-0">
+                                            <img src="~/images/icons/user.svg" alt="principles" class="img-fluid small-icon" width="30" height="30"/>
+
+                                        </div>
+                                        <div class="col ps-2">
+                                            <p class="title text-primary m-0">@Utils.MaskNameExceptFirstWord(item.NameAr ?? "")</p>
+                                            <p class="content text-start" dir="ltr">
+                                                @Utils.MaskString(item.Id ?? "", 4)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                }
+            </div>
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,42 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<div class="apply-for-job-page">
+    @await Html.PartialAsync("Header")
+    @await Html.PartialAsync("inner page banner")
+    @await Html.PartialAsync("settings-side")
+    @await Html.PartialAsync("menu2")
+
+    <div class="site-wrapper inside-wrapper">
+        <div class="bread-crumbs">
+            <a class="bread-crumbs-item font-bold" href="/"> @Model?.Parent?.Parent?.Name ></a>
+            <span class="bread-crumbs-item font-bold" > @Model?.Parent?.Name ></span>
+            <a class="bread-crumbs-item font-bold" href=""> @Model.Value("pageTitle")</a>
+        </div>
+
+        <div class="section-container display-flexbox padding-top-15">
+            <div class="section-top-side margin-0 flex-start">
+                <div class="section-title font-bold text-start">
+                    @Model.Value("pageTitle")
+                </div>
+            </div>
+            <div class="section-bottom-side with-gap display-flexbox">
+                <div class="apply-for-job-section">
+
+                    <div class="apply-for-job-form">
+                        @await Component.InvokeAsync("ReportForm")
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("Footer")
+
+</div>
+

@@ -1,0 +1,398 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<RegulationsItem>
+@using Umbraco10Project.Helpers
+@using Umbraco10Project.Models
+
+@{
+    Layout = "Master.cshtml";
+    var ancestorList = Model.Ancestors().Reverse().ToList();
+    if (ancestorList.Count > 1)
+    {
+        ancestorList.RemoveAt(1); // Remove the first parent
+    }
+
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = ancestorList,
+        content = Model,
+
+        title = Model?.Name ?? ""
+    };
+}
+
+
+<div class="regulation-item-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+    <div class="container mt-5">
+
+        <div class="row" style="  align-items: flex-start;">
+            <div class="col-lg-4 col-12 d-none d-lg-flex" id="table-of-contents-col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-primary">
+                            <h3 style="font-size: 1.25rem;"> @Umbraco.GetDictionaryValue("Table of Contents") </h3>
+                        </div>
+
+                        <input id="FilterSearch" name="FilterSearch" class="form-control mt-4 mb-4" type="text"
+                               placeholder="@Umbraco.GetDictionaryValue("Search")"/>
+                        <div id="toc" class="table-of-contents">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-12">
+                <div class="row mt-lg-0 mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6 mt-2 mt-lg-0">
+                                        <div class="row">
+                                            <div class="col-auto pe-0">
+                                                <img src="~/images/icons/calender.svg" alt="calender icon"
+                                                     class="small-icon" width="20" height="20"/>
+
+                                            </div>
+                                            <div class="col">
+
+                                            <span
+                                                class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Publish Date", "Publish Date")</span>
+
+                                                <p>
+                                                    @Calendar.ConvertToHijri(Model?.PublishDate)
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-6 mt-2 mt-lg-0">
+                                        <div class="row">
+                                            <div class="col-auto pe-0">
+                                                <img src="~/images/icons/calender.svg" alt="calender icon"
+                                                     class="small-icon" width="20" height="20"/>
+
+                                            </div>
+                                            <div class="col">
+                                                <span
+                                                    class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Release Date", "Release Date")</span>
+                                                <p class="">@Calendar.ConvertToHijri(Model?.ReleaseDate)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-6 mt-2 mt-lg-0">
+                                        <div class="row">
+
+                                            <div class="col-auto pe-0">
+                                                <img src="~/images/icons/timer.svg" class="small-icon" width="20"
+                                                     height="20" alt="Project status icon">
+                                            </div>
+                                            <div class="col">
+                                                <span
+                                                    class="fw-bold">@Umbraco.GetDictionaryValue("Status of legislation")</span>
+
+                                                <p class="">
+                                                    @Umbraco.GetDictionaryValue(@Model?.RuleStatus ?? "")
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-6 mt-2 mt-lg-0">
+                                        <div class="row">
+
+                                            <div class="col-auto pe-0">
+                                                <img src="~/images/icons/setting-done.svg"
+                                                     alt="License Project Type icon" class="small-icon" width="20"
+                                                     height="20">
+
+                                            </div>
+                                            <div class="col">
+                                            <span
+                                                class="fw-bold"> @Umbraco.GetDictionaryValue("Type of legislation")</span>
+
+                                                <p class="">
+                                                    @Umbraco.GetDictionaryValue(@Model?.RuleType ?? "")
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @{
+                                        if (!(Model?.LegislationType ?? "").IsNullOrWhiteSpace())
+                                        {
+                                            <div class="col-lg-3 col-6 mt-2 mt-lg-0">
+                                                <div class="col-auto pe-0">
+                                                    <img src="~/images/icons/setting-done.svg"
+                                                         alt="License Project Type icon" class="small-icon" width="20"
+                                                         height="20">
+
+
+                                                </div>
+                                                <div class="col">
+                                                <span
+                                                    class="fw-bold">@Umbraco.GetDictionaryValue("Legislation Type")</span>
+
+                                                    <p class="">
+                                                        @Umbraco.GetDictionaryValue(@Model?.LegislationType ?? "")
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+                                <div class="row mt-2">
+                                    @if (Model?.AttachedFile?.Count() != 0)
+                                    {
+                                        <div class="col-lg-3 col-6 mt-2 mt-lg-0">
+                                            <div class="row">
+                                                <div class="col-auto pe-0">
+                                                    <img src="~/images/icons/book-download.svg"
+                                                         alt="License Project Type icon" class="small-icon" width="20"
+                                                         height="20">
+
+
+                                                </div>
+                                                <div class="col">
+                                                <span
+                                                    class="fw-bold">@Umbraco.GetDictionaryValue("Legislation Document")</span>
+
+                                                    <div class="">
+                                                        @foreach (var item in Model?.AttachedFile)
+                                                        {
+                                                            <div class="">
+                                                                <a href="@item.Url()" target="_blank">
+                                                                    <span>@item.Name</span>
+                                                                </a>
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (Model?.LegislationDocuments?.Count() != 0)
+                                    {
+                                        <div class="col-lg-3 col-6 mt-2 mt-lg-0">
+                                            <div class="row">
+                                                <div class="col-auto pe-0">
+                                                    <img src="~/images/icons/book-download.svg" alt="calender icon"
+                                                         class="small-icon" width="20" height="20"/>
+
+                                                </div>
+                                                <div class="col">
+                                                    <span
+                                                        class="fw-bold">@Umbraco.GetDictionaryValue("Accreditation Document")</span>
+
+                                                    @foreach (var item in Model?.LegislationDocuments)
+                                                    {
+                                                        <p>
+                                                            <a href="@item.Url()" target="_blank">
+                                                                <span>@item.Name</span>
+                                                            </a>
+                                                        </p>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (Model?.RegaulationLinkFromOtherSite?.Count() != 0)
+                                    {
+                                        <div class="col-lg-6 col-6 mt-2 mt-lg-0">
+
+                                            <div class="row">
+                                                <div class="col-auto pe-0">
+                                                    <img src="~/images/icons/link.svg" alt="calender icon"
+                                                         class="small-icon" width="20" height="20"/>
+
+                                                </div>
+                                                <div class="col">
+                                                                                                        <span
+                                                                                                            class="fw-bold">@Umbraco.GetDictionaryValue("Regaulation Link From Other Site")</span>
+
+                                                    <p>
+                                                        <a href="@Model.RegaulationLinkFromOtherSite">@Umbraco.GetDictionaryValue("Click Here")</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4" id="regulation-content">
+                        @foreach (var item in Model?.ContentItems)
+                        {
+                            var dataelement = item.Content;
+                            <div class="mt-4">
+                                @{
+                                    if (dataelement.Value("header")?.ToString() == "False")
+                                    {
+                                        <h5 class="">@dataelement.Value("title")</h5>
+                                        <div class="content">
+                                            @Html.Raw(@dataelement.Value("content"))
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <h4 class="">@dataelement.Value("title")</h4>
+                                        <hr/>
+                                    }
+                                }
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+@section endscripts
+
+{
+
+    <script csp-manager-add-nonce="true">
+
+        $(document).ready(function () {
+            // Generate table of content
+            $('#toc').toc({
+                elementClass: 'toc',
+                ulClass: 'nav',
+            });
+
+            $('a[href^="#"]').on('click', function (event) {
+                event.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').animate({
+                    scrollTop: $target.offset().top
+                }, 800, 'swing', function () {
+                    window.location.hash = target;
+                });
+            });
+
+
+        });
+
+
+        const query = document.getElementById("FilterSearch");
+        const article = document.getElementById("regulation-content");
+
+        // Find all text nodes in the article. We'll search within
+        // these text nodes.
+        const treeWalker = document.createTreeWalker(article, NodeFilter.SHOW_TEXT);
+        const allTextNodes = [];
+        let currentNode = treeWalker.nextNode();
+        let isNextIsHeader = false;
+        let isNextRootHeader = false;
+        let currentHeader = null;
+        let currentRootHeader = null;
+
+        while (currentNode) {
+            allTextNodes.push({"header": currentHeader, "rootHeader": currentRootHeader, "node": currentNode});
+            currentNode = treeWalker.nextNode();
+            if (isNextIsHeader) {
+                currentHeader = currentNode;
+                isNextIsHeader = false;
+            }
+            if (isNextRootHeader) {
+                currentRootHeader = currentNode;
+                isNextRootHeader = false;
+            }
+            if (currentNode && currentNode.nextSibling && (currentNode.nextSibling.nodeName === 'H5')) {
+                isNextIsHeader = true;
+            }
+            if (currentNode && currentNode.nextSibling && (currentNode.nextSibling.nodeName === 'H4')) {
+                isNextRootHeader = true;
+            }
+        }
+
+        // Listen to the input event to run the search.
+        query.addEventListener("input", () => {
+            // If the CSS Custom Highlight API is not supported,
+            // display a message and bail-out.
+            if (!CSS.highlights) {
+                article.textContent = "CSS Custom Highlight API not supported.";
+                return;
+            }
+
+            // Clear the HighlightRegistry to remove the
+            // previous search results.
+            CSS.highlights.clear();
+
+            // Clean-up the search query and bail-out if
+            // if it's empty.
+            const str = query.value.trim().toLowerCase();
+            let headers = [];
+            if (!str) {
+                $("ul li").each(function (index, value) {
+                    $(value).removeClass('selected').show();
+                });
+                return;
+            }
+
+            // Iterate over all text nodes and find matches.
+            const ranges = allTextNodes
+                .map((el) => {
+                    return {el, text: el['node'].textContent.toLowerCase()};
+                })
+                .map(({text, el}) => {
+                    const indices = [];
+                    let startPos = 0;
+                    while (startPos < text.length) {
+                        const index = text.indexOf(str, startPos);
+                        if (index === -1) break;
+                        indices.push(index);
+
+                        if (el['header']) {
+                            let rootH = el['rootHeader'];
+                            if (rootH)
+                                rootH = rootH.textContent
+                            headers.push({"header": el['header'].textContent, "rootHeader": rootH});
+                        }
+                        startPos = index + str.length;
+                    }
+
+                    // Create a range object for each instance of
+                    // str we found in the text node.
+                    return indices.map((index) => {
+                        const range = new Range();
+                        range.setStart(el['node'], index);
+                        range.setEnd(el['node'], index + str.length);
+                        return range;
+                    });
+                });
+
+
+            headers = headers.filter((x, i, a) => a.indexOf(x) == i)
+            // Create a Highlight object for the ranges.
+            const searchResultsHighlight = new Highlight(...ranges.flat());
+
+            // Register the Highlight object in the registry.
+            CSS.highlights.set("search-results", searchResultsHighlight);
+
+            $("ul li").each(function (index, value) {
+                let currentName = $(value).text()
+                $(value).removeClass('selected').show();
+
+                headers.forEach(el => {
+                    if (currentName.toUpperCase().indexOf(String(el["header"]).toUpperCase()) > -1) {
+                        $(value).addClass('selected').show();
+                    }
+                });
+            });
+        });
+
+    </script>
+
+}

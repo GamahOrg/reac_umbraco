@@ -1,0 +1,11 @@
+@using Umbraco10Project.Controllers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.ComplaintModels>
+
+@using (Html.BeginUmbracoForm<InspectionController>(nameof(InspectionController.GoTo), FormMethod.Post))
+{
+    <div class="container">
+        <p>Change me</p>
+        <button type="submit">Click to view</button>
+        <a>Click to Edit</a>
+    </div>
+}

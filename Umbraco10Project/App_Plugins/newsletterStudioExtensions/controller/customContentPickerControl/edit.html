@@ -1,0 +1,57 @@
+<div ng-controller="newsletterStudioExtensions.controller.customContentPickerControl.EditController as editVm"
+     ng-init="editVm.init(vm, vm.selectedControl)">
+
+    <div class="ns-property-group">
+        <ns-umb-property label="ns_control_customContentPicker_overrideTitle">
+            <umb-toggle ng-model="editVm.control.overrideTitle"
+                        on-click="editVm.overrideTitleToggle()"
+                        style="width:100%;">
+            </umb-toggle>
+        </ns-umb-property>
+    </div>
+
+    <div class="ns-property-group" ng-if="editVm.control.overrideTitle">
+        <ns-umb-property label="ns_control_customContentPicker_title">
+            <ng-form val-form-manager>
+                <umb-rte-property-editor model="editVm.ratesDisclaimerRte"></umb-rte-property-editor>
+            </ng-form>
+        </ns-umb-property>
+    </div>
+
+    <div class="ns-property-group">
+        <ns-umb-property label="ns_control_customContentPicker_selectContent">
+            <div style="display: flex; align-items: center;">
+                <input type="text"
+                       ng-model="editVm.control.selectedContent"
+                       placeholder="Selected content ID"
+                       readonly
+                       style="width: calc(100% - 40px); margin-right: 10px;" />
+                <button type="button" class="btn btn-primary" ng-click="editVm.openContentPicker()">
+                    Select Content
+                </button>
+            </div>
+        </ns-umb-property>
+    </div>
+
+    <div class="ns-property-group" ng-if="editVm.control.padding">
+        <ns-umb-property label="ns_margin">
+            <ns-margin-editor ng-model="editVm.control.padding"></ns-margin-editor>
+        </ns-umb-property>
+    </div>
+
+    <div class="ns-property-group two-cols">
+        <ns-umb-property label="ns_control_customContentPicker_textAlign">
+            <ns-toggle-button ng-model="editVm.control.textAlign"
+                              options="editVm.toggleOptionsAlign"
+                              style="width:100%;">
+            </ns-toggle-button>
+        </ns-umb-property>
+
+        <ns-umb-property label="ns_control_customContentPicker_showImage">
+            <umb-toggle ng-model="editVm.control.showImage"
+                        on-click="editVm.toggle()"
+                        style="width:100%;">
+            </umb-toggle>
+        </ns-umb-property>
+    </div>
+</div>

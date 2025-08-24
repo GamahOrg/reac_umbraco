@@ -1,0 +1,369 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.ComplaintModels>
+
+<div class="card">
+<div class="card-body">
+
+
+@using (Html.BeginUmbracoForm("Complaint", "Emails", FormMethod.Post, new { @class = "" }))
+{
+    <h5 class="col-auto title">
+
+        @Umbraco.GetDictionaryValue("Reporter data")
+    </h5>
+    <div class="row">
+        <input hidden value="@Model.FirstName" name="FirstName"/>
+        <input hidden value="@Model.LastName" name="LastName"/>
+        <div class="col-6 mt-2">
+            <label>@Umbraco.GetDictionaryValue("Reporter's name")</label>
+            @Html.TextBoxFor(m => Model.FullName, new { @class = "form-control", @required = "required", @type = "text", @readonly = "readonly" })
+        </div>
+        <div class="col-6 mt-2">
+            <label>@Umbraco.GetDictionaryValue("ID Number")</label>
+            @Html.TextBoxFor(m => Model.IdNumber, new { @class = "form-control", @required = "required", @type = "text", @readonly = "readonly", @id = "IdNumber" })
+        </div>
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Reporter contact number") <span class="required">*</span>
+            </label>
+            @Html.TextBoxFor(m => Model.Phone, new { @class = "form-control", @required = "required", @type = "tel" })
+        </div>
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Reporter's email") <span class="required">*</span>
+            </label>
+            @Html.TextBoxFor(m => Model.Email, new { @class = "form-control", @required = "required", @type = "email" })
+        </div>
+    </div>
+
+    <h5 class="col-auto title mt-4">
+        @Umbraco.GetDictionaryValue("The reported person's information")
+
+    </h5>
+    <div class="row">
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Reported Name") <span class="required">*</span>
+            </label>
+            @Html.TextBoxFor(m => Model.ReportedName, new { @class = "form-control", @required = "required", @type = "text" })
+        </div>
+        <div class="col-6 mt-2">
+
+            <label>
+                @Umbraco.GetDictionaryValue("Reported Number") <span class="required">*</span>
+            </label>
+            @Html.TextBoxFor(m => Model.ReportedNumber, new { @class = "form-control", @required = "required", @type = "text" })
+        </div>
+
+
+    </div>
+
+    <h5 class="col-auto title mt-4">
+        @Umbraco.GetDictionaryValue("Report information")
+    </h5>
+    <div class="row">
+
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Region") <span class="required">*</span>
+            </label>
+            <select id="regionSelect" name="Region" class="form-select" required>
+                <!-- Options will be dynamically populated using JavaScript -->
+                @{
+                    if (Model.RegionList != null)
+                    {
+                        foreach (var item in Model.RegionList)
+                        {
+                            <option value="@item.Value">
+                                @item.Text
+                            </option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("CITY/STATE") <span class="required">*</span>
+            </label>
+            <select id="citySelect" name="City" class="form-select" required>
+                <option value="">Select City</option>
+            </select>
+        </div>
+
+
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Type of report") <span class="required">*</span>
+            </label>
+            <select id="TypeOfReport" name="TypeOfReport" class="form-select" required>
+                @{
+                    if (Model.TypeOfReportList != null)
+                    {
+                        foreach (var item in Model.TypeOfReportList)
+                        {
+                            <option value="@item.Value">
+                                @item.Text
+                            </option>
+                        }
+                    }
+                }
+
+            </select>
+
+
+        </div>
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Type of reported") <span class="required">*</span>
+            </label>
+            <select id="TypeOfReported" name="TypeOfReported" class="form-select" required>
+                @{
+                    if (Model.TypeOfReportedList != null)
+                    {
+                        foreach (var item in Model.TypeOfReportedList)
+                        {
+                            <option value="@item.Value">
+                                @item.Text
+                            </option>
+                        }
+                    }
+                }
+
+            </select>
+
+        </div>
+        <div class="col-6 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Report classification") <span class="required">*</span>
+            </label>
+            <select id="ReportClassification" name="ReportClassification" class="form-select" required>
+                @{
+                    if (Model.ReportClassificationList != null)
+                    {
+                        foreach (var item in Model.ReportClassificationList)
+                        {
+                            <option value="@item.Value">
+                                @item.Text
+                            </option>
+                        }
+                    }
+                }
+
+            </select>
+        </div>
+
+        <div class="col-6 mt-2" id="platformLink">
+            <label>
+                @Umbraco.GetDictionaryValue("The platform's link") <span class="required d-none">*</span>
+            </label>
+            @Html.TextBoxFor(m => Model.PlatformLink, new { @class = "form-control", @type = "text" })
+        </div>
+
+
+        <div class="col-12 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Report Subject") <span class="required">*</span>
+            </label>
+            @Html.TextBoxFor(m => Model.ReportSubject, new { @class = "form-control", @required = "required", @type = "text" })
+
+        </div>
+        <div class="col-12 mt-2">
+            <label>
+                @Umbraco.GetDictionaryValue("Report Description") <span class="required">*</span>
+            </label>
+
+            @Html.TextAreaFor(m => Model.ReportDescription, new { @class = "form-control textarea-field", @required = "required", @type = "text" })
+
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <label>
+            @Umbraco.GetDictionaryValue("An attachments") <span class="required">*</span>
+        </label>
+        @Html.TextBoxFor(m => Model.Attachments, new { @class = "form-control input-file  w-100", @required = "required", @type = "file", @accept = "image/*,.pdf" })
+
+    </div>
+
+    <div class="col-6 mt-2 d-none">
+        <label>
+            @Umbraco.GetDictionaryValue("An attachments")
+        </label>
+        @Html.TextBoxFor(m => Model.Attachments, new { @class = "form-control input-file  w-100", @type = "file", @accept = "image/*,.pdf" })
+
+    </div>
+
+    <div class="col-6 mt-2 d-none">
+        <label>
+            @Umbraco.GetDictionaryValue("An attachments")
+        </label>
+        @Html.TextBoxFor(m => Model.Attachments, new { @class = "form-control input-file  w-100", @type = "file", @accept = "image/*,.pdf" })
+
+    </div>
+
+    <div class="col-6 mt-2 d-none">
+        <label>
+            @Umbraco.GetDictionaryValue("An attachments")
+        </label>
+        @Html.TextBoxFor(m => Model.Attachments, new { @class = "form-control input-file  w-100", @type = "file", @accept = "image/*,.pdf" })
+
+    </div>
+
+    <div class="col-6 mt-2 d-none">
+        <label>
+            @Umbraco.GetDictionaryValue("An attachments")
+        </label>
+        @Html.TextBoxFor(m => Model.Attachments, new { @class = "form-control input-file  w-100", @type = "file", @accept = "image/*,.pdf" })
+
+    </div>
+
+    <div class="col-6 mt-2 d-none">
+        <label>
+            @Umbraco.GetDictionaryValue("An attachments")
+        </label>
+        @Html.TextBoxFor(m => Model.Attachments, new { @class = "form-control input-file  w-100", @type = "file", @accept = "image/*,.pdf" })
+
+    </div>
+
+    <div class="col-6 mt-2 d-none">
+        <label>
+            @Umbraco.GetDictionaryValue("An attachments")
+        </label>
+        @Html.TextBoxFor(m => Model.Attachments, new { @class = "form-control input-file  w-100", @type = "file", @accept = "image/*,.pdf" })
+
+    </div>
+    <div class="row mt-4 attachments-files d-none">
+        <h5 class="col-12 title">
+            الملفات الموصى بإرفاقها :
+        </h5>
+        <ul class="ms-5">
+            <li class="attachments-file-item d-none" data-type="Scam,Security,Invoices,Commission,DocumentationOfContracts">
+                العقد
+
+            </li>
+            <li class="attachments-file-item d-none" data-type="Commission,Security,Scam">
+                سند القبض
+
+            </li>
+            <li class="attachments-file-item d-none" data-type="Commission,Invoices,Security,Scam">
+                الحوالة البنكية
+
+            </li>
+            <li class="attachments-file-item d-none" data-type="DocumentationOfContracts,Security,Scam">
+                المحادثات
+
+            </li>
+            <li class="attachments-file-item d-none" data-type="Scam">
+                اثباتات المليكة
+
+            </li>
+            <li class="attachments-file-item d-none" data-type="RealEstateAds">
+                صور الاعلان
+
+            </li>
+            <li class="attachments-file-item d-none" data-type="Licensing">
+                اثباتات على البلاغ
+
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-1  mt-4">
+            <button class="btn btn-primary w-100" type="submit"> @Umbraco.GetDictionaryValue("Submit")</button>
+        </div>
+    </div>
+
+}
+
+</div>
+</div>
+
+
+<script csp-manager-add-nonce="true">
+    window.addEventListener('DOMContentLoaded', (event) => {
+        $("#TypeOfReport").on("change", function () {
+            $("#TypeOfReported").find("option").remove();
+            var inputValue = $(this).val();
+            var selectOption = $('#TypeOfReported');
+            //alert(inputValue)
+            $.ajax({
+                url: `/umbraco/surface/Emails/GetTypeOfReported?value=${inputValue}`,
+                type: 'GET',
+                //data: { id: id, transId: transId, random: random },
+                success: function (data) {
+                    $.each(data, function (index, value) {
+                        if (index == 0 && value.value == "Platform") {
+                            setLinkReq();
+                        }
+                        $("#TypeOfReported").append(new Option(value.text, value.value));
+                    });
+
+                }
+            });
+
+            $.ajax({
+                url: `/umbraco/surface/Emails/GetReportClassification?value=${inputValue}`,
+                type: 'GET',
+                //data: { id: id, transId: transId, random: random },
+                success: function (data) {
+                    // clear the existing options first
+                    $("#ReportClassification").find("option").remove();
+                    $.each(data, function (index, value) {
+                        $("#ReportClassification").append(new Option(value.text, value.value));
+                    });
+
+                }
+            })
+        })
+
+
+        $("#ReportClassification").on("change", function () {
+            var value = $(this).val();
+            if (value != "") {
+                $(".attachments-files").removeClass("d-none");
+                const nftDivs = document.querySelectorAll('.attachments-file-item')
+                nftDivs.forEach(function (element) {
+                    var dataValue = element.dataset.type;
+                    if (dataValue.includes(value)) {
+                        element.classList.add("d-none")
+                    } else {
+                        element.classList.remove("d-none")
+
+                    }
+                });
+
+            
+            } else {
+                $(".attachments-files").removeClass("d-flex")
+            }
+
+            if (value == "Advertisements(platforms)") {
+                $("#platformLink").find(".form-control").attr("required", "required")
+                $("#platformLink").find(".required").removeClass("d-none")
+
+            } else {
+                $("#platformLink").find(".form-control").removeAttr("required")
+                $("#platformLink").find(".required").addClass("d-none")
+
+            }
+        });
+
+
+
+
+
+        $(".input-file").change(function () {
+            var selectedFiles = $(this).prop("files");
+            var secondParent = $(this).parent();
+            if (selectedFiles && selectedFiles.length > 0) {
+                var fileName = selectedFiles[0].name;
+                $(parent).find(".element-file").text("Selected file: " + fileName);
+
+                $(secondParent).next().removeClass("d-none");
+            }
+        });
+
+
+    });
+
+</script>

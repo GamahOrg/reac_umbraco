@@ -1,0 +1,360 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.Report>
+
+@using (Html.BeginUmbracoForm("PrevReportForm", "Emails", FormMethod.Post, new { @class = "" }))
+{
+    <div class="card mt-4">
+
+    <div class="card-header title">
+        @Umbraco.GetDictionaryValue("Report information")
+    </div>
+    <div class="card-body">
+    <div class="row">
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+
+                حالة البلاغ
+            </label>
+        </div>
+        <div class="job-field-value">
+
+            @{
+                if (Model.state == "close" || Model.state == "saved")
+                {
+                    <input class="form-control" readonly name="state" value="@Model.state" type="text" style="background-color: rgb(221, 221, 221);" hidden/>
+                    <input class="form-control" readonly value="مغلق" style="background-color: rgb(221, 221, 221);"/>
+                }
+                else if (Model.state == "Compliance" || Model.state == "open")
+                {
+                    <input class="form-control" readonly name="state" value="@Model.state" type="text" style="background-color: rgb(105 179 111); color: #fff;" hidden/>
+                    <input class="form-control" readonly value="مفتوح" style="background-color: rgb(60, 179, 113);"/>
+                }
+                else if (Model.state == "Reopen" || Model.state == "reopen" || Model.state == "investigation" || Model.state == "Pending")
+                {
+                    <input class="form-control" readonly name="state" value="@Model.state" type="text" style="background-color: rgb(232 235 1);" hidden/>
+                    <input class="form-control" readonly value="تحت المعالجة" style="background-color: #fcce01; color: #fff"/>
+                }
+                else if (Model.state == "request")
+                {
+                    <input class="form-control" readonly name="state" value="@Model.state" type="text" style="background-color: rgb(0 149 255); color: #fff;" hidden/>
+                    <input class="form-control" readonly value="طلب معلومات" style="background-color: rgb(0, 150, 255); color: #fff;"/>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                رقم الهوية
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="nid" value="@Model.nid" type="text"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                رقم البلاغ
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="serial_Number" value="@Model.serial_Number" type="text"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                الاسم الاول
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="first_name" type="text" value="@Model.first_name"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                البريد الإلكتروني للمُبلغ
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="email" type="text" value="@Model.email"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                اسم المبلغ عليه
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="advertiser_Name" type="text" value="@Model.advertiser_Name"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                تاريخ إنشاء البلاغ
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="created_Date" type="text" value="@Model.created_Date"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                المنطقة
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="region" type="text" value="@Model.region"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                المدينة
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="transferrecord_city" type="text" value="@Model.transferrecord_city"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                نوع البلاغ
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="report_Type" type="text" value="@Model.report_Type"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                نوع المُبلغ عليه
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="offender_type" type="text" value="@Model.offender_type"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                تصنيف البلاغ
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="report_Classification" type="text" value="@Model.report_Classification"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                موضوع البلاغ
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="title" type="text" value="@Model.title"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                رابط المنصة
+            </label>
+        </div>
+        <div class="job-field-value">
+            <input class="form-control" readonly name="link" type="text" value="@Model.link"/>
+        </div>
+    </div>
+
+    <div class="col-6 mt-2">
+        <div class="job-field-title">
+            <label>
+                وصف البلاغ
+            </label>
+        </div>
+        <div class="job-field-value">
+            <textarea class="form-control textarea-field" readonly name="description">@Model.description</textarea>
+        </div>
+    </div>
+
+    @if (Model.resolution != "")
+    {
+        <div class="col-6 mt-2">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("Resolution")
+                </label>
+            </div>
+            <div class="job-field-value">
+                <textarea class="form-control textarea-field" readonly name="resolution">@Model.resolution</textarea>
+            </div>
+        </div>
+    }
+
+    @if (Model.state == "request")
+    {
+        <div class="col-6 mt-2">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("Partner notes")
+                </label>
+            </div>
+            <div class="job-field-value">
+                <textarea class="form-control textarea-field" name="partner_notes">@Model.partner_notes</textarea>
+            </div>
+        </div>
+    }
+    else if (Model.state != "open")
+    {
+        <div class="col-6 mt-2">
+            @if (Model.partner_notes != null)
+            {
+                <div class="job-field-title">
+                    <label>
+                        @Umbraco.GetDictionaryValue("Partner notes")
+                    </label>
+                </div>
+
+                <div class="job-field-value">
+                    <textarea class="form-control textarea-field" readonly name="partner_notes">@Model.partner_notes</textarea>
+                </div>
+            }
+
+        </div>
+    }
+
+
+    @if (Model.state == "request")
+    {
+        <div class="col-6 mt-2">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("An attachments") <span class="requierd-star">*</span>
+                </label>
+            </div>
+            <div class="job-field-value display-flexbox">
+                @Html.TextBoxFor(m => Model.files, new { @class = "form-control input-file  w-100 display-none", @required = "required", @type = "file", @accept = "image/*,.pdf" })
+                <div class="form-control element-file w-50"></div>
+                <div class="upload-button upload-attachment"></div>
+            </div>
+
+        </div>
+
+        <div class="job-field display-none">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("An attachments")
+                </label>
+            </div>
+            <div class="job-field-value display-flexbox">
+                @Html.TextBoxFor(m => Model.files, new { @class = "form-control input-file  w-100 display-none", @type = "file", @accept = "image/*,.pdf" })
+                <div class="form-control element-file w-50"></div>
+                <div class="upload-button upload-attachment"></div>
+            </div>
+
+        </div>
+
+        <div class="job-field display-none">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("An attachments")
+                </label>
+            </div>
+            <div class="job-field-value display-flexbox">
+                @Html.TextBoxFor(m => Model.files, new { @class = "form-control input-file  w-100 display-none", @type = "file", @accept = "image/*,.pdf" })
+                <div class="form-control element-file w-50"></div>
+                <div class="upload-button upload-attachment"></div>
+            </div>
+
+        </div>
+
+        <div class="job-field display-none">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("An attachments")
+                </label>
+            </div>
+            <div class="job-field-value display-flexbox">
+                @Html.TextBoxFor(m => Model.files, new { @class = "form-control input-file  w-100 display-none", @type = "file", @accept = "image/*,.pdf" })
+                <div class="form-control element-file w-50"></div>
+                <div class="upload-button upload-attachment"></div>
+            </div>
+
+        </div>
+
+        <div class="job-field display-none">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("An attachments")
+                </label>
+            </div>
+            <div class="job-field-value display-flexbox">
+                @Html.TextBoxFor(m => Model.files, new { @class = "form-control input-file  w-100 display-none", @type = "file", @accept = "image/*,.pdf" })
+                <div class="form-control element-file w-50"></div>
+                <div class="upload-button upload-attachment"></div>
+            </div>
+
+        </div>
+
+        <div class="job-field display-none">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("An attachments")
+                </label>
+            </div>
+            <div class="job-field-value display-flexbox">
+                @Html.TextBoxFor(m => Model.files, new { @class = "form-control input-file  w-100 display-none", @type = "file", @accept = "image/*,.pdf" })
+                <div class="form-control element-file w-50"></div>
+                <div class="upload-button upload-attachment"></div>
+            </div>
+
+        </div>
+
+        <div class="job-field display-none">
+            <div class="job-field-title">
+                <label>
+                    @Umbraco.GetDictionaryValue("An attachments")
+                </label>
+            </div>
+            <div class="job-field-value display-flexbox">
+                @Html.TextBoxFor(m => Model.files, new { @class = "form-control input-file  w-100 display-none", @type = "file", @accept = "image/*,.pdf" })
+                <div class="form-control element-file w-50"></div>
+                <div class="upload-button upload-attachment"></div>
+            </div>
+
+        </div>
+
+
+        <div class="col-6 mt-2 apply-job-submit">
+            <a class="site-btn">
+                <div class="hover-btn-shape1"></div>
+                <div class="hover-btn-shape2"></div>
+                <input class="site-btn-input" type="submit" value="@Umbraco.GetDictionaryValue("Submit")"/>
+            </a>
+        </div>
+    }
+
+    </div>
+    </div>
+    </div>
+}

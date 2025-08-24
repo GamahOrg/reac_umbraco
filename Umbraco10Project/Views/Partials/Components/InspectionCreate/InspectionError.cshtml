@@ -1,0 +1,20 @@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@model Umbraco10Project.Models.GenericApiResponse<Umbraco10Project.Models.InspectionModel>
+
+
+@* <div class="col text-end justify-content-end"> *@
+@*     <a class="btn btn-outline-primary" asp-controller="Services" asp-action="LogOut" asp-route-language="arabic">Log out</a> *@
+@* </div> *@
+<div class="inspection-error-page">
+    <div class="row">
+        <div class="alert alert-warning mt-4 text-center" role="alert">
+            <h4 class="alert-heading"></h4>
+            <p>
+حصلت مشكلة, فضلاً اعادة المحاولة لاحقاً
+                
+            </p>
+        </div>
+    </div>
+</div>

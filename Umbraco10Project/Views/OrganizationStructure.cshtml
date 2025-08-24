@@ -1,0 +1,164 @@
+﻿@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<OrganizationStructure>
+@{
+    Layout = "Master.cshtml";
+    var ancestorsList = Model.Ancestors().Reverse().ToList();
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = ancestorsList,
+        content = Model,
+        disableRoot = true,
+        title = Model.Value("pageTitle")?.ToString() ?? ""
+    };
+}
+<div class="">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+    <div class="container">
+        @{
+            if (!@Model.VisionTitle.IsNullOrWhiteSpace())
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card p-2">
+                            <div class="card-body">
+                                <div class="title">
+                                    <img src="@Model.VisionIcon?.Url()" alt="vision icon" class="mid-icon"/>
+                                    <span class="title">@Model.VisionTitle</span>
+                                </div>
+                                <div class="content">
+                                    <p class="">@Model.VisionText</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        @* Organizational Chart Integration *@
+        @{
+            if (Model.MainImage != null)
+            {
+                <div class="svg-chart-container">
+                    <div>
+                        <div class="chart-container" style=""></div>
+                    </div>
+
+                    <script src="https://d3js.org/d3.v7.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/d3-org-chart@3.0.1"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/d3-flextree@2.1.2/build/d3-flextree.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/d3-org-chart@3.1.1/build/d3-org-chart.min.js"></script>
+
+                    <script>
+                        const data = [
+                            { id: 1, name: "مجلس الإدارة", position: "", cardIcon: "/images/icons/manege-org.svg", parentId: null },
+                            { id: 2, name: "الرئيس التنفيذي", position: "", cardIcon: "/images/icons/man-office-org.svg", parentId: 1 },
+                            { id: 3, name: "أمين المجلس", position: "", cardIcon: "/images/icons/person-org.svg", parentId: 2 },
+                            { id: 4, name: "لجنة المراجعة الداخلية", position: "", cardIcon: "/images/icons/user-org.svg", parentId: 5 },
+                            { id: 5, name: "المراجعة الداخلية", position: "", cardIcon: "/images/icons/audit-org.svg", parentId: 2 },
+                            { id: 6, name: "الاتصال الاستراتيجي", position: "", cardIcon: "/images/icons/message-org.svg", parentId: 2 },
+                            { id: 7, name: "الحوكمة والمخاطر والالتزام", position: "", cardIcon: "/images/icons/shield-org.svg", parentId: 2 },
+                            { id: 8, name: "مكتب الرئيس", position: "", cardIcon: "/images/icons/man-office-org.svg", parentId: 2 },
+                            { id: 9, name: "الأمن السيبراني ومكتب البيانات", position: "", cardIcon: "/images/icons/database-locked-org.svg", parentId: 2 },
+                            { id: 10, name: "المعهد العقاري السعودي", position: "", cardIcon: "/images/icons/learning-org.svg", parentId: 2 },
+                            { id: 11, name: "الخدمات المشتركة", position: "", cardIcon: "/images/icons/share-org.svg", parentId: 2 },
+                            { id: 12, name: "الاستراتيجية والشراكات", position: "", cardIcon: "/images/icons/strategy-org.svg", parentId: 2 },
+                            { id: 13, name: "العمليات العقارية", position: "", cardIcon: "/images/icons/building-org.svg", parentId: 2 },
+                            { id: 14, name: "التنظيم والتسجيل العيني", position: "", cardIcon: "/images/icons/maps-editing-org.svg", parentId: 2 },
+                            { id: 15, name: "التطوير العقاري", position: "", cardIcon: "/images/icons/development-org.svg", parentId: 2 },
+                            { id: 16, name: "العقار الرقمي", position: "", cardIcon: "/images/icons/software-org.svg", parentId: 2 },
+                        ];
+                        // screen width decides whether to zoom or not
+
+                        let scaleExtent = [0.5, 1];
+                        let onZoom = false;
+                        function dummy(d) {
+                        }
+                        function shouldZoom() {
+                            const width = window.innerWidth;
+                            scaleExtent = width > 768 ? [1, 1] : [0.5, 1];
+                            onZoom = width > 768? false : dummy;
+                        }
+                        shouldZoom();
+                        // listen to window resize
+                        // window.addEventListener('resize', shouldZoom);
+                        // listen to window orientation change
+                        // window.addEventListener('orientationchange', shouldZoom);
+
+
+
+                        const chart = new d3.OrgChart()
+                            .onZoom(onZoom)
+                            .layout("top")
+                            .nodeHeight((d) => 85 + 25)
+                            .scaleExtent(scaleExtent)
+                            .nodeWidth((d) => 220 + 2)
+                            .childrenMargin((d) => 50)
+                            .compactMarginBetween((d) => 1)
+                            .compactMarginPair((d) => 30)
+                            .neighbourMargin((a, b) => 20)
+                            .nodeContent(function (d) {
+                                const color = '#FFFFFF';
+                                const imageDiffVert = 25 + 2;
+                                return `
+                        <div style='width:${d.width}px; height:${d.height}px; padding-top:${imageDiffVert - 2}px;'>
+                            <div style="font-family: 'IBM Plex Sans Arabic',sans-serif;
+                                        background-color:${color};
+                                        margin-left:-1px;
+                                        width:${d.width - 2}px;
+                                        height:${d.height - imageDiffVert}px;
+                                        border-radius:15px;
+                                        border: 1px solid #E4E2E9;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        justify-content: center;
+                                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);"
+                                        >
+                                         <!-- Icon Section -->
+                                        <div style="display: flex; flex-direction: column; text-align: center; margin-bottom: -2px;">
+                                          <img src="${d.data.cardIcon}" style="; font-size: 20px; width: 25px; height: 25px; margin-bottom: 10px; margin-top: 10px;" alt="icon"/>
+                                        </div>
+
+                                       <!-- Text Section -->
+                                        <div style="text-align: center; font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #08011E;">
+                                          ${d.data.name}
+                                        </div>
+                            </div>
+                        </div>
+                            `;
+                            })
+                            .container('.svg-chart-container')
+                            .data(data)
+                            .expandAll()
+                            .render();
+                    </script>
+                </div>
+            }
+        }
+
+
+
+        @{
+            if (Model.Urllink != null)
+            {
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-lg-4 col-12 text-center">
+                        @{
+                            var itemRequest = Context.Request;
+                            var itemDomain = itemRequest.Host;
+                            var link = Model.Urllink;
+                            var itemLinkURL = "https://" + itemDomain + link?.Url;
+                        }
+                        <button class="btn btn-primary onclick" data-action="redirect-new-tab" data-value="@itemLinkURL">
+                            <div>
+                                <span class="me-2">@Model.URlbuttonText</span><img src="~/images/icons/download.svg" alt="Download Icon" class="small-icon" width="20" height="20"/>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

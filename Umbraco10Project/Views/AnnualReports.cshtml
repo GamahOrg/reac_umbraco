@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco10Project.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<AnnualReports>
+@{
+    Layout = "Master.cshtml";
+    var ancestorsList = Model.Ancestors().Reverse().ToList();
+    var ancestors = new AncestorsModel()
+    {
+        ancestors = ancestorsList,
+        content = Model,
+        title = Model.Title ?? "",
+        disableRoot = true,
+    };
+}
+<div class="annual-reports-page">
+    @await Html.PartialAsync("BreadCrumb", ancestors)
+
+    <div class="container mt-4">
+
+
+        <div class="row">
+            @{
+                var itemUrl = Model.Url();
+                var itemRequest = Context.Request;
+                var itemDomain = itemRequest.Host;
+                foreach (var item in Model.AnnualReportsItems?.OrderByDescending(item => item.Value("year")))
+                {
+                    string reportFileUrl = item.File != null ? item.File.Url() : "";
+                    var itemLinkURL = "https://" + itemDomain + reportFileUrl;
+                    <div class="col-lg-4 mt-3 col-12">
+                        <button class="card text-center onclick w-100"
+                             data-action="redirect-new-tab" data-value="@itemLinkURL">
+
+
+                                <div class="row p-3 w-100">
+                                    <div class="col-12">
+                                    <span class="h3 d-flex text-primary fw-bold w-100  align-items-center justify-content-between">
+                                        <span class="mx-auto">@item.Year</span>
+                                        <img
+                                            src="~/images/icons/link-square-02-stroke-rounded.svg"
+                                            alt="Open Report"
+                                            class="small-icon img-fluid"
+                                        />
+                                    </span>
+                                    </div>
+                                    <span class="content">@item.Title</span>
+                                </div>
+
+                        </button>
+
+
+                    </div>
+                }
+            }
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

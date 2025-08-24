@@ -1,0 +1,55 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "folderHander",
+      "success": true,
+      "itemType": "Folder",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Form-Folders/proptech-hub.config",
+      "name": "Proptech Hub",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": null,
+      "key": "8dd43440-8c19-4cb1-9864-d292012e1a1d"
+    },
+    {
+      "handlerAlias": "folderHander",
+      "success": true,
+      "itemType": "Folder",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Form-Folders/jobs.config",
+      "name": "Jobs",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": null,
+      "key": "1c8433b1-c95c-429d-9216-5ea5d599798c"
+    },
+    {
+      "handlerAlias": "formsHandler",
+      "success": true,
+      "itemType": "Form",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Forms/contact-us-page.config",
+      "name": "Contact us page",
+      "path": "v9",
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": null,
+      "key": "27715327-fbad-4d76-9af9-6e415bd85d04"
+    }
+  ],
+  "date": "2024-12-03T10:23:09.79477+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 3,
+  "total": 19
+}

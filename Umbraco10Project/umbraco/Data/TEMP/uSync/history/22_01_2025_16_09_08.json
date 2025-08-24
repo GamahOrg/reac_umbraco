@@ -1,0 +1,271 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "TemplateHandler",
+      "success": false,
+      "itemType": "ITemplate",
+      "message": "The template InspectionForm.cshtml file is missing.",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Templates/inspectionform.config",
+      "name": "Inspection Form",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "947bf183-8cec-456d-ba03-f23172bb08eb"
+    },
+    {
+      "handlerAlias": "TemplateHandler",
+      "success": true,
+      "itemType": "ITemplate",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/Templates/crmpages.config",
+      "name": "CRM Pages",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "CRMPages",
+          "path": "Template",
+          "oldValue": "",
+          "newValue": "CRMPages",
+          "change": "Create"
+        },
+        {
+          "success": true,
+          "name": "Key",
+          "path": "",
+          "oldValue": "50ef34c3-611e-4cca-ae9a-2dccb3b4a25c",
+          "newValue": "998606c4-2938-48b3-a113-153ded900c0b",
+          "change": "Update"
+        }
+      ],
+      "key": "998606c4-2938-48b3-a113-153ded900c0b"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/test.config",
+      "name": "test",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "e4016895-f508-4f93-8982-ce3ed3a1c83e"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/questionnaire.config",
+      "name": "Questionnaire",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "b3f26140-ef46-42f8-ab90-0ae087378965"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/questionnairepage.config",
+      "name": "Questionnaire Page",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "b9f56968-750e-44d9-ad77-ac6820937442"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/home.config",
+      "name": "Home",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "d98980cb-3b9d-4ba5-8df9-17828d37683b"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/contactus.config",
+      "name": "Contact Us",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "ae7ee7a9-250e-4e66-8e15-b5ceb82a4754"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/crmpages.config",
+      "name": "CRM Pages",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "Key",
+          "path": "",
+          "oldValue": "5fac82c3-08d8-43be-b251-08229ce2b00c",
+          "newValue": "a8825c3c-e02d-4e90-b458-544098f05747",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Name",
+          "path": "",
+          "oldValue": "(Blank)",
+          "newValue": "CRM Pages",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Icon",
+          "path": "",
+          "oldValue": "icon-folder",
+          "newValue": "icon-document",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Variations",
+          "path": "",
+          "oldValue": "Nothing",
+          "newValue": "Culture",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "CRMPages",
+          "change": "Update"
+        },
+        {
+          "success": true,
+          "name": "Compositions",
+          "path": "Info",
+          "oldValue": "(Blank)",
+          "newValue": "common",
+          "change": "Update"
+        }
+      ],
+      "key": "a8825c3c-e02d-4e90-b458-544098f05747"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/vision.config",
+      "name": "Vision",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": false,
+          "name": "DefaultTemplate",
+          "path": "DefaultTemplate",
+          "oldValue": "(Blank)",
+          "newValue": "Cannot find Template",
+          "change": "Update"
+        }
+      ],
+      "key": "7630894d-928d-4b0b-bdb4-af1fbbd915aa"
+    },
+    {
+      "handlerAlias": "ContentTypeHandler",
+      "success": true,
+      "itemType": "IContentType",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "uSync/v9/ContentTypes/mediacenter.config",
+      "name": "Media Center",
+      "path": "v9",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "Allowed",
+          "path": "/Structure",
+          "oldValue": "news,media,events,annualReports,contactUs,complaint,report,organizationStructure,mediaFile,nafathLogin,previousReport,reports,blankDocument,inspection,helpAndSupport",
+          "newValue": ",,,,,,,,,,,,,,,",
+          "change": "Update"
+        }
+      ],
+      "key": "46a78910-c649-4edf-9789-e006c5e521ed"
+    }
+  ],
+  "date": "2025-01-22T16:09:08.188569+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 10,
+  "total": 710
+}

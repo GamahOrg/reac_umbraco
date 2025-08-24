@@ -1,0 +1,146 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.DependencyInjection
+@using NewsletterStudio.Core.Models.System
+@using NewsletterStudio.Core.Public
+@using NewsletterStudio.Core.Public.Models
+@using Newtonsoft.Json
+@using Umbraco10Project.Helpers
+@using Umbraco10Project.Models
+
+@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+@{
+    bool hasMailingList = Model.MacroParameters.ContainsKey("mailingList") && Model.MacroParameters["mailingList"] != null;
+}
+@if (hasMailingList)
+{
+    var showConfirmation = false;
+    var showError = false;
+    var result = new CommandResult();
+
+
+    var json = Model.MacroParameters["mailingList"].ToString().Replace("&quot;", "\"");
+    var mailingListSettings = JsonConvert.DeserializeObject<SubscribeModel>(json);
+
+    if (UmbracoContext.IsFrontEndUmbracoRequest() && Context.Request.Method.Equals("post", StringComparison.InvariantCultureIgnoreCase) && Context.Request.Form.ContainsKey("email"))
+    {
+        if (Utils.IsValidEmail(Context.Request.Form["email"]))
+        {
+            var service = Context.RequestServices.GetService<INewsletterStudioService>();
+
+            var workspaceGroupedMailingLists = mailingListSettings.MailingList.GroupBy(x => x.WorkspaceKey);
+
+            foreach (var workspaceMailingListGroup in workspaceGroupedMailingLists)
+            {
+                var addRecipientRequest = new AddRecipientRequest(Context.Request.Form["email"])
+                    .ForWorkspace(workspaceMailingListGroup.Key)
+                    .WithSource("Signup Macro")
+                    .WithName(Context.Request.Form["name"]);
+
+                foreach (var list in workspaceMailingListGroup)
+                {
+                    addRecipientRequest.SubscribeTo(list.MailingListKey);
+                }
+
+                result.Append(service.AddRecipient(addRecipientRequest));
+            }
+
+            showConfirmation = result.Success;
+        }
+        else
+        {
+            showError = true;
+        }
+    }
+
+    <div class="container-fluid p-lg-5  pt-5 pb-5">
+
+        <div class="container">
+
+            <div class="card p-lg-5 p-2">
+                <div class="card-body">
+                    <div class="row text-center justify-content-center">
+                        <div class="col-lg-12 col-md-12 col-12 text-center">
+                            <img src="~/images/icons/mail-at-sign.svg" alt="News letter icon" class="small-icon" width="20" height="20"/>
+                            <span class="title text-primary ms-2 me-2">@mailingListSettings?.Title</span>
+                        </div>
+                        <div class="col-lg-12  text-center">
+
+                            <p class="">
+                                @mailingListSettings?.Description
+                            </p>
+
+
+                        </div>
+                        <div class="col-lg-6 text-center">
+
+
+                            <form method="post">
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" required name="Email" id="email" placeholder="@Umbraco.GetDictionaryValue("Email")">
+
+                                    <button class="btn btn-primary"
+                                            aria-label="Subscribe to mail list">
+                                        @Umbraco.GetDictionaryValue("Confirm", "Confirm")
+                                        <img src="~/images/icons/sent-duotone-rounded.svg" alt="Start service" class="icon-local-flip small-icon" width="20" height="20"/>
+                                    </button>
+                                </div>
+                            </form>
+
+                            @if (showConfirmation || showError)
+                            {
+                                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                                        <div class="toast-header">
+                                            <img src="~/images/icons/mail-at-sign.svg" class="rounded me-2" alt="Mail icon">
+                                            <strong class="me-auto">@Umbraco.GetDictionaryValue("Mailing list")</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            @if (showConfirmation)
+                                            {
+                                                <p>
+                                                    @Umbraco.GetDictionaryValue("email successfully registered")
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p>
+                                                    @Umbraco.GetDictionaryValue("Invalid email")
+                                                </p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (showConfirmation)
+                                {
+                                    <div class="alert alert-success mt-4 d-flex align-items-center alert-dismissible fade show">
+                                        <p> @Umbraco.GetDictionaryValue("email successfully registered")</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-warning mt-4 d-flex align-items-center alert-dismissible fade show">
+                                        <p>
+                                            @Umbraco.GetDictionaryValue("Invalid email")
+                                        </p>
+                                    </div>
+                                }
+
+                                <script csp-manager-add-nonce="true">
+                                $(document).ready(function () {
+                                    $('.toast').toast('show')
+                                });
+                            </script>
+                            }
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

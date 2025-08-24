@@ -1,0 +1,1049 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/Data/countries.csv",
+      "PackagePath": "staticwebassets/Data/countries.csv"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/JsonFile/cities.json",
+      "PackagePath": "staticwebassets/JsonFile/cities.json"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/Newsletter-Studio.css",
+      "PackagePath": "staticwebassets/css/Newsletter-Studio.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/css/style.css",
+      "PackagePath": "staticwebassets/css/css/style.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/css/style.rtl.css",
+      "PackagePath": "staticwebassets/css/css/style.rtl.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/css/styles.css",
+      "PackagePath": "staticwebassets/css/css/styles.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/sass/style.scss",
+      "PackagePath": "staticwebassets/css/sass/style.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap-datetimepicker.min.css",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap-datetimepicker.min.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_accordion.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_accordion.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_alert.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_alert.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_badge.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_badge.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_breadcrumb.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_breadcrumb.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_button-group.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_button-group.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_buttons.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_buttons.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_card.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_card.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_carousel.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_carousel.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_close.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_close.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_containers.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_containers.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_dropdown.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_dropdown.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_forms.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_forms.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_functions.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_functions.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_grid.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_grid.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_helpers.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_helpers.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_images.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_images.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_list-group.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_list-group.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_maps.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_maps.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_mixins.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_mixins.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_modal.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_modal.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_nav.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_nav.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_navbar.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_navbar.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_offcanvas.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_offcanvas.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_pagination.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_pagination.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_placeholders.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_placeholders.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_popover.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_popover.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_progress.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_progress.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_reboot.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_reboot.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_root.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_root.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_spinners.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_spinners.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_tables.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_tables.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_toasts.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_toasts.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_tooltip.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_tooltip.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_transitions.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_transitions.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_type.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_type.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_utilities.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_utilities.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_variables-dark.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_variables-dark.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/_variables.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/_variables.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/bootstrap-grid.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/bootstrap-grid.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/bootstrap-reboot.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/bootstrap-reboot.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/bootstrap-utilities.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/bootstrap-utilities.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/bootstrap.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/bootstrap.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_floating-labels.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_floating-labels.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_form-check.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_form-check.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_form-control.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_form-control.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_form-range.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_form-range.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_form-select.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_form-select.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_form-text.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_form-text.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_input-group.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_input-group.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_labels.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_labels.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/forms/_validation.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/forms/_validation.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_clearfix.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_clearfix.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_color-bg.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_color-bg.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_colored-links.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_colored-links.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_focus-ring.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_focus-ring.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_icon-link.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_icon-link.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_position.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_position.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_ratio.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_ratio.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_stacks.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_stacks.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_stretched-link.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_stretched-link.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_text-truncation.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_text-truncation.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_visually-hidden.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_visually-hidden.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/helpers/_vr.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/helpers/_vr.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_alert.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_alert.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_backdrop.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_backdrop.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_banner.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_banner.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_border-radius.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_border-radius.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_box-shadow.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_box-shadow.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_breakpoints.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_breakpoints.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_buttons.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_buttons.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_caret.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_caret.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_clearfix.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_clearfix.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_color-mode.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_color-mode.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_color-scheme.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_color-scheme.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_container.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_container.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_deprecate.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_deprecate.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_forms.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_forms.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_gradients.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_gradients.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_grid.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_grid.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_image.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_image.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_list-group.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_list-group.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_lists.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_lists.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_pagination.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_pagination.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_reset-text.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_reset-text.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_resize.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_resize.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_table-variants.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_table-variants.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_text-truncate.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_text-truncate.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_transition.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_transition.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_utilities.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_utilities.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/mixins/_visually-hidden.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/mixins/_visually-hidden.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/jasmine.js",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/jasmine.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/mixins/_auto-import-of-variables-dark.test.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/mixins/_auto-import-of-variables-dark.test.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/mixins/_color-modes.test.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/mixins/_color-modes.test.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/mixins/_media-query-color-mode-full.test.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/mixins/_media-query-color-mode-full.test.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/mixins/_utilities.test.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/mixins/_utilities.test.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/sass-true/register.js",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/sass-true/register.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/sass-true/runner.js",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/sass-true/runner.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/tests/utilities/_api.test.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/tests/utilities/_api.test.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/utilities/_api.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/utilities/_api.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/bootstrap/vendor/_rfs.scss",
+      "PackagePath": "staticwebassets/css/vendors/bootstrap/vendor/_rfs.scss"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/flatpickr.min.css",
+      "PackagePath": "staticwebassets/css/vendors/flatpickr.min.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/owl.carousel.min.css",
+      "PackagePath": "staticwebassets/css/vendors/owl.carousel.min.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/css/vendors/owl.theme.default.min.css",
+      "PackagePath": "staticwebassets/css/vendors/owl.theme.default.min.css"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/IBMPlexSansArabic-Bold.ttf",
+      "PackagePath": "staticwebassets/fonts/IBMPlexSansArabic-Bold.ttf"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/IBMPlexSansArabic-ExtraLight.ttf",
+      "PackagePath": "staticwebassets/fonts/IBMPlexSansArabic-ExtraLight.ttf"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/IBMPlexSansArabic-Light.ttf",
+      "PackagePath": "staticwebassets/fonts/IBMPlexSansArabic-Light.ttf"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/IBMPlexSansArabic-Medium.ttf",
+      "PackagePath": "staticwebassets/fonts/IBMPlexSansArabic-Medium.ttf"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/IBMPlexSansArabic-Regular.ttf",
+      "PackagePath": "staticwebassets/fonts/IBMPlexSansArabic-Regular.ttf"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/IBMPlexSansArabic-SemiBold.ttf",
+      "PackagePath": "staticwebassets/fonts/IBMPlexSansArabic-SemiBold.ttf"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/IBMPlexSansArabic-Thin.ttf",
+      "PackagePath": "staticwebassets/fonts/IBMPlexSansArabic-Thin.ttf"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/fonts/OFL.txt",
+      "PackagePath": "staticwebassets/fonts/OFL.txt"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/favicon/apple-touch-icon.png",
+      "PackagePath": "staticwebassets/images/favicon/apple-touch-icon.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/favicon/favicon-16x16.png",
+      "PackagePath": "staticwebassets/images/favicon/favicon-16x16.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/favicon/favicon-32x32.png",
+      "PackagePath": "staticwebassets/images/favicon/favicon-32x32.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/account-setting.svg",
+      "PackagePath": "staticwebassets/images/icons/account-setting.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/arrow-left-01-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/arrow-left-01-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/arrow-left-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/arrow-left-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/arrow-right-01-stroke-rounded-3.svg",
+      "PackagePath": "staticwebassets/images/icons/arrow-right-01-stroke-rounded-3.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/arrow-right-blue.svg",
+      "PackagePath": "staticwebassets/images/icons/arrow-right-blue.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/arrow-right-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/arrow-right-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/arrow-right.svg",
+      "PackagePath": "staticwebassets/images/icons/arrow-right.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/audit-org.svg",
+      "PackagePath": "staticwebassets/images/icons/audit-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/audit.svg",
+      "PackagePath": "staticwebassets/images/icons/audit.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/bag-org.svg",
+      "PackagePath": "staticwebassets/images/icons/bag-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/bag.svg",
+      "PackagePath": "staticwebassets/images/icons/bag.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/bank.svg",
+      "PackagePath": "staticwebassets/images/icons/bank.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/book-download.svg",
+      "PackagePath": "staticwebassets/images/icons/book-download.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/bounding-box.svg",
+      "PackagePath": "staticwebassets/images/icons/bounding-box.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/building-org.svg",
+      "PackagePath": "staticwebassets/images/icons/building-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/building.svg",
+      "PackagePath": "staticwebassets/images/icons/building.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/calendar-01-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/calendar-01-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/calender.svg",
+      "PackagePath": "staticwebassets/images/icons/calender.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/call-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/call-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/call.svg",
+      "PackagePath": "staticwebassets/images/icons/call.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/cancel.svg",
+      "PackagePath": "staticwebassets/images/icons/cancel.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/cells.svg",
+      "PackagePath": "staticwebassets/images/icons/cells.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/database-locked-org.svg",
+      "PackagePath": "staticwebassets/images/icons/database-locked-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/database-locked.svg",
+      "PackagePath": "staticwebassets/images/icons/database-locked.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/date.svg",
+      "PackagePath": "staticwebassets/images/icons/date.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/development-org.svg",
+      "PackagePath": "staticwebassets/images/icons/development-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/development.svg",
+      "PackagePath": "staticwebassets/images/icons/development.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/done.svg",
+      "PackagePath": "staticwebassets/images/icons/done.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/download.svg",
+      "PackagePath": "staticwebassets/images/icons/download.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/file_search.svg",
+      "PackagePath": "staticwebassets/images/icons/file_search.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/iban.svg",
+      "PackagePath": "staticwebassets/images/icons/iban.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/info.svg",
+      "PackagePath": "staticwebassets/images/icons/info.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/lang.svg",
+      "PackagePath": "staticwebassets/images/icons/lang.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/learning-org.svg",
+      "PackagePath": "staticwebassets/images/icons/learning-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/learning.svg",
+      "PackagePath": "staticwebassets/images/icons/learning.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/license-third-party.svg",
+      "PackagePath": "staticwebassets/images/icons/license-third-party.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/link-01-stroke-sharp.svg",
+      "PackagePath": "staticwebassets/images/icons/link-01-stroke-sharp.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/link-square-01-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/link-square-01-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/link-square-02-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/link-square-02-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/link.svg",
+      "PackagePath": "staticwebassets/images/icons/link.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/location.svg",
+      "PackagePath": "staticwebassets/images/icons/location.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/location_icon.svg",
+      "PackagePath": "staticwebassets/images/icons/location_icon.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/logout.svg",
+      "PackagePath": "staticwebassets/images/icons/logout.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/mail-01-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/mail-01-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/mail-at-sign.svg",
+      "PackagePath": "staticwebassets/images/icons/mail-at-sign.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/mail.svg",
+      "PackagePath": "staticwebassets/images/icons/mail.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/man-office-org.svg",
+      "PackagePath": "staticwebassets/images/icons/man-office-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/man-office.svg",
+      "PackagePath": "staticwebassets/images/icons/man-office.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/management-org.svg",
+      "PackagePath": "staticwebassets/images/icons/management-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/management.svg",
+      "PackagePath": "staticwebassets/images/icons/management.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/manege-org.svg",
+      "PackagePath": "staticwebassets/images/icons/manege-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/manege.svg",
+      "PackagePath": "staticwebassets/images/icons/manege.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/maps-editing-org.svg",
+      "PackagePath": "staticwebassets/images/icons/maps-editing-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/maps-editing.svg",
+      "PackagePath": "staticwebassets/images/icons/maps-editing.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/mentoring.svg",
+      "PackagePath": "staticwebassets/images/icons/mentoring.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/message-org.svg",
+      "PackagePath": "staticwebassets/images/icons/message-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/message.svg",
+      "PackagePath": "staticwebassets/images/icons/message.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/money.svg",
+      "PackagePath": "staticwebassets/images/icons/money.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/percent.svg",
+      "PackagePath": "staticwebassets/images/icons/percent.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/person-org.svg",
+      "PackagePath": "staticwebassets/images/icons/person-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/person.svg",
+      "PackagePath": "staticwebassets/images/icons/person.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/policy.svg",
+      "PackagePath": "staticwebassets/images/icons/policy.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/rocket.svg",
+      "PackagePath": "staticwebassets/images/icons/rocket.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/search-add-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/search-add-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/search-folder.svg",
+      "PackagePath": "staticwebassets/images/icons/search-folder.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/search-minus-stroke-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/search-minus-stroke-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/search-white.svg",
+      "PackagePath": "staticwebassets/images/icons/search-white.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/search.svg",
+      "PackagePath": "staticwebassets/images/icons/search.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/sent-duotone-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/sent-duotone-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/setting-done.svg",
+      "PackagePath": "staticwebassets/images/icons/setting-done.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/share-org.svg",
+      "PackagePath": "staticwebassets/images/icons/share-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/share.svg",
+      "PackagePath": "staticwebassets/images/icons/share.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/shield-org.svg",
+      "PackagePath": "staticwebassets/images/icons/shield-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/shield.svg",
+      "PackagePath": "staticwebassets/images/icons/shield.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/software-org.svg",
+      "PackagePath": "staticwebassets/images/icons/software-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/software.svg",
+      "PackagePath": "staticwebassets/images/icons/software.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/start-service.svg",
+      "PackagePath": "staticwebassets/images/icons/start-service.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/strategy-org.svg",
+      "PackagePath": "staticwebassets/images/icons/strategy-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/strategy.svg",
+      "PackagePath": "staticwebassets/images/icons/strategy.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/targeted_ppl.svg",
+      "PackagePath": "staticwebassets/images/icons/targeted_ppl.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/tick-double-04-duotone-rounded.svg",
+      "PackagePath": "staticwebassets/images/icons/tick-double-04-duotone-rounded.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/timer.svg",
+      "PackagePath": "staticwebassets/images/icons/timer.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/user-org.svg",
+      "PackagePath": "staticwebassets/images/icons/user-org.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/user.svg",
+      "PackagePath": "staticwebassets/images/icons/user.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/view-stroke-standard.svg",
+      "PackagePath": "staticwebassets/images/icons/view-stroke-standard.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/view.svg",
+      "PackagePath": "staticwebassets/images/icons/view.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/icons/web_and_mobile.svg",
+      "PackagePath": "staticwebassets/images/icons/web_and_mobile.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO.png",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO.svg",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_.png",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_.svg",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_Dark.png",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_Dark.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_Dark.svg",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_Dark.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_SCALE.png",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_SCALE.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_V.png",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_V.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_White.png",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_White.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/REGA_LOGO_White.svg",
+      "PackagePath": "staticwebassets/images/logos/REGA_LOGO_White.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/dga.png",
+      "PackagePath": "staticwebassets/images/logos/dga.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/logo_white.png",
+      "PackagePath": "staticwebassets/images/logos/logo_white.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/new-logo.png",
+      "PackagePath": "staticwebassets/images/logos/new-logo.png"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/vision2030_white.webp",
+      "PackagePath": "staticwebassets/images/logos/vision2030_white.webp"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/logos/vision_2030.svg",
+      "PackagePath": "staticwebassets/images/logos/vision_2030.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/nafath.svg",
+      "PackagePath": "staticwebassets/images/nafath.svg"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/images/rega_background.webp",
+      "PackagePath": "staticwebassets/images/rega_background.webp"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/ApiService-CYgh-FHm.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/ApiService-CYgh-FHm.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/App-ByIxtjHf.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/App-ByIxtjHf.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/CreateRequest-BP0ZLeBf.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/CreateRequest-BP0ZLeBf.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/CreateRequest-CBqsbPA0.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/CreateRequest-CBqsbPA0.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/FormBuilder-B3jZ_QCD.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/FormBuilder-B3jZ_QCD.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/FormBuilder-C05BU3Ns.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/FormBuilder-C05BU3Ns.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/FormHelpers-usg8eVTc.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/FormHelpers-usg8eVTc.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/MapSelector-Bxe4HfUX.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/MapSelector-Bxe4HfUX.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/ReactSelect-j1lrboTu.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/ReactSelect-j1lrboTu.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/Request-Icons-DPsXcJcs.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/Request-Icons-DPsXcJcs.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/ReviewCreatedRequests-RneOg8bX.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/ReviewCreatedRequests-RneOg8bX.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/ViewRequest-BAK9GdzQ.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/ViewRequest-BAK9GdzQ.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/exports-mapbox-CaNunxlW.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/exports-mapbox-CaNunxlW.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/index-CZcgZZVj.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/index-CZcgZZVj.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/index-nbqgCPN1.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/index-nbqgCPN1.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/index.esm-B-jqFwBf.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/index.esm-B-jqFwBf.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/assets/mapbox-gl-BMVOh-uV.js",
+      "PackagePath": "staticwebassets/inspection-form/assets/mapbox-gl-BMVOh-uV.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/index.html",
+      "PackagePath": "staticwebassets/inspection-form/index.html"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/inspection-form/manifest.json",
+      "PackagePath": "staticwebassets/inspection-form/manifest.json"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/main/inspection.js",
+      "PackagePath": "staticwebassets/scripts/main/inspection.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/main/scripts.js",
+      "PackagePath": "staticwebassets/scripts/main/scripts.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/main/toc.js",
+      "PackagePath": "staticwebassets/scripts/main/toc.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/bootstrap-hijri-datetimepicker.min.js",
+      "PackagePath": "staticwebassets/scripts/vendors/bootstrap-hijri-datetimepicker.min.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/scripts/vendors/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/scripts/vendors/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/countUp.umd.js",
+      "PackagePath": "staticwebassets/scripts/vendors/countUp.umd.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/flatpickr.min.js",
+      "PackagePath": "staticwebassets/scripts/vendors/flatpickr.min.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/jquery-3.7.1.min.js",
+      "PackagePath": "staticwebassets/scripts/vendors/jquery-3.7.1.min.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/owl.carousel.min.js",
+      "PackagePath": "staticwebassets/scripts/vendors/owl.carousel.min.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/scripts/vendors/scrollreveal.min.js",
+      "PackagePath": "staticwebassets/scripts/vendors/scrollreveal.min.js"
+    },
+    {
+      "Id": "/Users/alhazmy13/Projects/rega-website/Umbraco10Project/wwwroot/umbraco/REGA_LOGO_.svg",
+      "PackagePath": "staticwebassets/umbraco/REGA_LOGO_.svg"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Umbraco10Project.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.Umbraco10Project.props",
+      "PackagePath": "build\\Umbraco10Project.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Umbraco10Project.props",
+      "PackagePath": "buildMultiTargeting\\Umbraco10Project.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Umbraco10Project.props",
+      "PackagePath": "buildTransitive\\Umbraco10Project.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,26 @@
+@model Umbraco.Forms.Web.Models.FieldViewModel
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Umbraco.Cms.Web.Common
+@using Umbraco.Forms.Web
+@using uSync.Core
+
+@inject UmbracoHelper umbracoHelper
+
+
+@{
+    var settings = Model.AdditionalSettings;
+    var autocompleteAttribute = Model.GetSettingValue<string>("AutocompleteAttribute", string.Empty);
+ 
+}
+
+<select class="@Html.GetFormFieldClass(Model.FieldTypeName) form-select umbraco-forms-city-dropdown"
+        name="@Model.Name"
+        id="@Model.Id"
+        data-umb="@Model.Id"
+        style="min-width:50%"
+        @if ((autocompleteAttribute.IsNullOrWhiteSpace()) == false) { <text>autocomplete="@autocompleteAttribute"</text> }
+        @if (Model.Mandatory) { <text> data-val="true" data-val-required="@Model.RequiredErrorMessage" aria-required="true" </text> }
+        @if (!(Model.ToolTip.IsNullOrWhiteSpace())) { <text> aria-describedby="@(Model.Id)_description" </text> }>
+
+</select>

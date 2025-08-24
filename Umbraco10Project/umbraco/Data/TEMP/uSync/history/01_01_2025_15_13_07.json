@@ -1,0 +1,245 @@
+{
+  "actions": [
+    {
+      "handlerAlias": "uSync.Expansions.PublishedContent.PublishedContentHandler",
+      "success": false,
+      "itemType": "IContent",
+      "message": "PublishedContentHandler Import Fail: failed to get content with id=2628",
+      "exception": {
+        "ClassName": "System.Exception",
+        "Message": "failed to get content with id=2628",
+        "Data": null,
+        "InnerException": null,
+        "HelpURL": null,
+        "StackTraceString": null,
+        "RemoteStackTraceString": null,
+        "RemoteStackIndex": 0,
+        "ExceptionMethod": null,
+        "HResult": -2146233088,
+        "Source": null,
+        "WatsonBuckets": null
+      },
+      "change": "Fail",
+      "fileName": "",
+      "name": "97a252c6-8b24-473c-bfcc-6a96a54e6d41.config",
+      "path": null,
+      "requiresPostProcessing": false,
+      "detailMessage": null,
+      "details": null,
+      "key": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/81da7d15-ebb2-4758-a77f-cf0b0bdf2fa3.config",
+      "name": "Icons",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": null,
+      "key": "81da7d15-ebb2-4758-a77f-cf0b0bdf2fa3"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/9eb4d92c-16b1-4d8d-ab75-a86d8447f424.config",
+      "name": "3 3 2",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"{\\\"src\\\":\\\"/media/flmljhvr/3-3-2.webp\\\"}\"",
+          "change": "Update"
+        }
+      ],
+      "key": "9eb4d92c-16b1-4d8d-ab75-a86d8447f424"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/ba6d866b-399d-4d15-8df6-2ecef4617b90.config",
+      "name": "Rega New Logo",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"{\\\"src\\\":\\\"/media/nwdg1ou3/rega-new-logo.png\\\"}\"",
+          "change": "Update"
+        }
+      ],
+      "key": "ba6d866b-399d-4d15-8df6-2ecef4617b90"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/4f94001c-b0ef-4439-9310-38c6f1a8c5fe.config",
+      "name": "Validation",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"/media/fuajit5p/validation-2.svg\"",
+          "change": "Update"
+        }
+      ],
+      "key": "4f94001c-b0ef-4439-9310-38c6f1a8c5fe"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/41177547-ecef-406a-b9db-c339416da5e2.config",
+      "name": "Document",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"/media/oz0boqpp/document-2.svg\"",
+          "change": "Update"
+        }
+      ],
+      "key": "41177547-ecef-406a-b9db-c339416da5e2"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/3c0e8323-5f55-4764-bf13-7d5a89f4528c.config",
+      "name": "Corporate",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"/media/ckbb2pcv/corporate.svg\"",
+          "change": "Update"
+        }
+      ],
+      "key": "3c0e8323-5f55-4764-bf13-7d5a89f4528c"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/bc968a93-2e7f-4217-9fdd-f1e6a885abe4.config",
+      "name": "Passport",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"/media/ukfjnpd5/passport.svg\"",
+          "change": "Update"
+        }
+      ],
+      "key": "bc968a93-2e7f-4217-9fdd-f1e6a885abe4"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/3446a359-5235-45ff-b6b0-29d901d33a3d.config",
+      "name": "Student",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"/media/ncrfmnbv/student.svg\"",
+          "change": "Update"
+        }
+      ],
+      "key": "3446a359-5235-45ff-b6b0-29d901d33a3d"
+    },
+    {
+      "handlerAlias": "MediaHandler",
+      "success": true,
+      "itemType": "IMedia",
+      "message": "",
+      "exception": null,
+      "change": "Import",
+      "fileName": "umbraco/Data/TEMP/uSync/receive/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media/0c43243c-9751-4e3e-8e30-50648e272b08.config",
+      "name": "Certifcate",
+      "path": "/94bda26a-fde5-4c28-9d97-1c85b640c358/uSync/Media",
+      "requiresPostProcessing": true,
+      "detailMessage": null,
+      "details": [
+        {
+          "success": true,
+          "name": "umbracoFile",
+          "path": "Property/umbracoFile",
+          "oldValue": "null",
+          "newValue": "\"/media/busegdcr/certifcate.svg\"",
+          "change": "Update"
+        }
+      ],
+      "key": "0c43243c-9751-4e3e-8e30-50648e272b08"
+    }
+  ],
+  "date": "2025-01-01T15:13:07.63285+03:00",
+  "username": "aalhazmy@rega.gov.sa",
+  "method": "Import",
+  "filePath": null,
+  "changes": 10,
+  "total": 15
+}

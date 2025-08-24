@@ -1,0 +1,46 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@using Umbraco.Cms.Core.Models
+@using uSync.Core
+@{
+    var background = Model.Value<string>("bgSearchImage");
+    string backgroundUrl = !background.IsNullOrWhiteSpace() ? background : "";
+}
+<div class="container-fluid p-lg-5  pt-5 pb-5">
+
+    <div class="container">
+
+        <div class="card p-lg-5 p-2">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-lg-2 col-md-12 col-12 d-flex  justify-content-center text-center align-content-center justify-content-lg-start text-lg-start">
+                        <img src="~/images/icons/search-folder.svg" alt="Center Search service icon" class="small-icon" width="40" height="40"/>
+                        <span class="title d-flex  justify-content-center text-center align-content-center text-primary ms-2 me-2">@(Model.Value<string>("searchCenterTitle"))</span>
+                        <span class="vr d-lg-flex d-none d-sm-none d-md-none"></span>
+                    </div>
+                    <div class="col d-flex align-items-center text-center">
+
+                        <p class="">
+                            @(Model.Value<string>("searchCenterBrief"))
+                        </p>
+
+
+                    </div>
+
+                    <div class="col-lg-2 col-md-12 col-12 align-items-end d-flex justify-content-end text-end">
+                        <button class="btn btn-primary text-end w-100 text-center onclick"
+                                aria-label="Start Service"
+                                data-action="redirect" data-value="@(Model.Value<IPublishedContent>("linkButton")?.Url())"
+                                href="@(Model.Value<IPublishedContent>("linkButton")?.Url())">
+                            @Umbraco.GetDictionaryValue("Lunch the service")
+                            <img src="~/images/icons/rocket.svg" alt="Start service" width="20" height="20" class="small-icon icon-local-flip"/>
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

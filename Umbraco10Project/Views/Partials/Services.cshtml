@@ -1,0 +1,85 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco10Project.Helpers;
+
+@{
+    var servicesNode = Umbraco.Content(1250);
+    bool ar = Umbraco.CultureDictionary.Culture.ToString() == "ar-JO";
+}
+<div class="container-fluid p-lg-5 p-2">
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <h2 class="h4">@servicesNode.Value("pageTitle")</h2>
+            </div>
+            <div class="col-4 justify-content-end text-end">
+                <div class="owl-theme">
+                    <div class="owl-controls ">
+                        <div class="custom-nav owl-nav justify-content-end text-end"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+
+            <div class="owl-two owl-carousel owl-theme" name="servicesOwl" id="servicesOwl">
+
+                @foreach (var serviceItem in servicesNode.Children())
+                {
+                    var service = (Service)serviceItem;
+                    <div class="card " style="min-height: 280px;">
+                        <div class="card-body">
+                            <div class="col-12">
+                                <p class="title">@service?.PageTitle</p>
+                            </div>
+                            <div class="col-12 mt-4 content">
+                                @(Html.Raw(Utils.TruncateAtWord(Utils.StripHTML(service?.ServiceBrief?.ToString()?.Replace("&quot;", "\"").Replace("&nbsp;", "") ?? ""), 300)))
+                            </div>
+
+
+                        </div>
+                        <div class="card-footer ">
+                            <button class="btn btn-primary onclick" data-action="redirect" data-value="@service?.Url()">
+                                @Umbraco.GetDictionaryValue("View More Service")
+                            </button>
+
+                        </div>
+
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script csp-manager-add-nonce="true">
+    $(document).ready(function () {
+        var isArabic = "@ar" === "True";
+        $('.owl-two').owlCarousel({
+            loop: false,
+            margin: 10,
+            lazyLoad: true,
+            autoHeight: false,
+            rtl: isArabic,
+            autoplay: false,
+            dots: false,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            nav: true,
+            navContainer: '.custom-nav',
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    });
+</script>

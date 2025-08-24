@@ -1,0 +1,82 @@
+@using Umbraco10Project.Helpers
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco10Project.Models.EjarInquiryModel>
+
+
+<div class="wafi-projects-page">
+    <h5>@Model.Title</h5>
+
+
+    @{
+        if (Model.response.Body == null || Model.response.Body.Contracts == null || Model.response.Body.Contracts.Count == 0)
+        {
+            if (Model.ShowAlert)
+            {
+                <div class="alert alert-warning mt-4 text-center" role="alert">
+                    <h4 class="alert-heading">@Umbraco.GetDictionaryValueOrDefault("Not Exist", "غير موجود")</h4>
+                    <p>
+                        @Umbraco.GetDictionaryValueOrDefault("inquiry not exist", "الاستعلام الذي تبحث عنه غير موجود")
+
+                    </p>
+                </div>
+            }
+            else
+            {
+                <h5 class="title h-2rem overflow-hidden mt-4">@Umbraco.GetDictionaryValue("No Content")</h5>
+            }
+        }
+        else
+        {
+            <div class="row mt-4">
+                @{
+                    foreach (var item in Model.response.Body.Contracts)
+                    {
+                        <div class="col-lg-6 col-12 mb-2">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <p class="small"><span
+                                                             class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Contract number", "رقم العقد"): </span>@item.contract_number
+                                        </p>
+                                        <div class="col-6">
+                                            <p class="small"><span
+                                                                 class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Contract number", "حالة العقد"): </span>
+                                                <span
+                                                    class="badge text-white  @(item.contract_status == "active" ? "text-bg-success" : (item.contract_status == "expired" ? "text-bg-danger" : "text-bg-warning"))">
+                                                    @Umbraco.GetDictionaryValueOrDefault(item.contract_status, item.contract_status)
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="small"><span
+                                                                 class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("version", "إصدار العقد"): </span>@item.Version
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="small"><span
+                                                                 class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Contract start date", "تاريخ بداية العقد"): </span>@item.contract_start_date_greg
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="small"><span
+                                                                 class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Contract start date", "تاريخ انتهاء العقد"): </span>@item.contract_end_date_greg
+                                            </p>
+                                        </div>
+                                        <p class="small"><span
+                                                             class="fw-bold">@Umbraco.GetDictionaryValueOrDefault("Address", "العنوان"): </span>@item.Property?.Property?.Address?.region_obj?.name_ar - @item.Property?.Property?.Address?.city_obj?.name_ar - @item.Property?.Property?.Address?.district_obj?.name_ar
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-primary onclick" data-action="redirect" data-value="@Model.ResultPage?id_number=@Model.QueryParm.IdNumber&contract_number=@item.contract_number&major_version=@item.major_version&minor_version=@item.minor_version">@Umbraco.GetDictionaryValue("View More")</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    }
+
+</div>

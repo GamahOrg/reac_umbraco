@@ -1,0 +1,72 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Microsoft.IdentityModel.Tokens
+@using Umbraco.Cms.Core.Models
+@{
+    var background = Model.Value<IPublishedContent>("statisticsImage");
+    string backgroundUrl = background != null ? background.Url() : "";
+}
+<div class="container-fluid p-lg-5 pt-2">
+
+    <div class="container mt-4">
+        <div class="row align-content-center justify-content-center">
+            <div class="col-12">
+                <h2 class="h4">@Model.Value("statisticsTitle")</h2>
+            </div>
+
+        </div>
+        <div class="row mt-4">
+
+            @{
+                var statisticsItems = Model.Value<IEnumerable<IPublishedElement>>("statisticsItems");
+                if (statisticsItems != null)
+                {
+                    var showAnimation = true;
+                    foreach (var statisticsItem in statisticsItems)
+                    {
+                        var statistic = (StatisticsItem)statisticsItem;
+                        <div class="col-lg-4 col-6 text-center mt-4">
+                            <img src="@statistic.Icon?.Url()" alt="Statistics Icon" class="img-fluid" style="width: 40px; height: auto" width="40" height="40"/>
+                            <p class="h3 mt-2 text-primary fw-bold counter-animation" id="@statistic.Key" data-number="@statistic.Number" data-action="@showAnimation"></p>
+                            <p class="">@statistic.Title</p>
+                        </div>
+                        showAnimation = false;
+                    }
+                }
+            }
+
+
+        </div>
+
+    </div>
+</div>
+
+<script csp-manager-add-nonce="true">
+    $(document).ready(function () {
+        const easingFn = function (t, b, c, d) {
+            var ts = (t /= d) * t;
+            var tc = ts * t;
+            return b + c * (tc + -3 * ts + 3 * t);
+        };
+
+        $('.counter-animation').each(function () {
+            const targetId = $(this).attr('id'); // Ensure each element has a unique ID
+            const endVal = $(this).data('number'); // Get the value from data-number
+            const enable = $(this).data('action'); // Get the value from data-number
+            const options = {
+                startVal: endVal - 20, // Start value (can be customized)
+                duration: enable === "True" ? 5 : 0, // Animation duration in seconds
+                easingFn,
+            };
+
+            if (targetId) {
+                let counter = new countUp.CountUp(targetId, endVal, options);
+                if (!counter.error) {
+                    counter.start();
+                } else {
+                    console.error(counter.error);
+                }
+            }
+        });
+    });
+
+</script>
